@@ -589,11 +589,17 @@
   .product-tab--has-badge{padding-right:1.7rem}
   .product-tab__badge{top:-.7rem;right:-.35rem}
   #formules .product-tab__badge{top:-.75rem;right:-.1875rem}
-  .product-tabs[data-tabs="easyflash-products"]{justify-content:center;overflow-x:visible;flex-wrap:wrap;padding-top:0}
-  .product-tabs[data-tabs="easyflash-products"] .product-tab{flex-shrink:1}
+  .product-tabs[data-tabs="easyflash-products"],
+  .product-tabs[data-tabs="easychallenge-products"]{justify-content:space-between;overflow-x:visible;flex-wrap:wrap;padding-top:0;gap:.5rem}
+  .product-tabs[data-tabs="easyflash-products"] .product-tab,
+  .product-tabs[data-tabs="easychallenge-products"] .product-tab{flex:1 1 calc(50% - .25rem);max-width:calc(50% - .25rem);justify-content:center}
   .main-tabs,.sub-tabs{gap:.375rem;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.25rem}
   .main-tabs::-webkit-scrollbar,.sub-tabs::-webkit-scrollbar{display:none}
   .main-tab,.sub-tab{flex-shrink:0;font-size:.75rem;padding:.5rem .875rem;white-space:nowrap}
+  .main-tabs[data-tabs="easyflair-main"],
+  .sub-tabs[data-tabs="easyflair-sub"]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding-bottom:0;gap:.5rem}
+  .main-tabs[data-tabs="easyflair-main"] .main-tab,
+  .sub-tabs[data-tabs="easyflair-sub"] .sub-tab{max-width:none;justify-content:center}
   /* Cards */
   .two-col-layout{gap:1.5rem}
   .presta-card__banner{height:14rem}
