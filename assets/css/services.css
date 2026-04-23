@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════════
+   EasyEvents Group — Service-Specific Theme Overrides
+   ═══════════════════════════════════════════════════ */
+
+/* Each service page gets a [data-service] attribute on <body>.
+   These overrides apply the correct palette. */
+
+/* ── EasyFlair (Gold) ─────────────────────────────── */
+[data-service="easyflair"]{--service:#b8963e;--service-light:#f5f0e3}
+[data-service="easyflair"] .service-hero__overlay-1{
+  background:linear-gradient(150deg,hsla(43,25%,8%,.92) 0%,hsla(43,50%,18%,.78) 48%,hsla(43,80%,50%,.3) 100%);
+}
+[data-service="easyflair"] .service-hero__overlay-2{
+  background:radial-gradient(ellipse at 80% 20%,hsla(43,50%,48%,.2) 0%,transparent 60%);
+}
+[data-service="easyflair"] .marquee{border-color:rgba(184,150,62,.25)}
+[data-service="easyflair"] .marquee__dot{background:var(--easyflair)}
+[data-service="easyflair"] .stat-card__value{color:var(--easyflair)}
+[data-service="easyflair"] .service-hero__pill{border-color:rgba(184,150,62,.35)}
+
+/* ── EasyFlash (Purple) ───────────────────────────── */
+[data-service="easyflash"]{--service:#7c5cfc;--service-light:#f0ebf8}
+[data-service="easyflash"] .service-hero__overlay-1{
+  background:linear-gradient(150deg,hsla(245,28%,8%,.92) 0%,hsla(245,55%,18%,.78) 48%,hsla(245,80%,64%,.3) 100%);
+}
+[data-service="easyflash"] .service-hero__overlay-2{
+  background:radial-gradient(ellipse at 80% 20%,hsla(245,80%,64%,.2) 0%,transparent 60%);
+}
+[data-service="easyflash"] .marquee{border-color:rgba(124,92,252,.25)}
+[data-service="easyflash"] .marquee__dot{background:var(--easyflash)}
+[data-service="easyflash"] .stat-card__value{color:var(--easyflash)}
+[data-service="easyflash"] .service-hero__pill{border-color:rgba(124,92,252,.35)}
+
+/* ── EasyChallenge (Orange) ───────────────────────── */
+[data-service="easychallenge"]{--service:#e87c1a;--service-light:#fdf3e8}
+[data-service="easychallenge"] .service-hero__overlay-1{
+  background:linear-gradient(150deg,hsla(29,28%,8%,.92) 0%,hsla(29,55%,18%,.78) 48%,hsla(29,82%,51%,.3) 100%);
+}
+[data-service="easychallenge"] .service-hero__overlay-2{
+  background:radial-gradient(ellipse at 80% 20%,hsla(29,82%,51%,.2) 0%,transparent 60%);
+}
+[data-service="easychallenge"] .marquee{border-color:rgba(232,124,26,.25)}
+[data-service="easychallenge"] .marquee__dot{background:var(--easychallenge)}
+[data-service="easychallenge"] .stat-card__value{color:var(--easychallenge)}
+[data-service="easychallenge"] .service-hero__pill{border-color:rgba(232,124,26,.35)}
+
+/* ── EasyRelax (Green) ────────────────────────────── */
+[data-service="easyrelax"]{--service:#5a7f50;--service-light:#f0f5ed}
+[data-service="easyrelax"] .service-hero__overlay-1{
+  background:linear-gradient(150deg,hsla(95,28%,8%,.92) 0%,hsla(95,28%,18%,.78) 48%,hsla(95,28%,40%,.3) 100%);
+}
+[data-service="easyrelax"] .service-hero__overlay-2{
+  background:radial-gradient(ellipse at 80% 20%,hsla(95,28%,40%,.2) 0%,transparent 60%);
+}
+[data-service="easyrelax"] .marquee{border-color:rgba(90,127,80,.25)}
+[data-service="easyrelax"] .marquee__dot{background:var(--easyrelax)}
+[data-service="easyrelax"] .stat-card__value{color:var(--easyrelax)}
+[data-service="easyrelax"] .service-hero__pill{border-color:rgba(90,127,80,.35)}
+
+/* ── EasyToilets (Red-Coral) ──────────────────────── */
+[data-service="easytoilets"]{--service:#f04158;--service-light:#fff5f7}
+[data-service="easytoilets"] .service-hero__overlay-1{
+  background:linear-gradient(150deg,hsla(352,28%,8%,.92) 0%,hsla(352,55%,18%,.78) 48%,hsla(352,85%,60%,.3) 100%);
+}
+[data-service="easytoilets"] .service-hero__overlay-2{
+  background:radial-gradient(ellipse at 80% 20%,hsla(352,85%,60%,.2) 0%,transparent 60%);
+}
+[data-service="easytoilets"] .marquee{border-color:rgba(240,65,88,.25)}
+[data-service="easytoilets"] .marquee__dot{background:var(--easytoilets)}
+[data-service="easytoilets"] .stat-card__value{color:var(--easytoilets)}
+[data-service="easytoilets"] .service-hero__pill{border-color:rgba(240,65,88,.35)}
+
+/* ── Shared service-scoped utilities ──────────────── */
+[data-service] .service-accent{color:var(--service)}
+[data-service] .service-bg{background:var(--service)}
+[data-service] .service-bg-light{background:var(--service-light)}
+[data-service] .service-border{border-color:var(--service)}
+[data-service] .btn-service{
+  background:var(--service);color:#fff;
+  box-shadow:0 6px 22px -6px color-mix(in srgb,var(--service) 50%,transparent);
+}
+[data-service] .btn-service:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* Service icon backgrounds */
+.service-icon-bg--easyflair{background:rgba(184,150,62,.15);color:var(--easyflair)}
+.service-icon-bg--easyflash{background:rgba(124,92,252,.15);color:var(--easyflash)}
+.service-icon-bg--easychallenge{background:rgba(232,124,26,.15);color:var(--easychallenge)}
+.service-icon-bg--easyrelax{background:rgba(90,127,80,.15);color:var(--easyrelax)}
+.service-icon-bg--easytoilets{background:rgba(240,65,88,.15);color:var(--easytoilets)}
+
+/* Service glow effect */
+.service-glow--easyflair{box-shadow:0 0 60px -12px rgba(184,150,62,.2)}
+.service-glow--easyflash{box-shadow:0 0 60px -12px rgba(124,92,252,.2)}
+.service-glow--easychallenge{box-shadow:0 0 60px -12px rgba(232,124,26,.2)}
+.service-glow--easyrelax{box-shadow:0 0 60px -12px rgba(90,127,80,.2)}
+.service-glow--easytoilets{box-shadow:0 0 60px -12px rgba(240,65,88,.2)}

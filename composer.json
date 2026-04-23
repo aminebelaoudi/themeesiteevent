@@ -1,0 +1,10 @@
+{
+  "name": "easyevents/theme",
+  "description": "EasyEvents WordPress Theme",
+  "require": {
+    "htmlburger/carbon-fields": "^3.6"
+  },
+  "config": {
+    "preferred-install": "dist"
+  }
+}
