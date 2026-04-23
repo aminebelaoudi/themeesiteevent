@@ -47,7 +47,7 @@ if ( ! empty( $hero_custom_image ) ) {
 // Default hero images per service (used as fallback if no featured image set)
 $service_hero_images = array(
   'easyflair'      => get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
-  'easyflash'      => get_theme_file_uri( 'assets/images/easyflash-photobooth.jpg' ),
+  'easyflash'      => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge'  => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easyrelax'      => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),
   'easytoilets'    => get_theme_file_uri( 'assets/images/easytoilet.png' ),
@@ -60,7 +60,7 @@ if ( ! $thumb_url && isset( $service_hero_images[ $slug ] ) ) {
 $img = array(
   'hero'             => get_theme_file_uri( 'assets/images/hero-event.jpg' ),
   'easyflair'        => get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
-  'easyflash'        => get_theme_file_uri( 'assets/images/easyflash-photobooth.jpg' ),
+  'easyflash'        => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge'    => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easytoilets'      => get_theme_file_uri( 'assets/images/easytoilet.png' ),
   'easyrelax'        => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),

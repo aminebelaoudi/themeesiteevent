@@ -21,7 +21,7 @@ $events = array(
     'category' => 'Corporate',
   ),
   array(
-    'image'    => get_theme_file_uri( 'assets/images/easyflash-photobooth.jpg' ),
+    'image'    => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
     'title'    => 'Soirée de gala — Vidéo 360°',
     'service'  => 'EasyFlash',
     'category' => 'Corporate',
@@ -73,7 +73,7 @@ $showcase_fallback_image = function( $service_text ) {
     return get_theme_file_uri( 'assets/images/easychallenge-team.jpg' );
   }
   if ( strpos( $service_text, 'easyflash' ) !== false ) {
-    return get_theme_file_uri( 'assets/images/easyflash-photobooth.jpg' );
+    return get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' );
   }
   if ( strpos( $service_text, 'easyflair' ) !== false ) {
     return get_theme_file_uri( 'assets/images/easyflair-bar.jpg' );

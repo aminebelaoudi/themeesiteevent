@@ -178,7 +178,7 @@ $values = array(
 );
 
 $stats = array(
-  array( 'value' => '2011',  'label' => 'Fondé à Genève' ),
+  array( 'value' => '2009',  'label' => 'Fondé à Genève' ),
   array( 'value' => '500+',  'label' => 'Événements couverts' ),
   array( 'value' => '4',     'label' => 'Modèles de PhotoBooth' ),
   array( 'value' => '24h',   'label' => 'Réponse garantie' ),
@@ -236,7 +236,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <!-- ━━━━ HERO ━━━━ -->
 <section class="service-hero service-hero--parallax" style="background:<?php echo esc_attr( $C['dark'] ); ?>">
   <div class="service-hero__bg">
-    <img src="<?php echo esc_url( $thumb_url ? $thumb_url : $img['easyflash'] ); ?>" alt="EasyFlash PhotoBooth" class="service-hero__img" loading="eager">
+    <img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ) ); ?>" alt="EasyFlash PhotoBooth" class="service-hero__img" loading="eager">
     <div class="service-hero__overlay-1" style="background:linear-gradient(150deg,<?php echo esc_attr( $C['dark'] ); ?>ee 0%,<?php echo esc_attr( $C['dark'] ); ?>c8 48%,<?php echo esc_attr( $C['accent'] ); ?>28 100%)"></div>
     <div class="service-hero__overlay-2" style="background:radial-gradient(ellipse at 75% 25%,<?php echo esc_attr( $C['accent'] ); ?>1a 0%,transparent 60%)"></div>
     <div class="service-hero__overlay-3" style="background:radial-gradient(ellipse at 20% 80%,<?php echo esc_attr( $C['accentL'] ); ?>0c 0%,transparent 50%)"></div>
@@ -257,7 +257,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Location de <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>">PhotoBooth</span> en Suisse</h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Implanté à Genève depuis 2011, EasyFlash propose des bornes photo entièrement personnalisables pour offrir un élément de distraction unique à vos invités.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Implanté à Genève depuis 2009, EasyFlash propose des bornes photo entièrement personnalisables pour offrir un élément de distraction unique à vos invités.' ) ); ?></p>
       <div class="hero__actions">
         <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Obtenir un devis' ) ); ?></a>
         <a href="#produits" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir nos modèles' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
@@ -304,8 +304,23 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     </div>
 
     <!-- Tab panels -->
+    <?php
+    $panel_imgs = array(
+      'easybox-iris'   => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
+      'easybox-bw'     => get_theme_file_uri( 'assets/images/easybox-iris-300x200.jpg' ),
+      'easybox-miroir' => get_theme_file_uri( 'assets/images/easybox-360-300x200.jpg' ),
+      'easybox-360'    => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
+    );
+    ?>
     <?php foreach ( $products as $i => $p ) : ?>
       <div class="product-panel <?php echo $p['id'] === 'easybox-bw' ? 'product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>">
+        <!-- Panel banner image -->
+        <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
+        <div class="product-panel__banner" style="width:100%;border-radius:1rem;overflow:hidden;margin-bottom:2rem;aspect-ratio:16/6;position:relative">
+          <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.35) 100%)"></div>
+        </div>
+        <?php endif; ?>
         <!-- Header -->
         <div class="product-panel__header">
           <?php if ( $p['isNew'] ) : ?><span class="product-badge product-badge--new"><?php echo easyevents_icon( 'sparkles', 10 ); ?> Nouveau</span><?php endif; ?>
@@ -726,9 +741,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div class="brand-block__text">
           <span class="svc-label" style="color:<?php echo esc_attr( $C['accentL'] ); ?>"><span class="svc-label__line" style="background:<?php echo esc_attr( $C['accentL'] ); ?>40"></span>PhotoBooth &amp; Bornes photo</span>
           <h2 style="color:#fff">Easy<span class="italic" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Flash</span></h2>
-          <p style="color:rgba(255,255,255,.5)">Depuis 2011, EasyFlash anime vos événements avec des bornes photo haut de gamme et des technologies innovantes. Du mariage au gala d'entreprise, nous créons des souvenirs uniques pour vos invités.</p>
+          <p style="color:rgba(255,255,255,.5)">Depuis 2009, EasyFlash anime vos événements avec des bornes photo haut de gamme et des technologies innovantes. Du mariage au gala d'entreprise, nous créons des souvenirs uniques pour vos invités.</p>
           <div class="brand-tags">
-            <?php foreach ( array( 'Clé en main', 'Depuis 2011', 'Impression HD', 'Suisse romande' ) as $tag ) : ?>
+            <?php foreach ( array( 'Clé en main', 'Depuis 2009', 'Impression HD', 'Suisse romande' ) as $tag ) : ?>
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>

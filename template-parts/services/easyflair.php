@@ -322,7 +322,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Une prestation sur mesure grâce à une équipe de <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>">Barmen Professionnels</span></h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'À Genève et à travers toute la Suisse Romande, EasyFlair vous accompagne dans tous vos événements avec plus de dix ans d\'expérience dans l\'événementiel privé et professionnel.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'À Genève et à travers toute la Suisse Romande, EasyFlair vous accompagne dans tous vos événements avec plus de dix-sept ans d\'expérience dans l\'événementiel privé et professionnel.' ) ); ?></p>
       <div class="hero__actions">
         <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['gold'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#prestations" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les prestations' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
@@ -360,7 +360,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <section class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>">
   <div class="container" style="max-width:48rem;text-align:center">
     <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>88;font-size:.9375rem;line-height:1.8;margin-bottom:1.5rem">Parce que chaque évènement est unique et que les parties boissons et animations sont la clé du divertissement, il est essentiel de bien choisir la formule qui vous convient.</p>
-    <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>;font-size:.9375rem;line-height:1.8"><strong>À Genève et à travers toute la Suisse Romande, EasyFlair</strong> vous accompagne dans tous vos événements. Avec plus de dix ans d'expérience dans l'événementiel privé et professionnel, notre équipe de barmen mixologues vous proposera différentes formules. Du mariage à l'anniversaire en passant par les salons ou congrès professionnels, vous serez enchantés des animations proposées autour du cocktail.</p>
+    <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>;font-size:.9375rem;line-height:1.8"><strong>À Genève et à travers toute la Suisse Romande, EasyFlair</strong> vous accompagne dans tous vos événements. Avec plus de dix-sept ans d'expérience dans l'événementiel privé et professionnel, notre équipe de barmen mixologues vous proposera différentes formules. Du mariage à l'anniversaire en passant par les salons ou congrès professionnels, vous serez enchantés des animations proposées autour du cocktail.</p>
   </div>
 </section>
 <?php endif; ?>
@@ -554,7 +554,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <p style="color:<?php echo esc_attr( $C['cream'] ); ?>88;margin-bottom:1.5rem">Notre Cocktails Truck « la Roulotte » n'est pas qu'un simple bar mobile : c'est une véritable expérience itinérante, pensée pour sublimer vos événements avec style et convivialité.</p>
         <ul class="checklist">
           <?php foreach ( $truckFeatures as $tf ) : ?>
-            <li style="color:<?php echo esc_attr( $C['cream'] ); ?>cc"><span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;flex-shrink:0;margin-top:2px;display:inline-flex"><?php echo easyevents_icon('check-circle',14); ?></span><span><?php echo esc_html( $tf ); ?></span></li>
+            <li style="color:<?php echo esc_attr( $C['cream'] ); ?>cc"><span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;flex-shrink:0;margin-top:4px;display:inline-flex"><?php echo easyevents_icon('check-circle',14); ?></span><span><?php echo esc_html( $tf ); ?></span></li>
           <?php endforeach; ?>
         </ul>
       </div>
