@@ -1,6 +1,6 @@
 <?php
 /**
- * EasyFlash — Full service page (100% React fidelity)
+ * EasyFlash - Full service page (100% React fidelity)
  *
  * @package EasyEvents
  */
@@ -37,7 +37,7 @@ $products = array(
     'isNew'        => true,
     'tag'          => null,
     'tagline'      => 'Bien plus qu\'un photobooth. Une animation exclusive dédiée aux événements professionnels.',
-    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible à Genève et dans toute la Suisse — une animation innovante, encore rare en événementiel.',
+    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible à Genève et dans toute la Suisse, avec une animation innovante encore rare en événementiel.',
     'longDesc'     => "Aujourd'hui EasyFlash vous propose une animation PhotoBooth Iris unique en événementiel, dédiée aux soirées d'entreprise, événements corporate, lancements de produit, cocktails professionnels, séminaires et inaugurations.\n\nUne expérience visuelle haut de gamme qui capture l'iris de vos invités et le transforme en création artistique. Aucune préparation n'est nécessaire : nous installons le PhotoBooth Iris, accompagnons vos invités et gérons l'intégralité de la prestation.\n\nDevant notre PhotoBooth Iris événementiel, vos invités découvrent une expérience exclusive pensée spécifiquement pour les événements d'entreprise et les agences événementielles. Cette animation innovante attire l'attention, crée de l'interaction et valorise durablement votre image de marque.\n\nChaque participant repart avec une création visuelle unique, livrée en version numérique haute définition, envoyée instantanément via une solution simple et fluide.",
     'precisions'   => array(
       'Le PhotoBooth Iris EasyFlash est conçu pour s\'intégrer parfaitement à vos événements professionnels, sans contrainte technique.',
@@ -75,7 +75,7 @@ $products = array(
     'desc'         => 'L\'EasyBox B&amp;W transforme chaque cliché en une œuvre artistique au rendu noir et blanc raffiné. Idéale pour les galas, mariages chic et événements corporate, elle confère à vos photos un charme intemporel qui tranche avec l\'ordinaire.',
     'longDesc'     => "Vous souhaitez offrir à vos invités une expérience photo empreinte d'élégance classique ? L'EasyBox B&W réinvente le photobooth avec un rendu exclusivement en noir et blanc de haute qualité.\n\nContrairement à un simple filtre, notre traitement noir et blanc est calibré pour sublimer les contrastes et la lumière, donnant à chaque tirage un rendu digne d'un photographe de mode.\n\nParfaitement personnalisable, la borne peut être habillée aux couleurs de votre événement et chaque cadre peut intégrer votre logo ou slogan. Le partage numérique reste instantané, via QR code, pour les invités qui souhaitent conserver un souvenir digital.",
     'precisions'   => array(
-      'Le rendu noir &amp; blanc est calibré professionnellement — ce n\'est pas un simple filtre mais un traitement photographique précis.',
+      'Le rendu noir &amp; blanc est calibré professionnellement : ce n\'est pas un simple filtre, mais un traitement photographique précis.',
       'La borne est habillée en noir mat pour s\'intégrer discrètement dans les décors luxueux.',
       'L\'arrière-plan entièrement personnalisable permet d\'incruster votre logo ou un fond dédié à l\'événement.',
     ),
@@ -106,7 +106,7 @@ $products = array(
     'isNew'        => false,
     'tag'          => 'Glamour',
     'tagline'      => 'Miroir, mon beau miroir... dis-moi qui est la plus belle ?',
-    'desc'         => 'Le Photobooth EasyBox Miroir est l\'attraction que tout le monde veut ! Innovant par sa taille, son écran tactile géant et ses effets — une véritable touche de glamour qui se fond à merveille dans n\'importe quelle déco.',
+    'desc'         => 'Le Photobooth EasyBox Miroir est l\'attraction que tout le monde veut ! Innovant par sa taille, son écran tactile géant et ses effets, il apporte une véritable touche de glamour qui se fond à merveille dans n\'importe quelle déco.',
     'longDesc'     => "Le Photobooth EasyBox Miroir dégage un fort pouvoir d'attraction et de séduction, le mélange parfait pour charmer vos invités et graver à jamais cet évènement dans leurs esprits.\n\nDevant le Photobooth EasyBox Miroir, vos convives laisseront libre cours à leur imagination. Avec ou sans accessoires, cette borne simple d'utilisation permettra à chacun de marquer de sa présence cet événement inoubliable.\n\nLes photos seront imprimées instantanément sur papier. Vous aurez également la possibilité d'envoyer les photos sur votre téléphone via une connexion Wi-Fi intégrée.",
     'precisions'   => array(
       'L\'EasyBox Miroir est un écran pleine hauteur (format portrait) qui fonctionne comme un vrai miroir interactif.',
@@ -141,7 +141,7 @@ $products = array(
     'isNew'        => false,
     'tag'          => 'Best-seller',
     'tagline'      => 'Plus qu\'un divertissement, voici une animation innovante, le Photobooth rotatif 360°',
-    'desc'         => 'Créez en direct vos vidéos en mode Selfies 360° — une nouvelle avancée dans l\'animation photo en exclusivité chez EasyFlash ! Dans nos studios, nous avons élaboré un nouveau concept unique dans le secteur de l\'animation photo, mêlant photographie et cinématographie. À découvrir absolument !',
+    'desc'         => 'Créez en direct vos vidéos en mode Selfies 360° : une nouvelle avancée dans l\'animation photo en exclusivité chez EasyFlash ! Dans nos studios, nous avons élaboré un nouveau concept unique dans le secteur de l\'animation photo, mêlant photographie et cinématographie. À découvrir absolument !',
     'longDesc'     => "Vous aimeriez que vos photos aient un rendu plus dynamique ? Un effet unique et hyper proche de la réalité ? Alors vous avez trouvé le divertissement idéal pour épater vos invités. Offrez-leur un rendu digne de l'univers du cinéma…\n\nLa technologie de notre photobooth EasyBox rotatif 360° permet d'assembler une multitude de prises de vue et produira un mini film à l'effet WOUHAOU garanti !\n\nCette animation est totalement personnalisable ! Grâce à l'interface logiciel et le matériel fournis, vous pouvez sélectionner vos effets 360°, vos arrière-plans, ajouter votre logo, un produit, une marque, un événement… Vous avez carte blanche !\n\nEnfin, chaque rendu peut être immédiatement partagé sur vos réseaux sociaux et créer le buzz.",
     'precisions'   => array(
       'Le Photobooth EasyBox Rotatif 360° est une plate-forme de 80 cm de diamètre qui peut accueillir confortablement 2 à 3 personnes (max).',
@@ -191,8 +191,8 @@ $faqItems = array(
   array( 'q' => 'Les impressions sont-elles incluses dans la location ?', 'a' => 'Oui, toutes nos formules incluent l\'impression photo illimitée en format instamatiç (10×15 cm) sur place. Les photos sont également disponibles en téléchargement numérique via QR code ou par e-mail après l\'événement.' ),
   array( 'q' => 'Est-il possible de personnaliser le cadre photo et l\'interface ?', 'a' => 'Absolument. Nous créons un habillage graphique sur-mesure (logo, couleurs, message) pour le cadre de chaque photo ainsi que pour l\'interface de la borne. Envoyez-nous votre charte graphique et nous nous occupons du reste.' ),
   array( 'q' => 'Combien de temps faut-il pour installer une borne ?', 'a' => 'Le montage standard prend entre 30 et 45 minutes. Nous arrivons généralement 1h avant le début de votre événement pour garantir un démarrage sans stress. Un technicien reste sur place toute la durée de la prestation.' ),
-  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous intervenons principalement en Suisse romande (Genève, Lausanne, Vaud, Valais, Neuchâtel, Fribourg). Des prestations en France voisine ou en Suisse alémanique sont possibles — contactez-nous pour un devis incluant les frais de déplacement.' ),
-  array( 'q' => 'Comment se déroule la réservation ?', 'a' => 'C\'est simple : (1) Remplissez notre formulaire de devis en indiquant la date, le lieu et le type d\'événement. (2) Nous revenons vers vous sous 24h avec une offre personnalisée. (3) Validation par acompte de 30 % — le solde est réglé le jour J.' ),
+  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous intervenons principalement en Suisse romande (Genève, Lausanne, Vaud, Valais, Neuchâtel, Fribourg). Des prestations en France voisine ou en Suisse alémanique sont possibles. Contactez-nous pour un devis incluant les frais de déplacement.' ),
+  array( 'q' => 'Comment se déroule la réservation ?', 'a' => 'C\'est simple : (1) Remplissez notre formulaire de devis en indiquant la date, le lieu et le type d\'événement. (2) Nous revenons vers vous sous 24h avec une offre personnalisée. (3) Validation par acompte de 30 %, puis le solde est réglé le jour J.' ),
 );
 
 $faqItems     = ee_get_faq( $post_id, $faqItems );
@@ -259,7 +259,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endif; ?>
       <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Implanté à Genève depuis 2009, EasyFlash propose des bornes photo entièrement personnalisables pour offrir un élément de distraction unique à vos invités.' ) ); ?></p>
       <div class="hero__actions">
-        <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Obtenir un devis' ) ); ?></a>
+        <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Obtenir un devis' ) ); ?></a>
         <a href="#produits" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir nos modèles' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
       </div>
     </div>
@@ -318,7 +318,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div style="display:flex;align-items:center;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap">
           <!-- Left: badges + title + tagline + desc -->
           <div style="flex:1;min-width:260px">
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem">
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:.75rem">
               <?php if ( $p['isNew'] ) : ?><span class="product-badge product-badge--new"><?php echo easyevents_icon( 'sparkles', 10 ); ?> Nouveau</span><?php endif; ?>
               <?php if ( ! empty( $p['tag'] ) && ! $p['isNew'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
             </div>
@@ -328,8 +328,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           </div>
           <!-- Right: image card -->
           <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
-          <div style="flex-shrink:0;width:300px;border-radius:1rem;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);position:relative">
-            <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:300px;height:200px;object-fit:cover;display:block" loading="lazy">
+          <div style="flex-shrink:0;width:300px;max-width:100%;border-radius:1rem;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);position:relative">
+            <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:200px;object-fit:cover;display:block" loading="lazy">
             <div style="position:absolute;bottom:0;left:0;right:0;padding:.6rem 1rem;background:linear-gradient(to top,rgba(28,22,50,.75) 0%,transparent 100%)">
               <span style="color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.04em"><?php echo esc_html( $p['name'] ); ?></span>
             </div>
@@ -386,7 +386,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p class="product-price__label">À partir de</p>
           <p class="product-price__amount"><?php echo esc_html( $p['price'] ); ?><span class="product-price__currency"><?php echo esc_html( $p['currency'] ); ?></span></p>
           <p class="product-price__name"><?php echo esc_html( $p['name'] ); ?></p>
-          <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
 
         <!-- Per-product bonus section -->
@@ -411,8 +411,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
             <p class="product-bonus__desc">Avec EasyFlash, la personnalisation du visuel de votre création Iris est prise en charge par notre équipe.</p>
             <p class="product-bonus__desc">Vous nous transmettez votre logo, un slogan ou un message, et nous intégrons ces éléments directement sur le cadre autour de l'iris, dans le respect de votre identité visuelle.</p>
             <p class="product-bonus__desc">Conçu pour les événements d'entreprise (soirée corporate, lancement de produit, séminaire, cocktail, inauguration…) avec une personnalisation élégante et discrète.</p>
+            <p class="product-bonus__desc">Découvrez les possibilités de personnalisation de vos visuels en cliquant ici : <a href="https://www.easyflash.ch/templates-paysage/" target="_blank" rel="noopener">https://www.easyflash.ch/templates-paysage/</a></p>
             <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">Prix offert</p>
-            <div class="product-bonus__grid product-bonus__grid--3">
+            <div class="product-bonus__grid product-bonus__grid--2">
               <?php foreach ( array(
                 'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-1.jpeg',
                 'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-2.jpeg',
@@ -444,7 +445,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
             </div>
           </div>
 
@@ -457,8 +458,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 array( 'q' => 'Qu\'est-ce qu\'un PhotoBooth Iris ?', 'a' => 'Le PhotoBooth Iris est une animation événementielle exclusive qui capture l\'iris de vos invités et le transforme en une création visuelle artistique unique, envoyée instantanément en haute définition.' ),
                 array( 'q' => 'Le PhotoBooth Iris est-il adapté aux événements d\'entreprise ?', 'a' => 'Absolument. Il est spécialement conçu pour les soirées d\'entreprise, lancements de produit, séminaires, cocktails corporate et inaugurations. C\'est une animation haut de gamme qui valorise l\'image de marque.' ),
                 array( 'q' => 'Peut-on personnaliser le visuel avec un logo ou un slogan ?', 'a' => 'Oui. Nous intégrons votre identité visuelle (logo, slogan, message) directement autour de la création iris. La personnalisation est incluse dans la prestation.' ),
-                array( 'q' => 'Combien de personnes peuvent participer au PhotoBooth Iris ?', 'a' => 'La durée est flexible et les créations sont illimitées. Tous vos invités peuvent participer — la prestation est dimensionnée selon la taille de votre événement.' ),
-                array( 'q' => 'Sur quels types d\'événements installer un PhotoBooth Iris ?', 'a' => 'Soirée d\'entreprise, lancement de produit, séminaire, cocktail corporate, inauguration, gala, événement de prestige — toute occasion où vous souhaitez offrir une animation mémorable et différenciante.' ),
+                array( 'q' => 'Combien de personnes peuvent participer au PhotoBooth Iris ?', 'a' => 'La durée est flexible et les créations sont illimitées. Tous vos invités peuvent participer, la prestation est dimensionnée selon la taille de votre événement.' ),
+                array( 'q' => 'Sur quels types d\'événements installer un PhotoBooth Iris ?', 'a' => 'Soirée d\'entreprise, lancement de produit, séminaire, cocktail corporate, inauguration, gala, événement de prestige : toute occasion où vous souhaitez offrir une animation mémorable et différenciante.' ),
               );
               foreach ( $iris_faq as $fi => $fitem ) : ?>
                 <div class="faq-item product-bonus__faq-item" style="border-color:<?php echo esc_attr( $C['accent'] ); ?>20">
@@ -575,7 +576,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
             </div>
           </div>
         </div>
@@ -588,9 +589,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
             <h4 class="product-bonus__title">1. Choisissez votre pack d'accessoires indispensables</h4>
             <p class="product-bonus__desc">Pour agrémenter vos photos, nous vous proposons un choix de 3 packs d'accessoires.</p>
             <ul class="product-bonus__list">
-              <li>— Pack Standard (cadres, panneaux ou props)</li>
-              <li>— Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
-              <li>— Pack sur mesure (accessoires spécialement achetés pour votre évènement en fonction de votre thème)</li>
+              <li>Pack Standard (cadres, panneaux ou props)</li>
+              <li>Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
+              <li>Pack sur mesure (accessoires spécialement achetés pour votre évènement en fonction de votre thème)</li>
             </ul>
             <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 29.- CHF</p>
             <div class="product-bonus__grid product-bonus__grid--4">
@@ -668,7 +669,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
             </div>
           </div>
         </div>
@@ -687,9 +688,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
             <h4 class="product-bonus__title">1. Choisissez votre pack d'accessoires indispensables</h4>
             <p class="product-bonus__desc">Pour agrémenter vos vidéos, nous vous proposons un choix de 3 packs d'accessoires.</p>
             <ul class="product-bonus__list">
-              <li>— Pack Standard (cadres, panneaux ou props)</li>
-              <li>— Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
-              <li>— Pack sur mesure (accessoires spécialement achetés pour votre événement en fonction de votre thème)</li>
+              <li>Pack Standard (cadres, panneaux ou props)</li>
+              <li>Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
+              <li>Pack sur mesure (accessoires spécialement achetés pour votre événement en fonction de votre thème)</li>
             </ul>
             <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 29.- CHF</p>
             <div class="product-bonus__grid product-bonus__grid--4">
@@ -755,7 +756,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>
-          <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
         <div class="brand-block__mosaic">
           <div class="brand-block__mosaic-grid">
