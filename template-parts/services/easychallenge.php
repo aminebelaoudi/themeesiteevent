@@ -173,7 +173,7 @@ $reasons = array(
 );
 
 $stats = array(
-  array( 'value' => '2018',  'label' => 'Fondé à Genève' ),
+  array( 'value' => '2009',  'label' => 'Fondé à Genève' ),
   array( 'value' => '500+',  'label' => 'Événements réalisés' ),
   array( 'value' => '3',     'label' => 'Formules disponibles' ),
   array( 'value' => '24h',   'label' => 'Réponse garantie' ),
