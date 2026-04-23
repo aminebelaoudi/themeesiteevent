@@ -314,21 +314,29 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     ?>
     <?php foreach ( $products as $i => $p ) : ?>
       <div class="product-panel <?php echo $p['id'] === 'easybox-bw' ? 'product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>">
-        <!-- Panel banner image -->
-        <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
-        <div class="product-panel__banner" style="width:100%;border-radius:1rem;overflow:hidden;margin-bottom:2rem;aspect-ratio:16/6;position:relative">
-          <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.35) 100%)"></div>
+        <!-- Header: 2-col intro (text left / image right) -->
+        <div style="display:flex;align-items:center;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap">
+          <!-- Left: badges + title + tagline + desc -->
+          <div style="flex:1;min-width:260px">
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem">
+              <?php if ( $p['isNew'] ) : ?><span class="product-badge product-badge--new"><?php echo easyevents_icon( 'sparkles', 10 ); ?> Nouveau</span><?php endif; ?>
+              <?php if ( ! empty( $p['tag'] ) && ! $p['isNew'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
+            </div>
+            <h3 class="product-panel__title" style="margin-bottom:.5rem"><?php echo wp_kses_post( $p['locationTitle'] ); ?></h3>
+            <p class="product-panel__tagline" style="color:<?php echo esc_attr( $C['accent'] ); ?>;margin-bottom:.75rem"><?php echo wp_kses_post( $p['tagline'] ); ?></p>
+            <p class="product-panel__desc"><?php echo wp_kses_post( $p['desc'] ); ?></p>
+          </div>
+          <!-- Right: image card -->
+          <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
+          <div style="flex-shrink:0;width:300px;border-radius:1rem;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);position:relative">
+            <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:300px;height:200px;object-fit:cover;display:block" loading="lazy">
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:.6rem 1rem;background:linear-gradient(to top,rgba(28,22,50,.75) 0%,transparent 100%)">
+              <span style="color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.04em"><?php echo esc_html( $p['name'] ); ?></span>
+            </div>
+          </div>
+          <?php endif; ?>
         </div>
-        <?php endif; ?>
-        <!-- Header -->
-        <div class="product-panel__header">
-          <?php if ( $p['isNew'] ) : ?><span class="product-badge product-badge--new"><?php echo easyevents_icon( 'sparkles', 10 ); ?> Nouveau</span><?php endif; ?>
-          <?php if ( ! empty( $p['tag'] ) && ! $p['isNew'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
-          <h3 class="product-panel__title"><?php echo wp_kses_post( $p['locationTitle'] ); ?></h3>
-          <p class="product-panel__tagline" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo wp_kses_post( $p['tagline'] ); ?></p>
-          <p class="product-panel__desc"><?php echo wp_kses_post( $p['desc'] ); ?></p>
-        </div>
+        <div class="product-panel__header" style="display:none"><!-- kept for CSS compat --></div>
 
         <!-- Long description -->
         <div class="product-panel__longdesc">
