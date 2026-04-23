@@ -324,7 +324,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endif; ?>
       <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'À Genève et à travers toute la Suisse Romande, EasyFlair vous accompagne dans tous vos événements avec plus de dix ans d\'expérience dans l\'événementiel privé et professionnel.' ) ); ?></p>
       <div class="hero__actions">
-        <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['gold'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
+        <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['gold'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#prestations" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les prestations' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
       </div>
     </div>
@@ -409,7 +409,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 <p style="color:<?php echo esc_attr( $C['cream'] ); ?>77;white-space:pre-line;font-size:.875rem;margin-top:1rem"><?php echo esc_html( $pickDrinks['formulaInfo'] ); ?></p>
               </div>
             </div>
-            <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1.25rem;align-self:flex-start"><?php echo esc_html( $pickDrinks['ctaLabel'] ?? 'Estimer le montant de ma prestation' ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
+            <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1.25rem;align-self:flex-start"><?php echo esc_html( $pickDrinks['ctaLabel'] ?? 'Estimer le montant de ma prestation' ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
           </div>
         </div>
       </div>
@@ -447,7 +447,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                   </ul>
                 </div>
               </div>
-              <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
+              <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
             </div>
           <?php endforeach; ?>
         </div>
@@ -473,7 +473,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php if ( ! empty( $f['image'] ) ) : ?><div class="formula-card__hero-img"><img src="<?php echo esc_url( $f['image'] ); ?>" alt="<?php echo esc_attr( $f['name'] ); ?>"><div class="formula-card__img-overlay"></div></div><?php endif; ?>
               <div style="padding:1.5rem;text-align:center">
                 <h4 style="color:#fff"><?php echo esc_html( $f['name'] ); ?></h4>
-                <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $jongleurColors[ $fi ] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
+                <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $jongleurColors[ $fi ] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
               </div>
             </div>
           <?php endforeach; ?>
@@ -521,7 +521,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
       <!-- 1G. Final CTA -->
       <div style="text-align:center;margin-top:2.5rem" class="animate-on-scroll">
-        <a href="#devis" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander mon devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+        <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander mon devis <?php echo easyevents_icon('arrow-right',14); ?></a>
       </div>
     </div>
 
@@ -544,7 +544,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p style="color:#fff;font-size:3rem;font-weight:800;line-height:1">390.-</p>
           <p style="color:<?php echo esc_attr( $C['goldL'] ); ?>;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem">CHF HT</p>
           <div style="width:3rem;height:1px;background:<?php echo esc_attr( $C['gold'] ); ?>40;margin:1.25rem auto"></div>
-          <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -554,7 +554,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <p style="color:<?php echo esc_attr( $C['cream'] ); ?>88;margin-bottom:1.5rem">Notre Cocktails Truck « la Roulotte » n'est pas qu'un simple bar mobile : c'est une véritable expérience itinérante, pensée pour sublimer vos événements avec style et convivialité.</p>
         <ul class="checklist">
           <?php foreach ( $truckFeatures as $tf ) : ?>
-            <li style="color:<?php echo esc_attr( $C['cream'] ); ?>cc"><?php echo easyevents_icon('check-circle',14); ?> <?php echo esc_html( $tf ); ?></li>
+            <li style="color:<?php echo esc_attr( $C['cream'] ); ?>cc"><span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;flex-shrink:0;margin-top:2px;display:inline-flex"><?php echo easyevents_icon('check-circle',14); ?></span><span><?php echo esc_html( $tf ); ?></span></li>
           <?php endforeach; ?>
         </ul>
       </div>
@@ -599,7 +599,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         </div>
         <div class="animate-on-scroll" style="text-align:center;margin-top:2rem">
           <p style="color:<?php echo esc_attr( $C['dark'] ); ?>bb;font-size:.875rem;font-weight:600;margin-bottom:1.5rem">Nous réalisons également des offres sur mesures Premium en fonction de votre budget.</p>
-          <a href="#devis" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -634,7 +634,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         </div>
         <div class="animate-on-scroll" style="text-align:center;margin-top:2rem">
           <p style="color:<?php echo esc_attr( $C['dark'] ); ?>bb;font-size:.875rem;font-weight:600;margin-bottom:1.5rem">Nous réalisons également des offres sur mesures Premium en fonction de votre budget.</p>
-          <a href="#devis" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -695,7 +695,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 <?php endforeach; ?>
               </div>
             </div>
-            <a href="#devis" class="btn btn-service btn-service--sm" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+            <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--sm" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
           </div>
         </div>
       </div>
@@ -713,7 +713,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <a href="<?php echo esc_url( $anim['extLink']['url'] ); ?>" target="_blank" rel="noopener" style="color:<?php echo esc_attr( $C['gold'] ); ?>;font-size:.875rem;font-weight:600;margin:.5rem 0 1rem;display:inline-flex;align-items:center;gap:.375rem"><?php echo esc_html( $anim['extLink']['label'] ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
             <?php endif; ?>
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:.75rem">
-              <a href="#devis" class="btn btn-service btn-service--sm" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+              <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--sm" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
               <?php if ( ! empty( $anim['price'] ) ) : ?>
                 <div style="text-align:right">
                   <p style="color:<?php echo esc_attr( $C['dark'] ); ?>88;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em">À partir de</p>
@@ -797,7 +797,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;border-color:<?php echo esc_attr( $C['goldL'] ); ?>25;background:<?php echo esc_attr( $C['goldL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>
-          <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
         <div class="brand-block__images brand-block__images--mosaic">
           <?php
