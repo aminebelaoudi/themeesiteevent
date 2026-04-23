@@ -589,6 +589,8 @@
   .product-tab--has-badge{padding-right:1.7rem}
   .product-tab__badge{top:-.7rem;right:-.35rem}
   #formules .product-tab__badge{top:-.75rem;right:-.1875rem}
+  .product-tabs[data-tabs="easyflash-products"]{justify-content:center;overflow-x:visible;flex-wrap:wrap;padding-top:0}
+  .product-tabs[data-tabs="easyflash-products"] .product-tab{flex-shrink:1}
   .main-tabs,.sub-tabs{gap:.375rem;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.25rem}
   .main-tabs::-webkit-scrollbar,.sub-tabs::-webkit-scrollbar{display:none}
   .main-tab,.sub-tab{flex-shrink:0;font-size:.75rem;padding:.5rem .875rem;white-space:nowrap}
