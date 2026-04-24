@@ -87,7 +87,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">La Pause <span style="color:<?php echo esc_attr( $C['greenL'] ); ?>">Bien-Être</span> pour vos Événements</h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Nos fauteuils massants offrent une expérience de relaxation inoubliable lors de vos séminaires, salons ou événements corporate à Genève.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Nos fauteuils massants offrent une expérience de relaxation inoubliable lors de vos séminaires, salons ou événements corporate dans toute la Suisse.' ) ); ?></p>
       <div class="hero__actions">
         <a href="https://invoice.easyrelax.ch/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['green'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Simuler une offre' ) ); ?></a>
         <a href="#formules" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les formules' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>

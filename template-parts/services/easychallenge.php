@@ -137,7 +137,7 @@ $products = array(
       'Vidéo Best Of transmise sous 72-96h',
       'Adapté à tous les niveaux',
       'Idéal après séminaire ou événement corporate',
-      'Disponible à Genève et région',
+      'Disponible dans toute la Suisse',
     ),
     'games' => array(
       array( 'name' => 'SlideBall', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/SlideBall.jpg', 'desc' => 'Plongez dans l\'univers du Baseball revisité ! Sur un terrain recouvert d\'un revêtement glissant, glissez et marquez des points.' ),
@@ -279,7 +279,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Créez des <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Souvenirs</span>, pas des Résultats</h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Team building innovant à Genève : Émission TV immersive et activités outdoor pour renforcer la cohésion de vos équipes.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Team building innovant en Suisse : Émission TV immersive et activités outdoor pour renforcer la cohésion de vos équipes.' ) ); ?></p>
       <div class="hero__actions">
         <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#formules" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les formules' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
@@ -533,7 +533,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div class="brand-block__text">
           <span class="svc-label" style="color:<?php echo esc_attr( $C['accentL'] ); ?>"><span class="svc-label__line" style="background:<?php echo esc_attr( $C['accentL'] ); ?>40"></span>Team Building &amp; Animations</span>
           <h2 style="color:#fff">Easy<span class="italic" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Challenge</span></h2>
-          <p style="color:rgba(255,255,255,.5)">Depuis 2018, EasyChallenge crée des expériences team building mémorables à Genève. Émission TV immersive, activités outdoor et animations sur mesure pour renforcer la cohésion de vos équipes.</p>
+          <p style="color:rgba(255,255,255,.5)">Depuis 2018, EasyChallenge crée des expériences team building mémorables dans toute la Suisse. Émission TV immersive, activités outdoor et animations sur mesure pour renforcer la cohésion de vos équipes.</p>
           <div class="brand-tags">
             <?php foreach ( array( 'Clé en main', 'Depuis 2018', 'Vidéo incluse', 'Toute la Suisse' ) as $tag ) : ?>
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>

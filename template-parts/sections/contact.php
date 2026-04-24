@@ -20,7 +20,7 @@ $contact_title = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_th
 $contact_highlight = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'contact_highlight' ) : '' ) ?: 'votre événement';
 $contact_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'contact_subtitle' ) : '' ) ?: 'Notre équipe vous répond sous 24h pour construire ensemble votre projet.';
 $contact_brand_name = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'contact_brand_name' ) : '' ) ?: 'EasyEvents Group';
-$contact_brand_tagline = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'contact_brand_tagline' ) : '' ) ?: 'Votre partenaire événementiel en Suisse romande';
+$contact_brand_tagline = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'contact_brand_tagline' ) : '' ) ?: 'Votre partenaire événementiel en Suisse et à la frontière française';
 
 $contact_title_html = esc_html( $contact_title );
 if ( ! empty( $contact_highlight ) && false !== strpos( $contact_title, $contact_highlight ) ) {

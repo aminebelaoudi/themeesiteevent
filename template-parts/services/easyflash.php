@@ -257,7 +257,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Location de <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>">PhotoBooth</span> en Suisse</h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Implanté à Genève depuis 2009, EasyFlash propose des bornes photo entièrement personnalisables pour offrir un élément de distraction unique à vos invités.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Depuis 2009, EasyFlash propose des bornes photo entièrement personnalisables dans toute la Suisse pour offrir un élément de distraction unique à vos invités.' ) ); ?></p>
       <div class="hero__actions">
         <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Obtenir un devis' ) ); ?></a>
         <a href="#produits" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir nos modèles' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>

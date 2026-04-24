@@ -62,7 +62,7 @@ $service_colors = array(
         Parlons de votre prochain événement
       </h2>
       <p style="position:relative;color:rgba(255,255,255,.7);font-size:1.125rem;margin-bottom:2rem;max-width:36rem;margin-left:auto;margin-right:auto;line-height:1.7">
-        Que vous soyez agence ou entreprise, nous créons des expériences sur mesure en Suisse romande.
+        Que vous soyez agence ou entreprise, nous créons des expériences sur mesure dans toute la Suisse.
       </p>
       <div style="position:relative">
         <a href="#services" class="btn btn-hero-outline">Découvrir nos services</a>

@@ -8,7 +8,7 @@
 $reasons = array(
   array(
     'icon'    => 'map-pin',
-    'text'    => 'Basés à Genève, actifs partout en Suisse romande',
+    'text'    => 'Actifs dans toute la Suisse et à la frontière française',
     'slug'    => 'easyflash',
   ),
   array(

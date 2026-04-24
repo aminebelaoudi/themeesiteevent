@@ -14,7 +14,7 @@ $targets = array(
   array(
     'icon'  => 'building',
     'title' => 'Pour les entreprises',
-    'desc'  => 'Soirées d\'entreprise, séminaires, lancements et team building clés en main en Suisse romande.',
+    'desc'  => 'Soirées d\'entreprise, séminaires, lancements et team building clés en main dans toute la Suisse.',
   ),
 );
 ?>
