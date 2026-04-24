@@ -97,7 +97,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endif; ?>
       <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Des installations sanitaires haut de gamme pour vos événements. Impressionnez vos invités avec des unités élégantes et autonomes, livrées clé en main.' ) ); ?></p>
       <div class="hero__actions">
-        <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander votre devis' ) ); ?></a>
+        <a href="https://www.easytoilets.ch/devis-en-ligne/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander votre devis' ) ); ?></a>
         <a href="#approche" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Découvrir nos services' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
       </div>
     </div>
@@ -147,7 +147,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <div class="two-col-layout">
       <!-- Image -->
       <div class="animate-on-scroll" style="position:relative">
-        <div class="intro-image intro-image--rounded"><img src="<?php echo esc_url( $img['easytoilets'] ); ?>" alt="EasyToilets unité luxueuse"></div>
+        <div class="intro-image intro-image--rounded"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/EasyToilets-002.jpg' ) ); ?>" alt="EasyToilets unité luxueuse"></div>
       </div>
       <!-- Text -->
       <div class="animate-on-scroll">
@@ -159,7 +159,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p>Faites tourner les têtes en choisissant une unité luxueuse et haut de gamme avec chauffage, un système audio et plus encore !</p>
           <p>Nous proposons des solutions <strong style="color:<?php echo esc_attr( $C['dark'] ); ?>">clé en main</strong> et toutes les unités sont entièrement autonomes et peuvent fonctionner été comme hiver.</p>
         </div>
-        <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis ! <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+        <a href="https://www.easytoilets.ch/devis-en-ligne/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis ! <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
       </div>
     </div>
   </div>
@@ -198,11 +198,11 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <?php endforeach; ?>
         </div>
         <p style="color:<?php echo esc_attr( $C['dark'] ); ?>77;font-style:italic;font-size:.875rem;margin:1.5rem 0">Et encore plus, parlez-nous de votre projet !</p>
-        <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis ! <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+        <a href="https://www.easytoilets.ch/devis-en-ligne/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis ! <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
       </div>
       <!-- Image -->
       <div class="animate-on-scroll" style="position:relative">
-        <div class="intro-image intro-image--rounded intro-image--shadow"><img src="<?php echo esc_url( $img['easytoilets'] ); ?>" alt="EasyToilets pour vos événements"></div>
+        <div class="intro-image intro-image--rounded intro-image--shadow"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/EasyToilets-004-1.jpg' ) ); ?>" alt="EasyToilets pour vos événements"></div>
         <div class="floating-badge floating-badge--top-right" style="background:<?php echo esc_attr( $C['dark'] ); ?>">
           <span style="color:<?php echo esc_attr( $C['accent'] ); ?>">7+</span><span style="color:rgba(255,255,255,.7)">types</span>
         </div>
@@ -223,7 +223,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <div class="bento-grid bento-grid--2 animate-on-scroll">
       <?php
         $option_imgs = array(
-          get_theme_file_uri( 'assets/images/Décor Extérieur.png' ),
+          get_theme_file_uri( 'assets/images/EasyToilets-005-1.jpg' ),
           get_theme_file_uri( 'assets/images/Assistant personnel.png' ),
         );
         foreach ( $options as $i => $opt ) : ?>
@@ -238,7 +238,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               if ( count( $parts ) > 1 ) echo '<br><span class="italic" style="color:' . esc_attr( $C['accent'] ) . ';font-weight:400">' . esc_html( $parts[1] ) . '</span>';
             ?></h3>
             <p style="color:rgba(255,255,255,.8);font-size:.875rem;max-width:22rem;margin-bottom:1.25rem"><?php echo esc_html( $opt['desc'] ); ?></p>
-            <a href="#devis" style="color:rgba(255,255,255,.7);font-size:.8125rem">Découvrir <?php echo easyevents_icon( 'arrow-right', 12 ); ?></a>
+            <a href="https://www.easytoilets.ch/devis-en-ligne/?utm_source=EasyEvents" style="color:rgba(255,255,255,.7);font-size:.8125rem">Découvrir <?php echo easyevents_icon( 'arrow-right', 12 ); ?></a>
           </div>
         </div>
       <?php endforeach; ?>
@@ -290,7 +290,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <span style="color:<?php echo esc_attr( $C['accent'] ); ?>;border-color:<?php echo esc_attr( $C['accent'] ); ?>25;background:<?php echo esc_attr( $C['accent'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>
-          <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://www.easytoilets.ch/devis-en-ligne/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
         <div class="brand-block__images brand-block__images--single">
           <div class="brand-block__img-wrap brand-block__img-wrap--float"><img src="<?php echo esc_url( $img['easytoilets'] ); ?>" alt="EasyToilets" loading="lazy"></div>

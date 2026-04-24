@@ -33,7 +33,7 @@ $testimonials = ee_get_testimonials( $post_id, $testimonials );
 $pickDrinks = array(
   'name'     => 'Formule « Pick & Drinks »',
   'subtitle' => 'Un moment de joie et de célébration',
-  'banner'   => 'https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-self-service-1.jpg',
+  'banner'   => get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
   'images'   => array(
     'https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-self-service-2.jpg',
     'https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-self-service-3.jpg',
@@ -86,7 +86,7 @@ $barmanJongleur = array(
 );
 
 /* ---------- Truck ---------- */
-$truckBanner = 'https://www.easyflair.ch/wp-content/uploads/2023/04/la-roulotte-2.jpg';
+$truckBanner = get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' );
 $truckFeatures = array(
   "Un design unique : avec son look chaleureux en bois et ses finitions élégantes dans les tons beige et naturels, la roulotte s'intègre parfaitement dans tous types d'univers, du champ en pleine nature au domaine chic et raffiné.",
   "Un point central pour vos invités : qu'il s'agisse d'un bar à cocktails, d'un bar à vins ou d'une animation sur-mesure, la roulotte attire naturellement les regards et devient le lieu de rassemblement et d'échange par excellence.",
@@ -309,7 +309,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <!-- ━━━━ HERO ━━━━ -->
 <section class="service-hero service-hero--parallax" style="background:<?php echo esc_attr( $C['dark'] ); ?>">
   <div class="service-hero__bg">
-    <img src="<?php echo esc_url( $thumb_url ? $thumb_url : 'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg' ); ?>" alt="EasyFlair — Bars & Mixologie" class="service-hero__img" loading="eager">
+    <img src="<?php echo esc_url( $thumb_url ? $thumb_url : get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ) ); ?>" alt="EasyFlair — Bars & Mixologie" class="service-hero__img" loading="eager">
     <div class="service-hero__overlay-1" style="background:linear-gradient(150deg,<?php echo esc_attr( $C['dark'] ); ?>ee 0%,<?php echo esc_attr( $C['dark'] ); ?>c8 48%,<?php echo esc_attr( $C['gold'] ); ?>28 100%)"></div><div class="service-hero__overlay-2" style="background:radial-gradient(ellipse at 75% 25%,<?php echo esc_attr( $C['gold'] ); ?>1a 0%,transparent 60%)"></div><div class="service-hero__overlay-3" style="background:radial-gradient(ellipse at 20% 80%,<?php echo esc_attr( $C['goldL'] ); ?>0c 0%,transparent 50%)"></div><div class="service-hero__overlay-bottom" style="background:linear-gradient(to top,<?php echo esc_attr( $C['dark'] ); ?>aa 0%,transparent 55%)"></div>
   </div>
   <div class="container service-hero__content">
@@ -802,7 +802,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div class="brand-block__images brand-block__images--mosaic">
           <?php
             $brand_mosaic = array(
-              'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg',
+              get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
               'https://www.easyflair.ch/wp-content/uploads/2020/06/bar-concept-impression-cocktails-1.jpg',
               'https://www.easyflair.ch/wp-content/uploads/2023/04/animation-autour-du-cocktail-1.jpg',
             );

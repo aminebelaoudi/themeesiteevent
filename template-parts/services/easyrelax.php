@@ -89,7 +89,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endif; ?>
       <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Nos fauteuils massants offrent une expérience de relaxation inoubliable lors de vos séminaires, salons ou événements corporate à Genève.' ) ); ?></p>
       <div class="hero__actions">
-        <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['green'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Simuler une offre' ) ); ?></a>
+        <a href="https://invoice.easyrelax.ch/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['green'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Simuler une offre' ) ); ?></a>
         <a href="#formules" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les formules' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
       </div>
     </div>
@@ -186,8 +186,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <a href="#formules" class="btn btn-service" style="background:<?php echo esc_attr( $C['green'] ); ?>">Voir les formules <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
       </div>
       <div class="immersive-images animate-on-scroll">
-        <div class="immersive-img immersive-img--float-1"><img src="<?php echo esc_url( $img['easyrelax-1'] ); ?>" alt="Fauteuil massant"></div>
-        <div class="immersive-img immersive-img--float-2"><img src="<?php echo esc_url( $img['easyrelax-2'] ); ?>" alt="EasyRelax setup"></div>
+        <div class="immersive-img immersive-img--float-1"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/relax-chaise.png' ) ); ?>" alt="Fauteuil massant"></div>
+        <div class="immersive-img immersive-img--float-2"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/massage-chair-corporate-wellness-relaxation.png' ) ); ?>" alt="EasyRelax setup"></div>
       </div>
     </div>
   </div>
@@ -205,7 +205,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <span class="svc-label" style="color:<?php echo esc_attr( $C['greenL'] ); ?>">Devis en ligne</span>
         <h3 style="color:#fff">OBTENEZ VOTRE DEVIS EN LIGNE</h3>
         <p style="color:rgba(255,255,255,.5)">Calculez en quelques clics le coût de votre espace bien-être EasyRelax. Choisissez votre formule et recevez immédiatement votre devis personnalisé.</p>
-        <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['green'] ); ?>">Faire mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+        <a href="https://invoice.easyrelax.ch/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['green'] ); ?>">Faire mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
       </div>
 
       <!-- Accordion -->

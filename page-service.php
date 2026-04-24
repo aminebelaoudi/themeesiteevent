@@ -46,14 +46,16 @@ if ( ! empty( $hero_custom_image ) ) {
 
 // Default hero images per service (used as fallback if no featured image set)
 $service_hero_images = array(
-  'easyflair'      => 'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg',
+  'easyflair'      => get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
   'easyflash'      => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge'  => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easyrelax'      => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),
-  'easytoilets'    => get_theme_file_uri( 'assets/images/easytoilet.png' ),
+  'easytoilets'    => get_theme_file_uri( 'assets/images/easytoilets-banner2.jpg' ),
 );
-if ( ! $thumb_url && isset( $service_hero_images[ $slug ] ) ) {
+if ( isset( $service_hero_images[ $slug ] ) ) {
   $thumb_url = $service_hero_images[ $slug ];
+} elseif ( ! $thumb_url ) {
+  $thumb_url = '';
 }
 
 // Common images map — available to all service templates
