@@ -25,7 +25,7 @@ $icons = array(
 );
 
 $descriptions = array(
-  'easyflair'     => 'Barmans jongleurs et cocktails signatures pour vos soirées d\'entreprise, mariages et galas en Suisse romande.',
+  'easyflair'     => 'Barmans jongleurs et mixologues, nous élaborons des cocktails raffinés à base de produits locaux et concevons des ateliers sur mesure, avec plus de 15 ans d’expertise',
   'easyflash'     => 'Photobooth 360°, miroir magique et EasyBox pour des souvenirs personnalisés et instantanés.',
   'easychallenge' => 'Défis ludiques, émissions et jeux indoor/outdoor pour renforcer la cohésion de vos équipes.',
   'easyrelax'     => 'Fauteuils massants premium pour offrir détente et bien-être à vos invités lors de vos événements.',

@@ -8,9 +8,9 @@
 // Carbon Fields data (with sensible defaults) — safe if plugin not active
 $hero_image    = function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_image' ) : '';
 $hero_badge    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_badge' ) : '' ) ?: 'Genève · Suisse romande';
-$hero_title    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_title' ) : '' ) ?: 'Votre partenaire événementiel haut de gamme';
+$hero_title    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_title' ) : '' ) ?: 'EasyEvents, Une offre complète pour des expériences inoubliables !';
 $hero_hl       = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_highlight' ) : '' ) ?: 'événementiel';
-$hero_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_subtitle' ) : '' ) ?: 'Bars mobiles, photobooths, team building, fauteuils massants et sanitaires premium, tout ce qu\'il faut pour un événement inoubliable.';
+$hero_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_subtitle' ) : '' ) ?: 'Groupe composé de cinq sociétés complémentaires, collaborant avec des agences événementielles.';
 $hero_cta      = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_cta_text' ) : '' ) ?: 'Découvrir nos services';
 $hero_cta_url  = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_cta_link' ) : '' ) ?: '#services';
 

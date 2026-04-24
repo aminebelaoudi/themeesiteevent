@@ -159,11 +159,11 @@ $barPartners = array(
 );
 
 $faqItems = array(
-  array( 'q' => "Qu'est-ce qu'EasyFlair ?", 'a' => "EasyFlair est un service de bar mobile et d'animation cocktail pour vos événements. Depuis 2009, nous accompagnons mariages, soirées d'entreprise, séminaires et événements privés à Genève et en Suisse romande." ),
+  array( 'q' => "Qu'est-ce qu'EasyFlair ?", 'a' => "EasyFlair est un service de bar mobile et d'animation cocktail pour vos événements. Depuis 2009, nous accompagnons mariages, soirées d'entreprise, séminaires et événements privés dans toute la Suisse." ),
   array( 'q' => 'Quelles prestations proposez-vous ?', 'a' => "Nous proposons des barmen à votre service, barmen jongleurs, ateliers cocktails, stations de bar, le Cocktails Truck « la Roulotte », des ateliers & masters cocktails et café-barista, ainsi que diverses animations (Mouss'Art Concept, Mur Végétal, Welcome Drink)." ),
   array( 'q' => 'Le Cocktails Truck peut-il se déplacer partout ?', 'a' => "Oui ! Notre roulotte est facilement transportable et s'adapte à tous types d'événements, en intérieur spacieux comme en extérieur : mariages, anniversaires, événements d'entreprise, festivals, garden-parties, etc." ),
   array( 'q' => "Combien de personnes faut-il pour un atelier cocktails ?", 'a' => "L'Atelier Cocktails est accessible dès 6 personnes. Le Master Cocktails nécessite un minimum de 25 personnes. Les mêmes seuils s'appliquent aux ateliers café-barista." ),
-  array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => "Principalement à Genève et en Suisse romande (Vaud, Valais, Fribourg, Neuchâtel). D'autres zones sont possibles sur demande." ),
+  array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => "Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu'à la frontière française." ),
   array( 'q' => 'Comment réserver ?', 'a' => "Remplissez notre formulaire de demande de devis en ligne ou appelez-nous. Nous revenons vers vous sous 24h avec une offre personnalisée." ),
 );
 
@@ -322,7 +322,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Une prestation sur mesure grâce à une équipe de <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>">Barmen Professionnels</span></h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'À Genève et à travers toute la Suisse Romande, EasyFlair vous accompagne dans tous vos événements avec plus de dix-sept ans d\'expérience dans l\'événementiel privé et professionnel.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Dans toute la Suisse, EasyFlair vous accompagne dans tous vos événements. Nous sommes très présents à Genève et en Suisse romande, et intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française.' ) ); ?></p>
       <div class="hero__actions">
         <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['gold'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#prestations" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les prestations' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
@@ -360,7 +360,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <section class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>">
   <div class="container" style="max-width:48rem;text-align:center">
     <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>88;font-size:.9375rem;line-height:1.8;margin-bottom:1.5rem">Parce que chaque évènement est unique et que les parties boissons et animations sont la clé du divertissement, il est essentiel de bien choisir la formule qui vous convient.</p>
-    <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>;font-size:.9375rem;line-height:1.8"><strong>À Genève et à travers toute la Suisse Romande, EasyFlair</strong> vous accompagne dans tous vos événements. Avec plus de dix-sept ans d'expérience dans l'événementiel privé et professionnel, notre équipe de barmen mixologues vous proposera différentes formules. Du mariage à l'anniversaire en passant par les salons ou congrès professionnels, vous serez enchantés des animations proposées autour du cocktail.</p>
+    <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>;font-size:.9375rem;line-height:1.8"><strong>Dans toute la Suisse, EasyFlair</strong> vous accompagne dans tous vos événements. Nous sommes très présents à Genève et en Suisse romande, et intervenons également dans le reste de la Suisse ainsi qu'à la frontière française. Avec plus de dix-sept ans d'expérience dans l'événementiel privé et professionnel, notre équipe de barmen mixologues vous proposera différentes formules. Du mariage à l'anniversaire en passant par les salons ou congrès professionnels, vous serez enchantés des animations proposées autour du cocktail.</p>
   </div>
 </section>
 <?php endif; ?>
@@ -793,7 +793,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <h2 style="color:#fff">Easy<span class="italic" style="color:<?php echo esc_attr( $C['goldL'] ); ?>">Flair</span></h2>
           <p style="color:rgba(255,255,255,.5)">Depuis 2009, EasyFlair sublime vos événements avec des barmen professionnels, des cocktails d'exception et des animations sur mesure. Du mariage intime au gala d'entreprise, nous apportons l'art de la mixologie directement à votre événement.</p>
           <div class="brand-tags">
-            <?php foreach ( array( 'Clé en main', 'Depuis 2009', 'Sur mesure', 'Suisse romande' ) as $tag ) : ?>
+            <?php foreach ( array( 'Clé en main', 'Depuis 2009', 'Sur mesure', 'Toute la Suisse' ) as $tag ) : ?>
               <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;border-color:<?php echo esc_attr( $C['goldL'] ); ?>25;background:<?php echo esc_attr( $C['goldL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>

@@ -535,7 +535,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <h2 style="color:#fff">Easy<span class="italic" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Challenge</span></h2>
           <p style="color:rgba(255,255,255,.5)">Depuis 2018, EasyChallenge crée des expériences team building mémorables à Genève. Émission TV immersive, activités outdoor et animations sur mesure pour renforcer la cohésion de vos équipes.</p>
           <div class="brand-tags">
-            <?php foreach ( array( 'Clé en main', 'Depuis 2018', 'Vidéo incluse', 'Suisse romande' ) as $tag ) : ?>
+            <?php foreach ( array( 'Clé en main', 'Depuis 2018', 'Vidéo incluse', 'Toute la Suisse' ) as $tag ) : ?>
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>

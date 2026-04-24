@@ -37,7 +37,7 @@ $products = array(
     'isNew'        => true,
     'tag'          => null,
     'tagline'      => 'Bien plus qu\'un photobooth. Une animation exclusive dédiée aux événements professionnels.',
-    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible à Genève et dans toute la Suisse, avec une animation innovante encore rare en événementiel.',
+    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible dans toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française.',
     'longDesc'     => "Aujourd'hui EasyFlash vous propose une animation PhotoBooth Iris unique en événementiel, dédiée aux soirées d'entreprise, événements corporate, lancements de produit, cocktails professionnels, séminaires et inaugurations.\n\nUne expérience visuelle haut de gamme qui capture l'iris de vos invités et le transforme en création artistique. Aucune préparation n'est nécessaire : nous installons le PhotoBooth Iris, accompagnons vos invités et gérons l'intégralité de la prestation.\n\nDevant notre PhotoBooth Iris événementiel, vos invités découvrent une expérience exclusive pensée spécifiquement pour les événements d'entreprise et les agences événementielles. Cette animation innovante attire l'attention, crée de l'interaction et valorise durablement votre image de marque.\n\nChaque participant repart avec une création visuelle unique, livrée en version numérique haute définition, envoyée instantanément via une solution simple et fluide.",
     'precisions'   => array(
       'Le PhotoBooth Iris EasyFlash est conçu pour s\'intégrer parfaitement à vos événements professionnels, sans contrainte technique.',
@@ -62,7 +62,7 @@ $products = array(
       array( 'label' => 'Mode', 'value' => 'Capture d\'iris exclusive' ),
       array( 'label' => 'Livrable', 'value' => 'Création numérique HD' ),
       array( 'label' => 'Partage', 'value' => 'Wi-Fi instantané + liens 24h–48h' ),
-      array( 'label' => 'Disponibilité', 'value' => 'Genève &amp; toute la Suisse' ),
+      array( 'label' => 'Disponibilité', 'value' => 'Toute la Suisse &amp; frontière française' ),
     ),
   ),
   array(
@@ -191,7 +191,7 @@ $faqItems = array(
   array( 'q' => 'Les impressions sont-elles incluses dans la location ?', 'a' => 'Oui, toutes nos formules incluent l\'impression photo illimitée en format instamatiç (10×15 cm) sur place. Les photos sont également disponibles en téléchargement numérique via QR code ou par e-mail après l\'événement.' ),
   array( 'q' => 'Est-il possible de personnaliser le cadre photo et l\'interface ?', 'a' => 'Absolument. Nous créons un habillage graphique sur-mesure (logo, couleurs, message) pour le cadre de chaque photo ainsi que pour l\'interface de la borne. Envoyez-nous votre charte graphique et nous nous occupons du reste.' ),
   array( 'q' => 'Combien de temps faut-il pour installer une borne ?', 'a' => 'Le montage standard prend entre 30 et 45 minutes. Nous arrivons généralement 1h avant le début de votre événement pour garantir un démarrage sans stress. Un technicien reste sur place toute la durée de la prestation.' ),
-  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous intervenons principalement en Suisse romande (Genève, Lausanne, Vaud, Valais, Neuchâtel, Fribourg). Des prestations en France voisine ou en Suisse alémanique sont possibles. Contactez-nous pour un devis incluant les frais de déplacement.' ),
+  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française. Contactez-nous pour un devis incluant les frais de déplacement.' ),
   array( 'q' => 'Comment se déroule la réservation ?', 'a' => 'C\'est simple : (1) Remplissez notre formulaire de devis en indiquant la date, le lieu et le type d\'événement. (2) Nous revenons vers vous sous 24h avec une offre personnalisée. (3) Validation par acompte de 30 %, puis le solde est réglé le jour J.' ),
 );
 
@@ -751,7 +751,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <h2 style="color:#fff">Easy<span class="italic" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Flash</span></h2>
           <p style="color:rgba(255,255,255,.5)">Depuis 2009, EasyFlash anime vos événements avec des bornes photo haut de gamme et des technologies innovantes. Du mariage au gala d'entreprise, nous créons des souvenirs uniques pour vos invités.</p>
           <div class="brand-tags">
-            <?php foreach ( array( 'Clé en main', 'Depuis 2009', 'Impression HD', 'Suisse romande' ) as $tag ) : ?>
+            <?php foreach ( array( 'Clé en main', 'Depuis 2009', 'Impression HD', 'Toute la Suisse' ) as $tag ) : ?>
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>

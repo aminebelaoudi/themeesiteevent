@@ -44,10 +44,10 @@ $testimonials = array(
 $testimonials = ee_get_testimonials( $post_id, $testimonials );
 
 $faqItems = array(
-  array( 'q' => "Qu'est-ce qu'EasyRelax ?", 'a' => "EasyRelax est un service de location de fauteuils massants premium pour vos événements professionnels et corporate. Nous livrons, installons et gérons l'espace bien-être directement sur votre lieu d'événement, à Genève et en Suisse." ),
+  array( 'q' => "Qu'est-ce qu'EasyRelax ?", 'a' => "EasyRelax est un service de location de fauteuils massants premium pour vos événements professionnels et corporate. Nous livrons, installons et gérons l'espace bien-être directement sur votre lieu d'événement, dans toute la Suisse." ),
   array( 'q' => "EasyRelax est-il adapté aux événements d'entreprise ?", 'a' => "Absolument. EasyRelax est spécialement conçu pour les séminaires, lancements de produits, journées d'entreprise, salons professionnels et événements corporate." ),
   array( 'q' => "Combien de temps dure une session de massage ?", 'a' => "Les sessions sont flexibles : de 10 à 20 minutes selon votre configuration. Notre équipe gère le planning pour que tous vos invités en profitent." ),
-  array( 'q' => "Dans quelle zone intervenez-vous ?", 'a' => "Principalement à Genève et en Suisse romande (Vaud, Valais, Fribourg, Neuchâtel). D'autres zones sont possibles sur demande." ),
+  array( 'q' => "Dans quelle zone intervenez-vous ?", 'a' => "Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu'à la frontière française." ),
   array( 'q' => "Comment se déroule la réservation ?", 'a' => "Remplissez notre formulaire en ligne. Nous revenons sous 24h avec une offre personnalisée et un acompte de 30% pour confirmer." ),
 );
 
