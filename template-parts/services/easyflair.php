@@ -309,7 +309,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <!-- ━━━━ HERO ━━━━ -->
 <section class="service-hero service-hero--parallax" style="background:<?php echo esc_attr( $C['dark'] ); ?>">
   <div class="service-hero__bg">
-    <img src="<?php echo esc_url( $thumb_url ? $thumb_url : 'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg' ); ?>" alt="EasyFlair — Bars & Mixologie" class="service-hero__img" loading="eager">
+    <img src="<?php echo esc_url( $thumb_url ? $thumb_url : 'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg' ); ?>" alt="EasyFlair — Bars & Mixologie" class="service-hero__img" loading="eager">
     <div class="service-hero__overlay-1" style="background:linear-gradient(150deg,<?php echo esc_attr( $C['dark'] ); ?>ee 0%,<?php echo esc_attr( $C['dark'] ); ?>c8 48%,<?php echo esc_attr( $C['gold'] ); ?>28 100%)"></div><div class="service-hero__overlay-2" style="background:radial-gradient(ellipse at 75% 25%,<?php echo esc_attr( $C['gold'] ); ?>1a 0%,transparent 60%)"></div><div class="service-hero__overlay-3" style="background:radial-gradient(ellipse at 20% 80%,<?php echo esc_attr( $C['goldL'] ); ?>0c 0%,transparent 50%)"></div><div class="service-hero__overlay-bottom" style="background:linear-gradient(to top,<?php echo esc_attr( $C['dark'] ); ?>aa 0%,transparent 55%)"></div>
   </div>
   <div class="container service-hero__content">
