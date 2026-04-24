@@ -15,7 +15,7 @@ $services = easyevents_services();
       <div class="footer-brand">
         <p class="footer-brand__name">Easy<em class="text-gradient-festive">Events</em> Group</p>
         <p class="footer-brand__loc">Toute la Suisse · Frontière française</p>
-        <p class="footer-brand__about">Partenaire événementiel B2B depuis plus de 10 ans.</p>
+        <p class="footer-brand__about">Partenaire événementiel B2B et B2C depuis plus de 17 ans.</p>
       </div>
 
       <!-- Columns -->
