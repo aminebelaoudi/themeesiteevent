@@ -28,8 +28,8 @@ $testimonials = array(
 $products = array(
   array(
     'id'        => 'emission-grand',
-    'name'      => "L'Émission",
-    'subtitle'  => 'Idée de Team Building · À partir de 8 personnes',
+    'name'      => "Émission",
+    'subtitle'  => 'À partir de 8 personnes',
     'tag'       => 'Best-seller',
     'tagline'   => 'Aujourd\'hui tout est permis',
     'desc'      => "L'émission, une idée de jeux team building parfaite pour des activités après un séminaire. Cette animation immersive s'inspire de l'émission culte et propose une série de défis ludiques et variés. Conviviale et accessible à tous, elle favorise la cohésion d'équipe et le dépassement de soi.",
@@ -73,8 +73,8 @@ $products = array(
   ),
   array(
     'id'        => 'emission-petit',
-    'name'      => "L'Émission TV",
-    'subtitle'  => 'Ouverte au Public · À partir de 2 personnes',
+    'name'      => "Émission",
+    'subtitle'  => 'À partir de 2 personnes',
     'tag'       => 'Public',
     'tagline'   => 'Vivez l\'expérience EasyChallenge — L\'Émission TV grandeur nature à Genève, ouverte au public !',
     'desc'      => "Envie d'une soirée originale à Genève, différente d'un escape game ou d'un simple resto ? EasyChallenge vous propose une expérience immersive inédite, façon Émission TV type Vendredi tout est permis, où VOUS êtes les participants !",
@@ -347,14 +347,30 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endforeach; ?>
     </div>
 
+    <?php
+    $panel_imgs = array(
+      'emission-grand' => get_theme_file_uri( 'assets/images/emission-tv-r5u6n95w7rlhyvx2dqy0t5jf13l0ycxu6i2rags53g.jpg' ),
+      'emission-petit' => get_theme_file_uri( 'assets/images/aujourdhui-tout-est-permis-768x444.jpg' ),
+      'odyssee'        => get_theme_file_uri( 'assets/images/Odyssee-768x516.jpg' ),
+    );
+    ?>
+
     <?php foreach ( $products as $i => $p ) : ?>
       <div class="product-panel<?php echo $i === 0 ? ' product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
-        <div class="product-panel__header">
-          <?php if ( $p['tag'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
-          <h3 class="product-panel__title"><?php echo esc_html( $p['name'] ); ?></h3>
-          <p class="product-panel__subtitle"><?php echo esc_html( $p['subtitle'] ); ?></p>
-          <p class="product-panel__tagline" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tagline'] ); ?></p>
-          <p class="product-panel__desc"><?php echo esc_html( $p['desc'] ); ?></p>
+        <div style="display:flex;align-items:center;gap:2.25rem;margin-bottom:2.5rem;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px">
+            <?php if ( $p['tag'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
+            <h3 class="product-panel__title" style="text-align:left;margin-bottom:.5rem"><?php echo esc_html( $p['name'] ); ?></h3>
+            <p class="product-panel__subtitle" style="text-align:left"><?php echo esc_html( $p['subtitle'] ); ?></p>
+            <p class="product-panel__tagline" style="color:<?php echo esc_attr( $C['accent'] ); ?>;text-align:left"><?php echo esc_html( $p['tagline'] ); ?></p>
+            <p class="product-panel__desc" style="margin:0;text-align:left;max-width:none"><?php echo esc_html( $p['desc'] ); ?></p>
+          </div>
+          <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
+            <div style="flex-shrink:0;width:320px;max-width:100%;border-radius:1rem;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.14);position:relative">
+              <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:210px;object-fit:cover;display:block" loading="lazy">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(25,17,8,.5),transparent 55%)"></div>
+            </div>
+          <?php endif; ?>
         </div>
 
         <div class="product-panel__longdesc">
