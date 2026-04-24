@@ -46,7 +46,7 @@ if ( ! empty( $hero_custom_image ) ) {
 
 // Default hero images per service (used as fallback if no featured image set)
 $service_hero_images = array(
-  'easyflair'      => get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
+  'easyflair'      => 'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg',
   'easyflash'      => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge'  => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easyrelax'      => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),
