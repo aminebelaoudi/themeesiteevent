@@ -358,15 +358,20 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <?php foreach ( $products as $i => $p ) : ?>
       <div class="product-panel<?php echo $i === 0 ? ' product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
         <div style="display:flex;align-items:center;gap:2.25rem;margin-bottom:2.5rem;flex-wrap:wrap">
-          <div style="flex:1;min-width:260px">
+          <div style="width:100%;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:.75rem">
             <?php if ( $p['tag'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
+          </div>
+          <div style="flex:1;min-width:260px">
             <h3 class="product-panel__title" style="text-align:left;margin-bottom:.5rem"><?php echo esc_html( $p['name'] ); ?></h3>
             <p class="product-panel__subtitle" style="text-align:left"><?php echo esc_html( $p['subtitle'] ); ?></p>
             <p class="product-panel__tagline" style="color:<?php echo esc_attr( $C['accent'] ); ?>;text-align:left"><?php echo esc_html( $p['tagline'] ); ?></p>
+            <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
+            <div class="panel-img--mobile"><img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:200px;object-fit:cover;display:block" loading="lazy"></div>
+            <?php endif; ?>
             <p class="product-panel__desc" style="margin:0;text-align:left;max-width:none"><?php echo esc_html( $p['desc'] ); ?></p>
           </div>
           <?php if ( ! empty( $panel_imgs[ $p['id'] ] ) ) : ?>
-            <div style="flex-shrink:0;width:320px;max-width:100%;border-radius:1rem;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.14);position:relative">
+            <div class="panel-img--desktop" style="flex-shrink:0;width:320px;max-width:100%;border-radius:1rem;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.14);position:relative">
               <img src="<?php echo esc_url( $panel_imgs[ $p['id'] ] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" style="width:100%;height:210px;object-fit:cover;display:block" loading="lazy">
               <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(25,17,8,.5),transparent 55%)"></div>
             </div>
