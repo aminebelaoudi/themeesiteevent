@@ -50,7 +50,7 @@ $grid_classes = array(
 );
 
 $fallback_images = array(
-  'easyflair'     => get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
+  'easyflair'     => get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
   'easyflash'     => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge' => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easyrelax'     => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),

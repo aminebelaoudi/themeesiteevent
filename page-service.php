@@ -61,7 +61,7 @@ if ( isset( $service_hero_images[ $slug ] ) ) {
 // Common images map — available to all service templates
 $img = array(
   'hero'             => get_theme_file_uri( 'assets/images/hero-event.jpg' ),
-  'easyflair'        => get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
+  'easyflair'        => get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
   'easyflash'        => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge'    => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easytoilets'      => get_theme_file_uri( 'assets/images/easytoilet.png' ),
