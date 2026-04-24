@@ -316,10 +316,6 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <div class="product-panel <?php echo $p['id'] === 'easybox-bw' ? 'product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>">
         <!-- Header: 2-col intro (text left / image right) -->
         <div style="display:flex;align-items:center;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap">
-          <div style="width:100%;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:.75rem">
-            <?php if ( $p['isNew'] ) : ?><span class="product-badge product-badge--new" style="position:relative;top:-3px"><?php echo easyevents_icon( 'sparkles', 10 ); ?> Nouveau</span><?php endif; ?>
-            <?php if ( ! empty( $p['tag'] ) && ! $p['isNew'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
-          </div>
           <!-- Left: title + tagline + desc -->
           <div style="flex:1;min-width:260px">
             <h3 class="product-panel__title" style="margin-bottom:.5rem"><?php echo wp_kses_post( $p['locationTitle'] ); ?></h3>

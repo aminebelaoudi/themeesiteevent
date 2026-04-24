@@ -358,9 +358,6 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <?php foreach ( $products as $i => $p ) : ?>
       <div class="product-panel<?php echo $i === 0 ? ' product-panel--active' : ''; ?>" id="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
         <div style="display:flex;align-items:center;gap:2.25rem;margin-bottom:2.5rem;flex-wrap:wrap">
-          <div style="width:100%;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:.75rem">
-            <?php if ( $p['tag'] ) : ?><span class="product-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
-          </div>
           <div style="flex:1;min-width:260px">
             <h3 class="product-panel__title" style="text-align:left;margin-bottom:.5rem"><?php echo esc_html( $p['name'] ); ?></h3>
             <p class="product-panel__subtitle" style="text-align:left"><?php echo esc_html( $p['subtitle'] ); ?></p>
