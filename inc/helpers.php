@@ -37,7 +37,7 @@ function easyevents_services() {
 		),
 		'easyrelax' => array(
 			'label'   => 'EasyRelax',
-			'tagline' => 'Espaces Lounge &amp; Détente',
+			'tagline' => 'Fauteuils Massants &amp; Bien-être',
 			'icon'    => 'coffee',
 			'color'   => '#5a7f50',
 			'slug'    => 'easyrelax',

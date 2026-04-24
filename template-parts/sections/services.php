@@ -28,7 +28,7 @@ $descriptions = array(
   'easyflair'     => 'Barmans jongleurs et cocktails signatures pour vos soirées d\'entreprise, mariages et galas en Suisse romande.',
   'easyflash'     => 'Photobooth 360°, miroir magique et EasyBox pour des souvenirs personnalisés et instantanés.',
   'easychallenge' => 'Défis ludiques, émissions et jeux indoor/outdoor pour renforcer la cohésion de vos équipes.',
-  'easyrelax'     => 'Création d\'espaces lounge premium et ambiance feutrée pour vos événements haut de gamme.',
+  'easyrelax'     => 'Fauteuils massants premium pour offrir détente et bien-être à vos invités lors de vos événements.',
   'easytoilets'   => 'Unités sanitaires mobiles haut de gamme, élégantes pour accueillir vos invités avec soin.',
 );
 
@@ -36,7 +36,7 @@ $titles = array(
   'easyflair'     => 'Bars mobiles & Mixologie',
   'easyflash'     => 'Photobooths & Expériences photo',
   'easychallenge' => 'Team Building & Animations',
-  'easyrelax'     => 'Espaces Lounge & Détente',
+  'easyrelax'     => 'Fauteuils Massants & Bien-être',
   'easytoilets'   => 'Sanitaires Premium',
 );
 

@@ -10,7 +10,7 @@ $hero_image    = function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_
 $hero_badge    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_badge' ) : '' ) ?: 'Genève · Suisse romande';
 $hero_title    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_title' ) : '' ) ?: 'Votre partenaire événementiel haut de gamme';
 $hero_hl       = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_highlight' ) : '' ) ?: 'événementiel';
-$hero_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_subtitle' ) : '' ) ?: 'Bars mobiles, photobooths, team building, espaces lounge et sanitaires premium — tout ce qu\'il faut pour un événement inoubliable.';
+$hero_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_subtitle' ) : '' ) ?: 'Bars mobiles, photobooths, team building, fauteuils massants et sanitaires premium, tout ce qu\'il faut pour un événement inoubliable.';
 $hero_cta      = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_cta_text' ) : '' ) ?: 'Découvrir nos services';
 $hero_cta_url  = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_cta_link' ) : '' ) ?: '#services';
 

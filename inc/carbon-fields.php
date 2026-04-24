@@ -71,7 +71,7 @@ function easyevents_register_fields() {
 			$Field::make( 'text', 'hero_highlight', __( 'Mot mis en valeur', 'easyevents' ) )
 				->set_default_value( 'événementiel' ),
 			$Field::make( 'textarea', 'hero_subtitle', __( 'Sous-titre', 'easyevents' ) )
-				->set_default_value( 'Bars mobiles, photobooths, team building, espaces lounge et sanitaires premium — tout ce qu\'il faut pour un événement inoubliable.' ),
+				->set_default_value( 'Bars mobiles, photobooths, team building, fauteuils massants et sanitaires premium, tout ce qu\'il faut pour un événement inoubliable.' ),
 			$Field::make( 'text', 'hero_cta_text', __( 'Texte CTA', 'easyevents' ) )
 				->set_default_value( 'Découvrir nos services' ),
 			$Field::make( 'text', 'hero_cta_link', __( 'Lien CTA', 'easyevents' ) )

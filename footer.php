@@ -31,10 +31,9 @@ $services = easyevents_services();
         <div>
           <p class="footer-col__title">Entreprise</p>
           <div class="footer-col__links">
+            <a href="<?php echo esc_url( home_url( '/#services' ) ); ?>">Nos services</a>
             <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
-            <a href="#targets">Pour qui ?</a>
-            <a href="#showcase">Réalisations</a>
-            <a href="#cta-final">Contact</a>
+            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Contact</a>
           </div>
         </div>
       </div>

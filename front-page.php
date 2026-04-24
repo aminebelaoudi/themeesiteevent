@@ -18,7 +18,7 @@ get_header();
 
   <?php get_template_part( 'template-parts/sections/why-us' ); ?>
 
-  <?php get_template_part( 'template-parts/sections/showcase' ); ?>
+  <?php // get_template_part( 'template-parts/sections/showcase' ); // Section Réalisations — désactivée temporairement ?>
 
   <?php get_template_part( 'template-parts/sections/testimonials' ); ?>
 

@@ -42,7 +42,7 @@ function easyevents_activate() {
 			'template' => 'page-service.php',
 		),
 		'easyrelax' => array(
-			'title'    => 'EasyRelax — Espaces Lounge & Détente',
+			'title'    => 'EasyRelax — Fauteuils Massants & Bien-être',
 			'template' => 'page-service.php',
 		),
 		'easytoilets' => array(
@@ -107,7 +107,7 @@ function easyevents_populate_homepage_defaults() {
 	carbon_set_post_meta( $front_id, 'hero_badge', 'Genève · Suisse romande' );
 	carbon_set_post_meta( $front_id, 'hero_title', 'Votre partenaire événementiel haut de gamme' );
 	carbon_set_post_meta( $front_id, 'hero_highlight', 'événementiel' );
-	carbon_set_post_meta( $front_id, 'hero_subtitle', 'Bars mobiles, photobooths, team building, espaces lounge et sanitaires premium — tout ce qu\'il faut pour un événement inoubliable.' );
+	carbon_set_post_meta( $front_id, 'hero_subtitle', 'Bars mobiles, photobooths, team building, fauteuils massants et sanitaires premium, tout ce qu\'il faut pour un événement inoubliable.' );
 	carbon_set_post_meta( $front_id, 'hero_cta_text', 'Découvrir nos services' );
 	carbon_set_post_meta( $front_id, 'hero_cta_link', '#services' );
 
@@ -134,8 +134,8 @@ function easyevents_populate_homepage_defaults() {
 		),
 		array(
 			'service_slug'  => 'easyrelax',
-			'service_title' => 'Espaces Lounge & Détente',
-			'service_desc'  => 'Création d\'espaces lounge premium et ambiance feutrée pour vos événements haut de gamme.',
+			'service_title' => 'Fauteuils Massants & Bien-être',
+			'service_desc'  => 'Fauteuils massants premium pour offrir détente et bien-être à vos invités lors de vos événements.',
 		),
 		array(
 			'service_slug'  => 'easytoilets',

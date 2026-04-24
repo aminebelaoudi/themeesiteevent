@@ -46,13 +46,6 @@ $contact_items = array(
     'bg'      => 'hsla(155,70%,38%,.18)',
     'color'   => 'var(--easychallenge)',
   ),
-  array(
-    'icon'    => 'mail',
-    'label'   => 'Email',
-    'lines'   => array( $email ),
-    'bg'      => 'hsla(210,65%,55%,.18)',
-    'color'   => 'var(--easytoilets)',
-  ),
 );
 ?>
 
