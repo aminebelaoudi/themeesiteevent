@@ -118,7 +118,7 @@ $products = array(
     'name'      => "L'Odyssée",
     'subtitle'  => 'Team building en plein air',
     'tag'       => 'Outdoor',
-    'tagline'   => "L'Odyssée : team building en plein air, une expérience unique !",
+    'tagline'   => "L'Odyssée : team building en plein air, une expérience unique!",
     'desc'      => "Plongez dans L'Odyssée, une activité team building en plein air, une expérience unique parfaite pour des activités après un séminaire. Conçue pour profiter des beaux jours, cette aventure immersive propose un minimum de quatre épreuves mêlant ludisme, esprit d'équipe et dépassement de soi.",
     'longDesc'  => "Idéale pour renforcer la cohésion de groupe tout en vivant des moments inoubliables au cœur de la nature.\n\nÀ l'issue de l'activité, une vidéo Best Of mettant en lumière les moments forts vous sera transmise sous 72 à 96 heures ouvrées. Sur demande, une version étendue, déclinée en différents formats, peut être réalisée en option.\n\nNos activités sont conçues pour tous les niveaux et favorisent l'esprit d'équipe dans une ambiance sportive et décontractée.",
     'sessions'  => null,
@@ -356,6 +356,11 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       'emission-petit' => get_theme_file_uri( 'assets/images/emission-tv-r5u6n95w7rlhyvx2dqy0t5jf13l0ycxu6i2rags53g.jpg' ),
       'odyssee'        => get_theme_file_uri( 'assets/images/Odyssee-768x516.jpg' ),
     );
+    $feature_imgs = array(
+      'emission-grand' => get_theme_file_uri( 'assets/images/groupe-moins-de-10-pers.jpg' ),
+      'emission-petit' => get_theme_file_uri( 'assets/images/groupe-plus-de-10-pers.png' ),
+      'odyssee'        => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Bubble-Football-2.jpg',
+    );
     ?>
 
     <?php foreach ( $products as $i => $p ) : ?>
@@ -423,9 +428,12 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </ul>
           </div>
-          <?php if ( $p['image'] ) : ?>
+          <?php
+          $feat_img = ! empty( $feature_imgs[ $p['id'] ] ) ? $feature_imgs[ $p['id'] ] : $p['image'];
+          ?>
+          <?php if ( $feat_img ) : ?>
             <div class="product-panel__image" style="height:320px;position:relative">
-              <img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>">
+              <img src="<?php echo esc_url( $feat_img ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>">
               <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),transparent,transparent)"></div>
               <?php if ( $p['tag'] ) : ?><div class="product-panel__image-tag" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></div><?php endif; ?>
             </div>
