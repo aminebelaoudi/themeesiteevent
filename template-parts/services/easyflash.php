@@ -306,10 +306,10 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <!-- Tab panels -->
     <?php
     $panel_imgs = array(
-      'easybox-iris'   => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
-      'easybox-bw'     => get_theme_file_uri( 'assets/images/easybox-iris-300x200.jpg' ),
-      'easybox-miroir' => get_theme_file_uri( 'assets/images/easybox-360-300x200.jpg' ),
-      'easybox-360'    => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
+      'easybox-iris'   => get_theme_file_uri( 'assets/images/easybox-iris-300x200.jpg' ),
+      'easybox-bw'     => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
+      'easybox-miroir' => get_theme_file_uri( 'assets/images/easybox-mirroir-new-300x200.jpeg' ),
+      'easybox-360'    => get_theme_file_uri( 'assets/images/easybox-360-300x200.jpg' ),
     );
     ?>
     <?php foreach ( $products as $i => $p ) : ?>
