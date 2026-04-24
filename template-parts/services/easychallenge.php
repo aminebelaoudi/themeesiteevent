@@ -21,7 +21,7 @@ $C = array(
 $keywords = array( 'Team Building', 'Émission TV', 'Outdoor', 'Cohésion', 'Défis', 'Sur mesure', 'Genève', 'Vidéo Best Of' );
 
 $testimonials = array(
-  array( 'text' => 'Une expérience incroyable ! Nos équipes en parlent encore. L\'ambiance était au top et l\'animateur exceptionnel. Un vrai moment de cohésion.', 'author' => 'Séminaire', 'company' => 'HR Team — Deloitte' ),
+  array( 'text' => 'Une expérience incroyable ! Nos équipes en parlent encore. L\'ambiance était au top et l\'animateur exceptionnel. Un vrai moment de cohésion.', 'author' => 'Séminaire', 'company' => 'HR Team, Deloitte' ),
   array( 'text' => 'L\'Odyssée a transformé notre journée de team building. Les épreuves étaient variées, fun et accessibles à tous. On recommande vivement !', 'author' => 'Team Building', 'company' => 'Christophe B.' ),
   array( 'text' => 'L\'Émission TV façon Vendredi tout est permis, c\'est génial ! On a ri du début à la fin. La vidéo souvenir est la cerise sur le gâteau.', 'author' => 'Anniversaire', 'company' => 'Marie &amp; ses amis' ),
 );$testimonials = ee_get_testimonials( $post_id, $testimonials );
@@ -76,9 +76,9 @@ $products = array(
     'name'      => "Émission",
     'subtitle'  => 'À partir de 2 personnes',
     'tag'       => 'Public',
-    'tagline'   => 'Vivez l\'expérience EasyChallenge — L\'Émission TV grandeur nature à Genève, ouverte au public !',
+    'tagline'   => 'Vivez l\'expérience EasyChallenge : L\'Émission TV grandeur nature à Genève, ouverte au public !',
     'desc'      => "Envie d'une soirée originale à Genève, différente d'un escape game ou d'un simple resto ? EasyChallenge vous propose une expérience immersive inédite, façon Émission TV type Vendredi tout est permis, où VOUS êtes les participants !",
-    'longDesc'  => "Une soirée complète, rythmée, conviviale, dans un seul et même lieu — plus besoin de courir d'un jeu à un restaurant !\n\nJusqu'ici réservée aux entreprises, cette animation s'ouvre enfin au public. Formez votre équipe de 2, 4, 6, 8 ou 10 personnes et vivez ce concept unique. À partir de 12 personnes, votre groupe profite d'une session privatisée. Sinon, vous vivrez l'expérience avec d'autres challengers, tout en restant dans votre propre équipe ou en vous affrontant lors de duels, selon les épreuves.\n\nVotre soirée immersive se déroule dans un espace privatisé du restaurant partenaire La Fumisterie, à Carouge, lieu chaleureux et reconnu pour sa cuisine italienne et ses pizzas parmi les meilleures de Genève.",
+    'longDesc'  => "Une soirée complète, rythmée, conviviale, dans un seul et même lieu, plus besoin de courir d'un jeu à un restaurant !\n\nJusqu'ici réservée aux entreprises, cette animation s'ouvre enfin au public. Formez votre équipe de 2, 4, 6, 8 ou 10 personnes et vivez ce concept unique. À partir de 12 personnes, votre groupe profite d'une session privatisée. Sinon, vous vivrez l'expérience avec d'autres challengers, tout en restant dans votre propre équipe ou en vous affrontant lors de duels, selon les épreuves.\n\nVotre soirée immersive se déroule dans un espace privatisé du restaurant partenaire La Fumisterie, à Carouge, lieu chaleureux et reconnu pour sa cuisine italienne et ses pizzas parmi les meilleures de Genève.",
     'sessions'  => array(
       array( 'name' => 'Session 1', 'items' => array( 'Dès 18h30 : apéritif au bar (en sus, facultatif)', '19h00 : début du jeu EasyChallenge (env. 1h)', '20h30 : dîner sur place (en sus, facultatif)' ) ),
       array( 'name' => 'Session 2', 'items' => array( 'Dès 18h30 : apéritif au bar (en sus, facultatif)', '19h00 : dîner sur place (en sus, facultatif)', '20h30 : début du jeu EasyChallenge (env. 1h)' ) ),
@@ -99,12 +99,12 @@ $products = array(
       'Animateur dédié façon Émission TV',
       '3 sessions au choix (18h30 / 19h / 20h)',
       'Vidéo Best Of personnalisée incluse',
-      'Partenariat La Fumisterie (Carouge) — repas sur place possible',
+      'Partenariat La Fumisterie (Carouge), repas sur place possible',
     ),
     'games' => array(
       array( 'name' => 'Haut, Bas, Droite, Gauche', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Haut-Bas-Droite-Gauche.jpg', 'desc' => 'Épreuve rapide et dynamique : répondez le plus vite possible aux questions-pièges de l\'animateur en indiquant une direction. Réactivité et rapidité sont de mise !' ),
       array( 'name' => 'Articulé à la Chaîne', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/02/Articule-a-la-Chaine-2.jpg', 'desc' => 'Les participants sont alignés les uns derrière les autres. Le premier fait deviner un mot en articulant, le suivant porte un casque. La chaîne crée des malentendus hilarants !' ),
-      array( 'name' => 'Dessiner, c\'est Gagné', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/02/Dessiner-cest-Gagne.jpg', 'desc' => 'Un joueur dessine un mot ou une expression sans parler, son équipe doit deviner. Le temps est limité — créativité, communication non verbale et fous rires garantis !' ),
+      array( 'name' => 'Dessiner, c\'est Gagné', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/02/Dessiner-cest-Gagne.jpg', 'desc' => 'Un joueur dessine un mot ou une expression sans parler, son équipe doit deviner. Le temps est limité : créativité, communication non verbale et fous rires garantis !' ),
     ),
     'specs' => array(
       array( 'label' => 'Participants', 'value' => '2 à 10+ pers.' ),
@@ -141,11 +141,11 @@ $products = array(
     ),
     'games' => array(
       array( 'name' => 'SlideBall', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/SlideBall.jpg', 'desc' => 'Plongez dans l\'univers du Baseball revisité ! Sur un terrain recouvert d\'un revêtement glissant, glissez et marquez des points.' ),
-      array( 'name' => 'Bubble Football', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Bubble-Football-2.jpg', 'desc' => 'Découvrez une version hilarante du football classique — équipés de bulles géantes !' ),
+      array( 'name' => 'Bubble Football', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Bubble-Football-2.jpg', 'desc' => 'Découvrez une version hilarante du football classique, équipés de bulles géantes !' ),
       array( 'name' => 'Human Bowling', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Human-Bowling.jpg', 'desc' => 'Transformez-vous en boule de bowling, glissez sur une bâche pour tenter de renverser un maximum de quilles géantes.' ),
-      array( 'name' => 'Splash &amp; Slide', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Splash-Slide.jpg', 'desc' => 'Testez votre adresse et votre équilibre — les participants doivent transporter un gobelet d\'eau sur un parcours glissant.' ),
+      array( 'name' => 'Splash &amp; Slide', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Splash-Slide.jpg', 'desc' => 'Testez votre adresse et votre équilibre : les participants doivent transporter un gobelet d\'eau sur un parcours glissant.' ),
       array( 'name' => 'Gliss\'Marelle', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Gliss-Marelle.jpg', 'desc' => 'Revivez vos souvenirs d\'enfance avec la marelle revisitée sur terrain glissant !' ),
-      array( 'name' => 'Strike 4', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Strike-4.jpg', 'desc' => 'Combinez stratégie et précision — un jeu inédit mêlant puissance et pétanque sur une grille géante.' ),
+      array( 'name' => 'Strike 4', 'image' => 'https://www.easychallenge.ch/wp-content/uploads/2025/01/Strike-4.jpg', 'desc' => 'Combinez stratégie et précision : un jeu inédit mêlant puissance et pétanque sur une grille géante.' ),
     ),
     'specs' => array(
       array( 'label' => 'Surface', 'value' => 'Entre 300m² et 2000m²' ),
@@ -279,7 +279,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php else : ?>
         <h1 class="hero__title">Créez des <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Souvenirs</span>, pas des Résultats</h1>
       <?php endif; ?>
-      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Team building innovant à Genève — Émission TV immersive et activités outdoor pour renforcer la cohésion de vos équipes.' ) ); ?></p>
+      <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Team building innovant à Genève : Émission TV immersive et activités outdoor pour renforcer la cohésion de vos équipes.' ) ); ?></p>
       <div class="hero__actions">
         <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#formules" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les formules' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
@@ -334,14 +334,17 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <div class="svc-section-header animate-on-scroll">
       <span class="svc-label" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><span class="svc-label__line" style="background:<?php echo esc_attr( $C['accent'] ); ?>40"></span>Nos formules<span class="svc-label__line" style="background:<?php echo esc_attr( $C['accent'] ); ?>40"></span></span>
       <h2 class="svc-title" style="color:<?php echo esc_attr( $C['dark'] ); ?>">Choisissez votre <span style="color:<?php echo esc_attr( $C['accent'] ); ?>">expérience</span></h2>
-      <p class="svc-subtitle" style="color:<?php echo esc_attr( $C['muted'] ); ?>">Trois formules pour tous les formats — du duo au grand groupe, en intérieur comme en extérieur.</p>
+      <p class="svc-subtitle" style="color:<?php echo esc_attr( $C['muted'] ); ?>">Trois formules pour tous les formats : du duo au grand groupe, en intérieur comme en extérieur.</p>
     </div>
 
     <div class="product-tabs" data-tabs="easychallenge-products">
       <?php foreach ( $products as $i => $p ) : ?>
-        <button class="product-tab<?php echo $i === 0 ? ' product-tab--active' : ''; ?>" data-panel="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
+        <button class="product-tab<?php echo $i === 0 ? ' product-tab--active' : ''; ?><?php echo ! empty( $p['tag'] ) ? ' product-tab--has-badge' : ''; ?>" data-panel="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
           <?php echo $p['id'] === 'odyssee' ? easyevents_icon( 'tree-pine', 14 ) : easyevents_icon( 'tv', 14 ); ?>
-          <?php echo esc_html( $p['name'] ); ?>
+          <span style="display:flex;flex-direction:column;align-items:center;gap:.1rem;line-height:1.2">
+            <span><?php echo esc_html( $p['name'] ); ?></span>
+            <?php if ( ! empty( $p['subtitle'] ) ) : ?><span style="font-size:.65rem;font-weight:400;opacity:.75"><?php echo esc_html( $p['subtitle'] ); ?></span><?php endif; ?>
+          </span>
           <?php if ( $p['tag'] ) : ?><span class="product-tab__badge"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
         </button>
       <?php endforeach; ?>
@@ -349,8 +352,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
     <?php
     $panel_imgs = array(
-      'emission-grand' => get_theme_file_uri( 'assets/images/emission-tv-r5u6n95w7rlhyvx2dqy0t5jf13l0ycxu6i2rags53g.jpg' ),
-      'emission-petit' => get_theme_file_uri( 'assets/images/aujourdhui-tout-est-permis-768x444.jpg' ),
+      'emission-grand' => get_theme_file_uri( 'assets/images/aujourdhui-tout-est-permis-768x444.jpg' ),
+      'emission-petit' => get_theme_file_uri( 'assets/images/emission-tv-r5u6n95w7rlhyvx2dqy0t5jf13l0ycxu6i2rags53g.jpg' ),
       'odyssee'        => get_theme_file_uri( 'assets/images/Odyssee-768x516.jpg' ),
     );
     ?>
@@ -413,7 +416,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <!-- Features + Image -->
         <div class="product-panel__features-grid">
           <div class="product-panel__features">
-            <h4>Les <span style="color:<?php echo esc_attr( $C['accent'] ); ?>">+</span> de <?php echo esc_html( $p['name'] ); ?></h4>
+            <h4 style="font-weight:800;font-size:1.25rem;margin-bottom:1.5rem">Les <span style="color:<?php echo esc_attr( $C['accent'] ); ?>">+</span> de <?php echo esc_html( $p['name'] ); ?></h4>
             <ul class="features-list">
               <?php foreach ( $p['features'] as $f ) : ?>
                 <li><?php echo easyevents_icon( 'check-circle', 16 ); ?><span><?php echo esc_html( $f ); ?></span></li>
@@ -467,7 +470,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <div class="partner-note-block">
             <div class="partner-note-block__icon" style="background:<?php echo esc_attr( $C['accent'] ); ?>10"><?php echo easyevents_icon( 'wine', 20 ); ?></div>
             <div class="partner-note-block__content">
-              <h5>La Fumisterie — Carouge</h5>
+              <h5>La Fumisterie, Carouge</h5>
               <?php foreach ( explode( "\n\n", $p['partnerNote'] ) as $para ) : ?><p><?php echo esc_html( $para ); ?></p><?php endforeach; ?>
               <?php if ( $p['partnerLink'] ) : ?><a href="<?php echo esc_url( $p['partnerLink'] ); ?>" target="_blank" rel="noopener" class="partner-note-block__link" style="color:<?php echo esc_attr( $C['accent'] ); ?>">Visiter le site <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a><?php endif; ?>
             </div>

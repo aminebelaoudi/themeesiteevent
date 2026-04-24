@@ -296,9 +296,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <!-- Tab buttons -->
     <div class="product-tabs" data-tabs="easyflash-products">
       <?php foreach ( $products as $i => $p ) : ?>
-        <button class="product-tab <?php echo $p['id'] === 'easybox-bw' ? 'product-tab--active' : ''; ?> <?php echo $p['isNew'] ? 'product-tab--has-badge' : ''; ?>" data-panel="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
+        <button class="product-tab <?php echo $p['id'] === 'easybox-bw' ? 'product-tab--active' : ''; ?> <?php echo ( $p['isNew'] || ! empty( $p['tag'] ) ) ? 'product-tab--has-badge' : ''; ?>" data-panel="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
           <?php echo esc_html( $p['name'] ); ?>
-          <?php if ( $p['isNew'] ) : ?><span class="product-tab__badge product-tab__badge--new">New</span><?php endif; ?>
+          <?php if ( $p['isNew'] ) : ?><span class="product-tab__badge product-tab__badge--new">New</span><?php elseif ( ! empty( $p['tag'] ) ) : ?><span class="product-tab__badge"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
         </button>
       <?php endforeach; ?>
     </div>
