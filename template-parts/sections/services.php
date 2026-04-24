@@ -54,7 +54,7 @@ $fallback_images = array(
   'easyflash'     => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
   'easychallenge' => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
   'easyrelax'     => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),
-  'easytoilets'   => get_theme_file_uri( 'assets/images/easytoilet.png' ),
+  'easytoilets'   => get_theme_file_uri( 'assets/images/easytoilets-banner2.jpg' ),
 );
 
 $services_label = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'services_label' ) : '' ) ?: 'Nos services';

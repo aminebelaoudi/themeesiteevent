@@ -305,6 +305,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           $ot = get_theme_file_uri( 'assets/images/easyrelax hero.png' );
         } elseif ( 'easyflair' === $other['slug'] ) {
           $ot = get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' );
+        } elseif ( 'easytoilets' === $other['slug'] ) {
+          $ot = get_theme_file_uri( 'assets/images/easytoilets-banner2.jpg' );
         }
         $oi = isset($icons_map[$other['slug']]) ? $icons_map[$other['slug']] : 'star';
       ?>

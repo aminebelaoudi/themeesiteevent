@@ -831,6 +831,8 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         $ot = $op && has_post_thumbnail($op) ? get_the_post_thumbnail_url($op,'medium_large') : ( isset( $img[ $other['slug'] ] ) ? $img[ $other['slug'] ] : '' );
         if ( 'easyrelax' === $other['slug'] ) {
           $ot = get_theme_file_uri( 'assets/images/easyrelax hero.png' );
+        } elseif ( 'easytoilets' === $other['slug'] ) {
+          $ot = get_theme_file_uri( 'assets/images/easytoilets-banner2.jpg' );
         }
         $oi = isset($icons_map[$other['slug']]) ? $icons_map[$other['slug']] : 'star';
       ?>
