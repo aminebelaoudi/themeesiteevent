@@ -29,11 +29,11 @@ $galleryImages = array(
 );
 
 $formulas = array(
-  array( 'id' => 'relax-corner', 'name' => 'Formule Relax Corner', 'desc' => 'Un espace bien-être discret et efficace, parfait pour les séminaires et événements d\'entreprise.', 'includes' => array('2 à 4 fauteuils massants premium','Installation &amp; configuration incluses','Technicien EasyRelax sur place','Durée flexible (demi-journée ou journée complète)') ),
-  array( 'id' => 'relax-lounge', 'name' => 'Formule Relax Lounge', 'desc' => 'Un véritable espace lounge bien-être pensé pour transformer vos événements corporate en expériences sensorielles.', 'includes' => array('4 à 8 fauteuils massants premium','Aménagement scénographique inclus','Décoration végétale &amp; ambiance sonore','Hôtesse dédiée (option disponible)','Durée flexible') ),
-  array( 'id' => 'option-hotesse', 'name' => 'Option Hôtesse', 'desc' => 'Ajoutez une dimension humaine avec nos hôtesses formées à l\'accueil wellness.', 'includes' => array('1 ou 2 hôtesses formées wellness','Accueil &amp; guidage des participants','Gestion du temps de massage','Tenue professionnelle assortie') ),
-  array( 'id' => 'installation', 'name' => 'Installation clé en main', 'desc' => 'Notre équipe prend en charge l\'intégralité de la logistique : livraison, installation et récupération.', 'includes' => array('Livraison &amp; transport inclus','Installation &amp; mise en service sur place','Récupération &amp; démontage inclus','Responsable technique dédié') ),
-  array( 'id' => 'devis-en-ligne', 'name' => 'Devis en ligne immédiat', 'desc' => 'Obtenez une estimation personnalisée en moins de 2 minutes via notre formulaire en ligne.', 'includes' => array('Formulaire simple &amp; rapide','Réponse sous 24h garantie','Offre personnalisée','Sans engagement') ),
+  array( 'id' => 'relax-corner', 'name' => 'Formule Relax Corner', 'desc' => '1 fauteuil massant — idéal pour les petits espaces & pauses individuelles.', 'includes' => array('1 fauteuil massant premium','Installation &amp; configuration incluses','Technicien EasyRelax sur place','Durée flexible (demi-journée ou journée complète)') ),
+  array( 'id' => 'relax-lounge', 'name' => 'Formule Relax Lounge', 'desc' => '2 fauteuils — parfaite pour séminaires et grands événements.', 'includes' => array('2 fauteuils massants premium','Aménagement scénographique inclus','Décoration végétale &amp; ambiance sonore','Hôtesse dédiée (option disponible)','Durée flexible') ),
+  array( 'id' => 'option-hotesse', 'name' => 'Option Hôtesse', 'desc' => 'Accueil et accompagnement des participants pour une expérience optimale.', 'includes' => array('1 ou 2 hôtesses formées wellness','Accueil &amp; guidage des participants','Gestion du temps de massage','Tenue professionnelle assortie') ),
+  array( 'id' => 'installation', 'name' => 'Installation clé en main', 'desc' => 'Livraison, mise en place et retrait inclus.', 'includes' => array('Livraison &amp; transport inclus','Installation &amp; mise en service sur place','Récupération &amp; démontage inclus','Responsable technique dédié') ),
+  array( 'id' => 'devis-en-ligne', 'name' => 'Devis en ligne immédiat', 'desc' => 'Calculez facilement votre offre personnalisée.', 'includes' => array('Formulaire simple &amp; rapide','Réponse sous 24h garantie','Offre personnalisée','Sans engagement') ),
 );
 
 $testimonials = array(

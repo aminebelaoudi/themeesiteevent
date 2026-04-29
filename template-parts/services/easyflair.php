@@ -709,7 +709,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <p style="color:<?php echo esc_attr( $C['dark'] ); ?>88;margin-bottom:.75rem;font-size:.875rem;line-height:1.6"><?php echo esc_html( $p ); ?></p>
             <?php endforeach; ?>
             <?php if ( ! empty( $anim['extLink'] ) ) : ?>
-              <a href="<?php echo esc_url( $anim['extLink']['url'] ); ?>" target="_blank" rel="noopener" style="color:<?php echo esc_attr( $C['gold'] ); ?>;font-size:.875rem;font-weight:600;margin:.5rem 0 1rem;display:inline-flex;align-items:center;gap:.375rem"><?php echo esc_html( $anim['extLink']['label'] ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
+              <button type="button" class="moussart-video-btn" data-video="https://www.youtube.com/embed/us0As6UwyZc?si=uVtzuv5W-RSUBD0b&autoplay=1" style="background:<?php echo esc_attr( $C['gold'] ); ?>;color:#fff;border:none;border-radius:9999px;padding:.6rem 1.25rem;font-size:.875rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;margin:.5rem 0 1rem;font-family:inherit;box-shadow:0 4px 18px -4px rgba(184,150,62,.45);transition:filter .2s,transform .2s" onmouseover="this.style.filter='brightness(1.12)';this.style.transform='translateY(-1px)'" onmouseout="this.style.filter='';this.style.transform=''"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Voir le concept en vidéo</button>
             <?php endif; ?>
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:.75rem">
               <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--sm" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
@@ -875,3 +875,42 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <?php if ( ee_show_section( $post_id, 'contact' ) ) : ?>
 <?php get_template_part( 'template-parts/sections/contact' ); ?>
 <?php endif; ?>
+
+<!-- ━━━━ MOUSS'ART VIDEO MODAL ━━━━ -->
+<div id="moussart-modal" role="dialog" aria-modal="true" aria-label="Vidéo Mouss'Art Concept" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem">
+  <div style="position:relative;width:100%;max-width:840px;margin:0 auto">
+    <button id="moussart-modal-close" aria-label="Fermer" style="position:absolute;top:-2.5rem;right:0;background:rgba(255,255,255,.12);border:none;color:#fff;width:2.25rem;height:2.25rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.25rem;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">✕</button>
+    <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 24px 60px rgba(0,0,0,.6)">
+      <iframe id="moussart-iframe" src="" title="Mouss'Art Concept" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%"></iframe>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal   = document.getElementById('moussart-modal');
+  var iframe  = document.getElementById('moussart-iframe');
+  var btnClose= document.getElementById('moussart-modal-close');
+  if(!modal||!iframe||!btnClose) return;
+
+  function openModal(src){
+    iframe.src = src;
+    modal.style.display='flex';
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    modal.style.display='none';
+    iframe.src='';
+    document.body.style.overflow='';
+  }
+
+  document.querySelectorAll('.moussart-video-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openModal(btn.getAttribute('data-video'));
+    });
+  });
+
+  btnClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+})();
+</script>
