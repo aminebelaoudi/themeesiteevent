@@ -46,7 +46,7 @@ $testimonials = ee_get_testimonials( $post_id, $testimonials );
 $faqItems = array(
   array( 'q' => "Qu'est-ce qu'EasyRelax ?", 'a' => "EasyRelax est un service de location de fauteuils massants premium pour vos événements professionnels et corporate. Nous livrons, installons et gérons l'espace bien-être directement sur votre lieu d'événement, dans toute la Suisse." ),
   array( 'q' => "EasyRelax est-il adapté aux événements d'entreprise ?", 'a' => "Absolument. EasyRelax est spécialement conçu pour les séminaires, lancements de produits, journées d'entreprise, salons professionnels et événements corporate." ),
-  array( 'q' => "Combien de temps dure une session de massage ?", 'a' => "Les sessions sont flexibles : de 10 à 20 minutes selon votre configuration. Notre équipe gère le planning pour que tous vos invités en profitent." ),
+  array( 'q' => "Combien de temps dure une session de massage ?", 'a' => "Les sessions sont flexibles : de 10 à 30 minutes selon votre configuration. Nos fauteuils fonctionnent en toute autonomie, aucun personnel n'est requis. Si vous le souhaitez, notre équipe peut également gérer le planning pour que tous vos invités en profitent." ),
   array( 'q' => "Dans quelle zone intervenez-vous ?", 'a' => "Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu'à la frontière française." ),
   array( 'q' => "Comment se déroule la réservation ?", 'a' => "Remplissez notre formulaire en ligne. Nous revenons sous 24h avec une offre personnalisée et un acompte de 30% pour confirmer." ),
 );
@@ -136,14 +136,14 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p>Offrez à vos équipes une expérience unique de relaxation. Avec nos fauteuils massants haut de gamme, chaque pause devient un instant de bien-être qui favorise l'énergie, la motivation et la performance.</p>
           <p>Que ce soit pour un séminaire, un salon ou une journée au bureau, EasyRelax s'installe <strong style="color:<?php echo esc_attr( $C['dark'] ); ?>">clé en main</strong> pour transformer vos pauses en véritables moments de sérénité.</p>
         </div>
-        <a href="#formules" class="btn btn-service" style="background:<?php echo esc_attr( $C['green'] ); ?>">Voir les tarifs <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+        <a href="https://invoice.easyrelax.ch/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['green'] ); ?>">Voir les tarifs <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
       </div>
       <!-- Image + floating elements -->
       <div class="animate-on-scroll" style="position:relative">
         <div class="intro-image intro-image--rounded intro-image--parallax"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/easyrelax  (1).png' ) ); ?>" alt="Espace détente EasyRelax"></div>
         <!-- Floating testimonial -->
         <div class="floating-testimonial" style="background:rgba(255,255,255,.92);border-color:<?php echo esc_attr( $C['olive'] ); ?>15">
-          <div class="testimonial-stars"><?php for($j=0;$j<5;$j++) echo easyevents_icon('star',11); ?></div>
+          <div class="testimonial-stars"><?php for($j=0;$j<5;$j++) echo '<span style="color:' . esc_attr( $C['green'] ) . '">' . easyevents_icon('star',11) . '</span>'; ?></div>
           <p class="testimonial-text" style="color:<?php echo esc_attr( $C['dark'] ); ?>88">"Une prestation impeccable. Nos équipes ont beaucoup apprécié ce moment de détente, une vraie valeur ajoutée."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background:<?php echo esc_attr( $C['green'] ); ?>">CD</div>

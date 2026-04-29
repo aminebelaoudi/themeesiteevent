@@ -119,7 +119,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
 <?php if ( ee_show_section( $post_id, 'approche' ) ) : ?>
 <!-- ━━━━ NOTRE APPROCHE ━━━━ -->
-<section class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>">
+<section id="approche" class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>">
   <div class="container">
     <div class="section-header section-header--center animate-on-scroll">
       <span class="svc-label" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><span class="svc-label__line" style="background:<?php echo esc_attr( $C['accent'] ); ?>"></span>EasyToilets<span class="svc-label__line" style="background:<?php echo esc_attr( $C['accent'] ); ?>"></span></span>

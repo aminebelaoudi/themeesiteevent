@@ -86,7 +86,7 @@ $barmanJongleur = array(
 );
 
 /* ---------- Truck ---------- */
-$truckBanner = get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' );
+$truckBanner = get_theme_file_uri( 'assets/images/la-roulotte-2.jpg' );
 $truckFeatures = array(
   "Un design unique : avec son look chaleureux en bois et ses finitions élégantes dans les tons beige et naturels, la roulotte s'intègre parfaitement dans tous types d'univers, du champ en pleine nature au domaine chic et raffiné.",
   "Un point central pour vos invités : qu'il s'agisse d'un bar à cocktails, d'un bar à vins ou d'une animation sur-mesure, la roulotte attire naturellement les regards et devient le lieu de rassemblement et d'échange par excellence.",
@@ -159,7 +159,7 @@ $barPartners = array(
 
 $faqItems = array(
   array( 'q' => "Qu'est-ce qu'EasyFlair ?", 'a' => "EasyFlair est un service de bar mobile et d'animation cocktail pour vos événements. Depuis 2009, nous accompagnons mariages, soirées d'entreprise, séminaires et événements privés dans toute la Suisse." ),
-  array( 'q' => 'Quelles prestations proposez-vous ?', 'a' => "Nous proposons des barmen à votre service, barmen jongleurs, ateliers cocktails, stations de bar, le Cocktails Truck « la Roulotte », des ateliers & masters cocktails et café-barista, ainsi que diverses animations (Mouss'Art Concept, Mur Végétal, Welcome Drink)." ),
+  array( 'q' => 'Quelles prestations proposez-vous ?', 'a' => "Nous proposons des Barmen Mixologues, des Barmen Jongleurs, des Ateliers & Master Cocktails, des stations de bar, le Cocktails Truck « la Roulotte », des ateliers café-barista, ainsi que diverses animations (Mouss'Art Concept, Mur Végétal, Welcome Drink)." ),
   array( 'q' => 'Le Cocktails Truck peut-il se déplacer partout ?', 'a' => "Oui ! Notre roulotte est facilement transportable et s'adapte à tous types d'événements, en intérieur spacieux comme en extérieur : mariages, anniversaires, événements d'entreprise, festivals, garden-parties, etc." ),
   array( 'q' => "Combien de personnes faut-il pour un atelier cocktails ?", 'a' => "L'Atelier Cocktails est accessible dès 6 personnes. Le Master Cocktails nécessite un minimum de 25 personnes. Les mêmes seuils s'appliquent aux ateliers café-barista." ),
   array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => "Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu'à la frontière française." ),
@@ -356,7 +356,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
 <?php if ( ee_show_section( $post_id, 'intro' ) ) : ?>
 <!-- ━━━━ INTRO TEXT ━━━━ -->
-<section class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>">
+<section class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>;padding-bottom:2rem">
   <div class="container" style="max-width:48rem;text-align:center">
     <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>88;font-size:.9375rem;line-height:1.8;margin-bottom:1.5rem">Parce que chaque évènement est unique et que les parties boissons et animations sont la clé du divertissement, il est essentiel de bien choisir la formule qui vous convient.</p>
     <p class="animate-on-scroll" style="color:<?php echo esc_attr( $C['dark'] ); ?>;font-size:.9375rem;line-height:1.8"><strong>Dans toute la Suisse, EasyFlair</strong> vous accompagne dans tous vos événements. Nous sommes très présents à Genève et en Suisse romande, et intervenons également dans le reste de la Suisse ainsi qu'à la frontière française. Avec plus de dix-sept ans d'expérience dans l'événementiel privé et professionnel, notre équipe de barmen mixologues vous proposera différentes formules. Du mariage à l'anniversaire en passant par les salons ou congrès professionnels, vous serez enchantés des animations proposées autour du cocktail.</p>
@@ -366,7 +366,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
 <?php if ( ee_show_section( $post_id, 'tabs' ) ) : ?>
 <!-- ━━━━ TABS SECTION ━━━━ -->
-<section id="prestations" class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>;position:relative;overflow:hidden">
+<section id="prestations" class="svc-section" style="background:<?php echo esc_attr( $C['cream'] ); ?>;padding-top:2rem;position:relative;overflow:hidden">
   <div class="decorative-blob" style="background:radial-gradient(circle,<?php echo esc_attr( $C['gold'] ); ?>08,transparent 70%)"></div>
   <div class="container">
     <!-- Tab header -->
@@ -492,7 +492,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <?php foreach ( array(
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-121.png',
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-120.png',
-            get_theme_file_uri( 'assets/images/W&W logo.jpeg' ),
+            get_theme_file_uri( 'assets/images/W&W logo.png' ),
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-43.png',
           ) as $logo ) : ?>
             <img src="<?php echo esc_url( $logo ); ?>" alt="Client" class="trust-logos__img" loading="lazy">
@@ -598,7 +598,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         </div>
         <div class="animate-on-scroll" style="text-align:center;margin-top:2rem">
           <p style="color:<?php echo esc_attr( $C['dark'] ); ?>bb;font-size:.875rem;font-weight:600;margin-bottom:1.5rem">Nous réalisons également des offres sur mesures Premium en fonction de votre budget.</p>
-          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/devis-en-ligne/devis-atelier-cocktails/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -633,7 +633,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         </div>
         <div class="animate-on-scroll" style="text-align:center;margin-top:2rem">
           <p style="color:<?php echo esc_attr( $C['dark'] ); ?>bb;font-size:.875rem;font-weight:600;margin-bottom:1.5rem">Nous réalisons également des offres sur mesures Premium en fonction de votre budget.</p>
-          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/devis-en-ligne/devis-atelier-cocktails/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">DEMANDER VOTRE DEVIS MAINTENANT ! <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -801,9 +801,9 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div class="brand-block__images brand-block__images--mosaic">
           <?php
             $brand_mosaic = array(
-              get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
-              'https://www.easyflair.ch/wp-content/uploads/2020/06/bar-concept-impression-cocktails-1.jpg',
-              'https://www.easyflair.ch/wp-content/uploads/2023/04/animation-autour-du-cocktail-1.jpg',
+              get_theme_file_uri( 'assets/images/easyflair-bar.jpg' ),
+              get_theme_file_uri( 'assets/images/la-roulotte-2.jpg' ),
+              'https://www.easyflair.ch/wp-content/uploads/2020/06/easyflair-entreprise-atelier-cocktails-1.jpg',
             );
             $float_classes = array( 'brand-block__img-wrap--float-a', 'brand-block__img-wrap--float-b', 'brand-block__img-wrap--float-c' );
             foreach ( $brand_mosaic as $bi => $bm ) : ?>
