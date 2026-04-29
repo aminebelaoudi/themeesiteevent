@@ -104,7 +104,7 @@ function easyevents_populate_homepage_defaults() {
 	}
 
 	/* ── Hero ───────────────────────────────────── */
-	carbon_set_post_meta( $front_id, 'hero_badge', 'Toute la Suisse · Frontière française' );
+	carbon_set_post_meta( $front_id, 'hero_badge', 'Genève · Suisse francophone' );
 	carbon_set_post_meta( $front_id, 'hero_title', 'Votre partenaire événementiel haut de gamme' );
 	carbon_set_post_meta( $front_id, 'hero_highlight', 'événementiel' );
 	carbon_set_post_meta( $front_id, 'hero_subtitle', 'Groupe composé de cinq sociétés complémentaires, collaborant avec des agences événementielles.' );
@@ -149,7 +149,7 @@ function easyevents_populate_homepage_defaults() {
 	carbon_set_post_meta( $front_id, 'whyus_title', 'Pourquoi choisir EasyEvents Group ?' );
 	carbon_set_post_meta( $front_id, 'whyus_highlight', 'EasyEvents Group' );
 	carbon_set_post_meta( $front_id, 'whyus_items', array(
-		array( 'whyus_icon' => 'map-pin',  'whyus_text' => 'Actifs dans toute la Suisse et à la frontière française',  'whyus_slug' => 'easyflash' ),
+		array( 'whyus_icon' => 'map-pin',  'whyus_text' => 'Actifs à Genève et en Suisse francophone',  'whyus_slug' => 'easyflash' ),
 		array( 'whyus_icon' => 'clock',    'whyus_text' => 'Plus de 10 ans d\'expérience événementielle',              'whyus_slug' => 'easyflair' ),
 		array( 'whyus_icon' => 'users',    'whyus_text' => 'Un groupe de spécialistes, un interlocuteur unique',       'whyus_slug' => 'easychallenge' ),
 		array( 'whyus_icon' => 'sparkles', 'whyus_text' => 'Solutions sur mesure pour chaque événement',               'whyus_slug' => 'easyrelax' ),
@@ -289,7 +289,7 @@ function easyevents_populate_homepage_defaults() {
 	carbon_set_post_meta( $front_id, 'contact_highlight', 'votre événement' );
 	carbon_set_post_meta( $front_id, 'contact_subtitle', 'Notre équipe vous répond sous 24h pour construire ensemble votre projet.' );
 	carbon_set_post_meta( $front_id, 'contact_brand_name', 'EasyEvents Group' );
-	carbon_set_post_meta( $front_id, 'contact_brand_tagline', 'Votre partenaire événementiel en Suisse et à la frontière française' );
+	carbon_set_post_meta( $front_id, 'contact_brand_tagline', 'Votre partenaire événementiel à Genève · Suisse francophone' );
 
 	/* ── Mark as populated ──────────────────────── */
 	update_post_meta( $front_id, '_ee_defaults_populated', '1' );

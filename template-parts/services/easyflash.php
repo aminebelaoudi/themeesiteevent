@@ -141,7 +141,7 @@ $products = array(
     'isNew'        => true,
     'tag'          => null,
     'tagline'      => 'Bien plus qu\'un photobooth. Une animation exclusive dédiée aux événements professionnels.',
-    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible dans toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française.',
+    'desc'         => 'Capturez l\'iris de vos invités et offrez une expérience unique. Disponible à Genève et en Suisse francophone.',
     'longDesc'     => "Aujourd'hui EasyFlash vous propose une animation PhotoBooth Iris unique en événementiel, dédiée aux soirées d'entreprise, événements corporate, lancements de produit, cocktails professionnels, séminaires et inaugurations.\n\nUne expérience visuelle haut de gamme qui capture l'iris de vos invités et le transforme en création artistique. Aucune préparation n'est nécessaire : nous installons le PhotoBooth Iris, accompagnons vos invités et gérons l'intégralité de la prestation.\n\nDevant notre PhotoBooth Iris événementiel, vos invités découvrent une expérience exclusive pensée spécifiquement pour les événements d'entreprise et les agences événementielles. Cette animation innovante attire l'attention, crée de l'interaction et valorise durablement votre image de marque.\n\nChaque participant repart avec une création visuelle unique, livrée en version numérique haute définition, envoyée instantanément via une solution simple et fluide.",
     'precisions'   => array(
       'Le PhotoBooth Iris EasyFlash est conçu pour s\'intégrer parfaitement à vos événements professionnels, sans contrainte technique.',
@@ -166,7 +166,7 @@ $products = array(
       array( 'label' => 'Mode', 'value' => 'Capture d\'iris exclusive' ),
       array( 'label' => 'Livrable', 'value' => 'Création numérique HD' ),
       array( 'label' => 'Partage', 'value' => 'Wi-Fi instantané + liens 24h–48h' ),
-      array( 'label' => 'Disponibilité', 'value' => 'Toute la Suisse &amp; frontière française' ),
+      array( 'label' => 'Disponibilité', 'value' => 'Genève · Suisse francophone' ),
     ),
   ),
 );
@@ -191,7 +191,7 @@ $faqItems = array(
   array( 'q' => 'Les impressions sont-elles incluses dans la location ?', 'a' => 'Les impressions sont facultatives et se configurent directement sur notre devis en ligne. Si vous optez pour un pack impression, vous avez le choix entre une formule limitée ou illimitée selon vos besoins. Les photos numériques restent disponibles en téléchargement via QR code ou par e-mail après l\'événement, quel que soit le pack choisi.' ),
   array( 'q' => 'Est-il possible de personnaliser le cadre photo et l\'interface ?', 'a' => 'Oui, vous avez 3 options : (1) Accès gratuit à notre bibliothèque de plus de 5 000 templates que vous personnalisez vous-même avec votre logo, slogan ou couleurs. (2) Vous nous transmettez votre thématique, couleurs et polices, et notre équipe crée un template entièrement sur mesure (option payante). (3) Mode Portrait IA : le système plonge chaque invité dans un univers visuel unique dont il devient l\'acteur principal — une expérience mémorable et différenciante.' ),
   array( 'q' => 'Combien de temps faut-il pour installer une borne ?', 'a' => 'Le montage prend entre 30 et 45 minutes. Notre équipe intervient bien en amont du début de votre événement afin que tout soit prêt en toute sérénité. Un technicien reste sur place toute la durée de la prestation.' ),
-  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française. Contactez-nous pour un devis incluant les frais de déplacement.' ),
+  array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous intervenons à Genève et en Suisse francophone. Contactez-nous pour un devis incluant les frais de déplacement.' ),
   array( 'q' => 'Comment se déroule la réservation ?', 'a' => 'Tout se passe en ligne, en moins de 5 minutes : (1) Configurez votre devis directement sur notre site en choisissant votre borne, la date et le lieu. (2) Confirmez votre réservation en ligne, aucun échange nécessaire pour les demandes standard. (3) Personnalisez ensuite votre expérience (template, logo, options) depuis votre espace. Pour les projets avec des besoins spécifiques, notre équipe reste disponible pour vous accompagner.' ),
 );
 
@@ -298,7 +298,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php foreach ( $products as $i => $p ) : ?>
         <button class="product-tab <?php echo $p['id'] === 'easybox-bw' ? 'product-tab--active' : ''; ?> <?php echo ( $p['isNew'] || ! empty( $p['tag'] ) ) ? 'product-tab--has-badge' : ''; ?>" data-panel="<?php echo esc_attr( $p['id'] ); ?>" style="--tab-accent:<?php echo esc_attr( $C['accent'] ); ?>">
           <?php echo esc_html( $p['name'] ); ?>
-          <?php if ( $p['isNew'] ) : ?><span class="product-tab__badge product-tab__badge--new">New</span><?php elseif ( ! empty( $p['tag'] ) ) : ?><span class="product-tab__badge"><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
+          <?php if ( $p['isNew'] ) : ?><span class="product-tab__badge product-tab__badge--new">New</span><?php elseif ( ! empty( $p['tag'] ) ) : ?><span class="product-tab__badge" <?php if ( $p['tag'] === 'Best-seller' ) echo 'style="background:#e8850a;color:#fff"'; ?>><?php echo esc_html( $p['tag'] ); ?></span><?php endif; ?>
         </button>
       <?php endforeach; ?>
     </div>
@@ -368,7 +368,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
             <img src="<?php echo esc_url( $p['image'] ); ?>" alt="<?php echo esc_attr( $p['name'] ); ?>" loading="lazy">
             <div class="product-img-overlay"></div>
             <?php if ( $p['isNew'] ) : ?><span class="product-img-badge product-img-badge--new"><?php echo easyevents_icon( 'sparkles', 11 ); ?> Nouveau</span>
-            <?php elseif ( ! empty( $p['tag'] ) ) : ?><span class="product-img-badge" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span>
+            <?php elseif ( ! empty( $p['tag'] ) ) : ?><span class="product-img-badge" style="background:<?php echo $p['tag'] === 'Best-seller' ? '#e8850a' : esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $p['tag'] ); ?></span>
             <?php endif; ?>
           </div>
         </div>

@@ -14,7 +14,7 @@ $services = easyevents_services();
       <!-- Brand -->
       <div class="footer-brand">
         <p class="footer-brand__name">Easy<em class="text-gradient-festive">Events</em> Group</p>
-        <p class="footer-brand__loc">Toute la Suisse · Frontière française</p>
+        <p class="footer-brand__loc">Genève · Suisse francophone</p>
         <p class="footer-brand__about">Partenaire événementiel B2B et B2C depuis plus de 17 ans.</p>
       </div>
 
@@ -42,7 +42,7 @@ $services = easyevents_services();
     <!-- Bottom bar -->
     <div class="footer-bottom">
       <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> EasyEvents Group. Tous droits réservés.</p>
-      <p>Toute la Suisse, frontière française</p>
+      <p>Genève · Suisse francophone</p>
     </div>
   </div>
 </footer>

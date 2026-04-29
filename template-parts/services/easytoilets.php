@@ -51,7 +51,7 @@ $testimonials = ee_get_testimonials( $post_id, $testimonials );
 $faqItems = array(
   array( 'q' => 'Comment fonctionnent les unités ?', 'a' => "Nos unités sont entièrement autonomes avec réservoir d'eau intégré, système de chauffage et éclairage. Elles ne nécessitent aucun raccordement et fonctionnent été comme hiver." ),
   array( 'q' => 'Quelle est la capacité des unités ?', 'a' => "Nous proposons différentes tailles d'unités, de 2 à 8 cabines, adaptées à des événements de 50 à plus de 1000 personnes." ),
-  array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => 'Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu\'à la frontière française.' ),
+  array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => 'Nous intervenons à Genève et en Suisse francophone.' ),
   array( 'q' => "Combien de temps à l'avance faut-il réserver ?", 'a' => 'Nous recommandons de réserver au moins 2 à 4 semaines à l\'avance pour garantir la disponibilité, surtout en haute saison (mai-septembre).' ),
   array( 'q' => "L'installation est-elle incluse ?", 'a' => 'Oui, la livraison, l\'installation et la récupération sont incluses dans nos tarifs. Notre équipe gère tout de A à Z.' ),
 );

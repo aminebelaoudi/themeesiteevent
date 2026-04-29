@@ -7,7 +7,7 @@
 
 // Carbon Fields data (with sensible defaults) — safe if plugin not active
 $hero_image    = function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_image' ) : '';
-$hero_badge    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_badge' ) : '' ) ?: 'Toute la Suisse · Frontière française';
+$hero_badge    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_badge' ) : '' ) ?: 'Genève · Suisse francophone';
 $hero_title    = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_title' ) : '' ) ?: 'EasyEvents, Une offre complète pour des expériences inoubliables !';
 $hero_hl       = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_highlight' ) : '' ) ?: 'événementiel';
 $hero_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'hero_subtitle' ) : '' ) ?: 'Groupe composé de cinq sociétés complémentaires, collaborant avec des agences événementielles.';

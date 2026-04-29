@@ -29,11 +29,11 @@ $galleryImages = array(
 );
 
 $formulas = array(
-  array( 'id' => 'relax-corner', 'name' => 'Formule Relax Corner', 'desc' => '1 fauteuil massant — idéal pour les petits espaces & pauses individuelles.', 'includes' => array('1 fauteuil massant premium','Installation &amp; configuration incluses','Technicien EasyRelax sur place','Durée flexible (demi-journée ou journée complète)') ),
-  array( 'id' => 'relax-lounge', 'name' => 'Formule Relax Lounge', 'desc' => '2 fauteuils — parfaite pour séminaires et grands événements.', 'includes' => array('2 fauteuils massants premium','Aménagement scénographique inclus','Décoration végétale &amp; ambiance sonore','Hôtesse dédiée (option disponible)','Durée flexible') ),
-  array( 'id' => 'option-hotesse', 'name' => 'Option Hôtesse', 'desc' => 'Accueil et accompagnement des participants pour une expérience optimale.', 'includes' => array('1 ou 2 hôtesses formées wellness','Accueil &amp; guidage des participants','Gestion du temps de massage','Tenue professionnelle assortie') ),
-  array( 'id' => 'installation', 'name' => 'Installation clé en main', 'desc' => 'Livraison, mise en place et retrait inclus.', 'includes' => array('Livraison &amp; transport inclus','Installation &amp; mise en service sur place','Récupération &amp; démontage inclus','Responsable technique dédié') ),
-  array( 'id' => 'devis-en-ligne', 'name' => 'Devis en ligne immédiat', 'desc' => 'Calculez facilement votre offre personnalisée.', 'includes' => array('Formulaire simple &amp; rapide','Réponse sous 24h garantie','Offre personnalisée','Sans engagement') ),
+  array( 'id' => 'relax-corner',  'name' => 'Formule Relax Corner',     'desc' => '1 fauteuil massant – idéal pour les petits espaces & pauses individuelles.', 'includes' => array() ),
+  array( 'id' => 'relax-lounge',  'name' => 'Formule Relax Lounge',     'desc' => '2 fauteuils – parfaite pour séminaires et grands événements.',               'includes' => array() ),
+  array( 'id' => 'option-hotesse','name' => 'Option Hôtesse',           'desc' => 'Accueil et accompagnement des participants pour une expérience optimale.',     'includes' => array() ),
+  array( 'id' => 'installation',  'name' => 'Installation clé en main', 'desc' => 'Livraison, mise en place et retrait inclus.',                                  'includes' => array() ),
+  array( 'id' => 'devis-en-ligne','name' => 'Devis en ligne immédiat',  'desc' => 'Calculez facilement votre offre personnalisée.',                               'includes' => array() ),
 );
 
 $testimonials = array(
@@ -47,7 +47,7 @@ $faqItems = array(
   array( 'q' => "Qu'est-ce qu'EasyRelax ?", 'a' => "EasyRelax est un service de location de fauteuils massants premium pour vos événements professionnels et corporate. Nous livrons, installons et gérons l'espace bien-être directement sur votre lieu d'événement, dans toute la Suisse." ),
   array( 'q' => "EasyRelax est-il adapté aux événements d'entreprise ?", 'a' => "Absolument. EasyRelax est spécialement conçu pour les séminaires, lancements de produits, journées d'entreprise, salons professionnels et événements corporate." ),
   array( 'q' => "Combien de temps dure une session de massage ?", 'a' => "Les sessions sont flexibles : de 10 à 30 minutes selon votre configuration. Nos fauteuils fonctionnent en toute autonomie, aucun personnel n'est requis. Si vous le souhaitez, notre équipe peut également gérer le planning pour que tous vos invités en profitent." ),
-  array( 'q' => "Dans quelle zone intervenez-vous ?", 'a' => "Nous couvrons toute la Suisse. Nous sommes très présents à Genève et en Suisse romande, et nous intervenons également dans le reste de la Suisse ainsi qu'à la frontière française." ),
+  array( 'q' => "Dans quelle zone intervenez-vous ?", 'a' => "Nous intervenons à Genève et en Suisse francophone." ),
   array( 'q' => "Comment se déroule la réservation ?", 'a' => "Remplissez notre formulaire en ligne. Nous revenons sous 24h avec une offre personnalisée et un acompte de 30% pour confirmer." ),
 );
 

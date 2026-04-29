@@ -65,7 +65,7 @@ function easyevents_register_fields() {
 		->add_fields( array(
 			$Field::make( 'image', 'hero_image', __( 'Image Hero', 'easyevents' ) ),
 			$Field::make( 'text', 'hero_badge', __( 'Badge (localisation)', 'easyevents' ) )
-				->set_default_value( 'Toute la Suisse · Frontière française' ),
+				->set_default_value( 'Genève · Suisse francophone' ),
 			$Field::make( 'text', 'hero_title', __( 'Titre Hero', 'easyevents' ) )
 				->set_default_value( 'Votre partenaire événementiel haut de gamme' ),
 			$Field::make( 'text', 'hero_highlight', __( 'Mot mis en valeur', 'easyevents' ) )
@@ -263,6 +263,6 @@ function easyevents_register_fields() {
 			$Field::make( 'text', 'contact_brand_name', __( 'Nom bloc marque', 'easyevents' ) )
 				->set_default_value( 'EasyEvents Group' ),
 			$Field::make( 'text', 'contact_brand_tagline', __( 'Tagline bloc marque', 'easyevents' ) )
-				->set_default_value( 'Votre partenaire événementiel en Suisse et à la frontière française' ),
+				->set_default_value( 'Votre partenaire événementiel à Genève · Suisse francophone' ),
 		) );
 }
