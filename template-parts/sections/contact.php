@@ -89,16 +89,6 @@ $contact_items = array(
         </div>
       </div>
 
-      <!-- Availability badge -->
-      <div class="availability-badge animate-on-scroll" style="margin-top:1.5rem">
-        <div style="display:flex;align-items:center;gap:.75rem">
-          <span class="pulse-dot"></span>
-          <div>
-            <p class="font-heading" style="font-weight:700;font-size:.875rem;color:var(--foreground)">Disponible du lundi au vendredi</p>
-            <p style="color:var(--muted-foreground);font-size:.75rem;margin-top:.125rem"><?php echo esc_html( $hours ); ?></p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

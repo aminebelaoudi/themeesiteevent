@@ -63,8 +63,8 @@ $barmanService = array(
     "Et pour répondre à tous les besoins, il est possible d'élargir l'équipe avec un ou plusieurs barmen supplémentaires ainsi qu'une hôtesse dédiée à l'accueil ou au service. Une prestation clé en main, pensée pour faire de votre événement un moment inoubliable."
   ),
   'formulas' => array(
-    array( 'name' => 'Formule 2h illimitée', 'details' => array('Barmans professionnels','Consommations illimitées','(eaux aromatisées, cocktails, Prosecco)','Prix : A partir de 19.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-1.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-2.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg') ),
-    array( 'name' => 'Formule 4h illimitée', 'details' => array('Barmans professionnels','Consommations illimitées','(eaux aromatisées, cocktails, Prosecco)','Prix : A partir de 23.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-3.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-03.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-4.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg') ),
+    array( 'name' => 'Formule 2h illimitée', 'details' => array('Barmans professionnels','Consommations limitées ou illimitées','Déplacement','Prix : A partir de 19.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-1.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-2.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg') ),
+    array( 'name' => 'Formule 4h illimitée', 'details' => array('Barmans professionnels','Consommations limitées ou illimitées','Déplacement','Prix : A partir de 23.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-3.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-03.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-4.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg') ),
   ),
 );
 
@@ -154,7 +154,6 @@ $animationPartners = array(
 
 $barPartners = array(
   array( 'name' => 'EasyFlash', 'desc' => "EasyFlash, c'est la touche fun, moderne et inoubliable de vos événements festifs, pros, culturels ou privés !", 'image' => 'https://www.easyflair.ch/wp-content/uploads/2023/04/Partenaire-Easyflash.jpg', 'link' => 'https://www.easyflash.ch/' ),
-  array( 'name' => 'EasyEvents', 'desc' => "EasyEvents, basée à Genève, est votre partenaire créatif pour des événements mémorables.", 'image' => 'https://www.easyflair.ch/wp-content/uploads/2023/04/easyevents-partenaire.jpg', 'link' => 'https://www.easyevents-group.ch' ),
   array( 'name' => 'EasyChallenge', 'desc' => "EasyChallenge, c'est l'allié fun et fédérateur de vos séminaires ! Basée à Genève.", 'image' => 'https://www.easyflair.ch/wp-content/uploads/2023/04/Partenaire-Easychallenge.jpg', 'link' => 'https://www.easychallenge.ch/' ),
 );
 
@@ -332,7 +331,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php
       $default_stats = array(
         array( 'value' => '2009', 'label' => 'Fondé à Genève' ),
-        array( 'value' => '1000+', 'label' => 'Événements réalisés' ),
+        array( 'value' => '3000+', 'label' => 'Événements réalisés' ),
         array( 'value' => '4', 'label' => 'Prestations principales' ),
         array( 'value' => '24h', 'label' => 'Réponse garantie' ),
       );
@@ -409,7 +408,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 <p style="color:<?php echo esc_attr( $C['cream'] ); ?>77;white-space:pre-line;font-size:.875rem;margin-top:1rem"><?php echo esc_html( $pickDrinks['formulaInfo'] ); ?></p>
               </div>
             </div>
-            <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1.25rem;align-self:flex-start"><?php echo esc_html( $pickDrinks['ctaLabel'] ?? 'Estimer le montant de ma prestation' ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
+            <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1.25rem;align-self:flex-start"><?php echo esc_html( $pickDrinks['ctaLabel'] ?? 'Estimer le montant de ma prestation' ); ?> <?php echo easyevents_icon('arrow-right',14); ?></a>
           </div>
         </div>
       </div>
@@ -447,7 +446,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                   </ul>
                 </div>
               </div>
-              <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
+              <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
             </div>
           <?php endforeach; ?>
         </div>
@@ -493,7 +492,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <?php foreach ( array(
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-121.png',
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-120.png',
-            'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-24.png',
+            get_theme_file_uri( 'assets/images/W&W logo.jpeg' ),
             'https://www.easyflair.ch/wp-content/uploads/2018/02/easyflair-Barman-Jongleur-Domicile-Geneve-43.png',
           ) as $logo ) : ?>
             <img src="<?php echo esc_url( $logo ); ?>" alt="Client" class="trust-logos__img" loading="lazy">
@@ -521,7 +520,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 
       <!-- 1G. Final CTA -->
       <div style="text-align:center;margin-top:2.5rem" class="animate-on-scroll">
-        <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander mon devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+        <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service btn-service--lg" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander mon devis <?php echo easyevents_icon('arrow-right',14); ?></a>
       </div>
     </div>
 
@@ -797,7 +796,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>;border-color:<?php echo esc_attr( $C['goldL'] ); ?>25;background:<?php echo esc_attr( $C['goldL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>
-          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
         <div class="brand-block__images brand-block__images--mosaic">
           <?php

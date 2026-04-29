@@ -547,7 +547,8 @@
 .product-bonus__steps-box{text-align:center;border-radius:1rem;border:1px solid rgba(128,128,128,.15);padding:2rem;background:#fff}
 .product-bonus__steps{display:grid;gap:1rem;margin-top:1.5rem}
 .product-bonus__steps--5{grid-template-columns:repeat(2,1fr)}
-@media(min-width:768px){.product-bonus__steps--5{grid-template-columns:repeat(5,1fr)}}
+.product-bonus__steps--5>*:nth-child(5){grid-column:1/-1;max-width:50%;margin:0 auto;width:100%}
+@media(min-width:768px){.product-bonus__steps--5{grid-template-columns:repeat(5,1fr)}.product-bonus__steps--5>*:nth-child(5){grid-column:auto;max-width:none;margin:0}}
 .product-bonus__step{border-radius:.75rem;border:1px solid rgba(128,128,128,.15);background:var(--color-background,#f8f8f8);padding:1rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center}
 .product-bonus__step-icon{width:2.5rem;height:2.5rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center}
 .product-bonus__step-label{font-family:var(--font-heading,inherit);font-weight:600;font-size:.6875rem;text-transform:uppercase;letter-spacing:.05em}
