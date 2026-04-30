@@ -579,7 +579,6 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
   <div class="container">
     <div class="crosssell-header animate-on-scroll">
       <div><span class="svc-label" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">EasyEvents Group</span><h2 style="color:#fff">Découvrez nos <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>">autres expertises</span></h2></div>
-      <a href="<?php echo esc_url( home_url('/') ); ?>" style="color:<?php echo esc_attr( $C['accentL'] ); ?>">Tous les services <?php echo easyevents_icon('arrow-right',14); ?></a>
     </div>
     <div class="crosssell-grid animate-on-scroll">
       <?php foreach ( $others as $other ) :

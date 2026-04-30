@@ -504,7 +504,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <div class="partners-section animate-on-scroll" style="margin-top:3rem">
         <h4 style="color:<?php echo esc_attr( $C['dark'] ); ?>;text-align:center;margin-bottom:.5rem">Nos Partenaires</h4>
         <p style="color:<?php echo esc_attr( $C['dark'] ); ?>77;text-align:center;font-size:.875rem;margin-bottom:2rem">Découvrez nos partenaires privilégiés pour un évènement réussi !</p>
-        <div class="partners-grid partners-grid--3">
+        <div class="partners-grid partners-grid--3" <?php if ( count( $barPartners ) < 3 ) echo 'style="justify-content:center"'; ?>>
           <?php foreach ( $barPartners as $bp ) : ?>
             <div class="partner-card" style="background:#fff;border-radius:1rem;padding:1.5rem;text-align:center">
               <?php if ( ! empty( $bp['image'] ) ) : ?><div class="partner-card__img"><img src="<?php echo esc_url( $bp['image'] ); ?>" alt="<?php echo esc_attr( $bp['name'] ); ?>" loading="lazy"></div><?php endif; ?>
@@ -543,7 +543,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p style="color:#fff;font-size:3rem;font-weight:800;line-height:1">390.-</p>
           <p style="color:<?php echo esc_attr( $C['goldL'] ); ?>;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem">CHF HT</p>
           <div style="width:3rem;height:1px;background:<?php echo esc_attr( $C['gold'] ); ?>40;margin:1.25rem auto"></div>
-          <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
+          <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['gold'] ); ?>;margin-top:1rem;width:100%">Demande de devis <?php echo easyevents_icon('arrow-right',14); ?></a>
         </div>
       </div>
 
@@ -822,7 +822,6 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
   <div class="container">
     <div class="crosssell-header animate-on-scroll">
       <div><span class="svc-label" style="color:<?php echo esc_attr( $C['goldL'] ); ?>">EasyEvents Group</span><h2 style="color:#fff">Découvrez nos <span style="color:<?php echo esc_attr( $C['goldL'] ); ?>">autres expertises</span></h2></div>
-      <a href="<?php echo esc_url( home_url('/') ); ?>" style="color:<?php echo esc_attr( $C['goldL'] ); ?>">Tous les services <?php echo easyevents_icon('arrow-right',14); ?></a>
     </div>
     <div class="crosssell-grid animate-on-scroll">
       <?php foreach ( $others as $other ) :
