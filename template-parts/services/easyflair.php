@@ -158,12 +158,12 @@ $barPartners = array(
 );
 
 $faqItems = array(
-  array( 'q' => "Qu'est-ce qu'EasyFlair ?", 'a' => "EasyFlair est un service de bar mobile et d'animation cocktail pour vos événements. Depuis 2009, nous accompagnons mariages, soirées d'entreprise, séminaires et événements privés dans toute la Suisse." ),
-  array( 'q' => 'Quelles prestations proposez-vous ?', 'a' => "Nous proposons des Barmen Mixologues, des Barmen Jongleurs, des Ateliers & Master Cocktails, des stations de bar, le Cocktails Truck « la Roulotte », des ateliers café-barista, ainsi que diverses animations (Mouss'Art Concept, Mur Végétal, Welcome Drink)." ),
-  array( 'q' => 'Le Cocktails Truck peut-il se déplacer partout ?', 'a' => "Oui ! Notre roulotte est facilement transportable et s'adapte à tous types d'événements, en intérieur spacieux comme en extérieur : mariages, anniversaires, événements d'entreprise, festivals, garden-parties, etc." ),
-  array( 'q' => "Combien de personnes faut-il pour un atelier cocktails ?", 'a' => "L'Atelier Cocktails est accessible dès 6 personnes. Le Master Cocktails nécessite un minimum de 25 personnes. Les mêmes seuils s'appliquent aux ateliers café-barista." ),
+  array( 'q' => "Quelles sont les prestations d'EasyFlair ?", 'a' => "EasyFlair regroupe plusieurs expertises : bar mobile avec barmen professionnels, Cocktails Truck « La Roulotte », ateliers cocktails & café-barista, et animations événementielles (Mouss'Art Concept, Mur Végétal, Welcome Drink). Tout peut être combiné selon votre événement." ),
+  array( 'q' => "Pour quel type d'événement pouvez-vous intervenir ?", 'a' => "Mariage, soirée d'entreprise, séminaire, anniversaire, festival, garden-party… EasyFlair s'adapte à tous types d'événements, en intérieur comme en extérieur, pour des groupes de toutes tailles." ),
+  array( 'q' => "Peut-on combiner plusieurs prestations pour un même événement ?", 'a' => "Absolument. Il est possible de composer un package sur mesure en associant par exemple un bar mobile, un atelier cocktails et une animation. Nous conseillons la combinaison la plus adaptée à votre budget et à votre programme." ),
+  array( 'q' => "Quel est le délai minimum pour une réservation ?", 'a' => "Nous recommandons de nous contacter au moins 2 à 3 semaines avant votre événement. Pour les dates très demandées (week-ends, fêtes), plus tôt est préférable." ),
   array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => "Nous intervenons à Genève et en Suisse francophone." ),
-  array( 'q' => 'Comment réserver ?', 'a' => "Remplissez notre formulaire de demande de devis en ligne ou appelez-nous. Nous revenons vers vous sous 24h avec une offre personnalisée." ),
+  array( 'q' => 'Comment obtenir un devis ?', 'a' => "Remplissez notre formulaire de demande en ligne ou appelez-nous directement. Nous revenons vers vous sous 24h avec une offre personnalisée." ),
 );
 
 $faqItems     = ee_get_faq( $post_id, $faqItems );
