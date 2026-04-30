@@ -472,7 +472,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php if ( ! empty( $f['image'] ) ) : ?><div class="formula-card__hero-img"><img src="<?php echo esc_url( $f['image'] ); ?>" alt="<?php echo esc_attr( $f['name'] ); ?>"><div class="formula-card__img-overlay"></div></div><?php endif; ?>
               <div style="padding:1.5rem;text-align:center">
                 <h4 style="color:#fff"><?php echo esc_html( $f['name'] ); ?></h4>
-                <a href="https://www.easyflair.ch/fr/demande-de-devis/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $jongleurColors[ $fi ] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
+                <a href="https://www.easyflair.ch/fr/demande-de-devis-barman/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $jongleurColors[ $fi ] ); ?>;margin-top:1rem;width:100%">Estimer le montant de ma prestation <?php echo easyevents_icon('arrow-right',14); ?></a>
               </div>
             </div>
           <?php endforeach; ?>
