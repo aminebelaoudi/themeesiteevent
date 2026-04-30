@@ -64,7 +64,7 @@ $barmanService = array(
   ),
   'formulas' => array(
     array( 'name' => 'Formule 2h illimitée', 'details' => array('Barmans professionnels','Consommations limitées ou illimitées','Déplacement','Prix : A partir de 19.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-1.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-2.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-01.jpg') ),
-    array( 'name' => 'Formule 4h illimitée', 'details' => array('Barmans professionnels','Consommations limitées ou illimitées','Déplacement','Prix : A partir de 23.-/pers'), 'images' => array('https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-3.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-03.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-4.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg') ),
+    array( 'name' => 'Formule 4h illimitée', 'details' => array('Barmans professionnels','Consommations limitées ou illimitées','Déplacement','Prix : A partir de 23.-/pers'), 'images' => array(get_theme_file_uri('assets/images/Cocktails.jpg'),'https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-03.jpg','https://www.easyflair.ch/wp-content/uploads/2020/06/barman-mariage-vin-honneur-avec-barman-4.jpg','https://www.easyflair.ch/wp-content/uploads/2023/04/Formule-barman-02.jpg') ),
   ),
 );
 
