@@ -299,6 +299,14 @@
 .blog-related{padding:5rem 0;background:rgba(240,235,248,.3);position:relative}
 .blog-related::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle at 20% 30%,hsla(245,80%,64%,.06) 0%,transparent 50%),radial-gradient(circle at 80% 70%,hsla(33,95%,52%,.05) 0%,transparent 50%)}
 
+/* Cross-sell section (same model as service pages) */
+.crosssell-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:2.25rem}
+.crosssell-header h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-top:.25rem}
+.crosssell-card__content h3{font-size:1rem;font-weight:700;margin-bottom:.25rem;color:#fff}
+.crosssell-card__content p{font-size:.8125rem;color:rgba(255,255,255,.68)}
+.crosssell-card__arrow{position:absolute;top:1rem;right:1rem;opacity:0;transition:opacity .3s;width:2rem;height:2rem;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff}
+.crosssell-card:hover .crosssell-card__arrow{opacity:1}
+
 /* ── STAGGER ANIMATIONS ──────────────────────────── */
 .blog-archive-card,.blog-simple-card{opacity:0;transform:translateY(1.5rem);animation:blogCardIn .55s cubic-bezier(.22,1,.36,1) forwards}
 .blog-archive-card:nth-child(1),.blog-simple-card:nth-child(1){animation-delay:.05s}

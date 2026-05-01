@@ -47,6 +47,24 @@ while ( have_posts() ) :
 		'order'      => 'DESC',
 		'hide_empty' => true,
 	) );
+
+  /* ── Cross-sell services (same model as service pages) ── */
+  $services_raw = easyevents_services();
+  $service_order = array( 'easyflair', 'easyflash', 'easychallenge', 'easyrelax', 'easytoilets' );
+  $crosssell_services = array();
+  foreach ( $service_order as $slug ) {
+    if ( isset( $services_raw[ $slug ] ) ) {
+      $crosssell_services[] = $services_raw[ $slug ];
+    }
+  }
+
+  $crosssell_images = array(
+    'easyflair'     => get_theme_file_uri( 'assets/images/Formule-barman-02.jpg' ),
+    'easyflash'     => get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ),
+    'easychallenge' => get_theme_file_uri( 'assets/images/easychallenge-team.jpg' ),
+    'easyrelax'     => get_theme_file_uri( 'assets/images/easyrelax hero.png' ),
+    'easytoilets'   => get_theme_file_uri( 'assets/images/easytoilets-banner2.jpg' ),
+  );
 ?>
 
 <main id="main" class="site-main">
@@ -319,7 +337,40 @@ while ( have_posts() ) :
     <?php wp_reset_postdata(); ?>
   <?php endif; ?>
 
-  <?php get_template_part( 'template-parts/sections/services' ); ?>
+  <!-- ═══ CROSS-SELL SERVICES ═══════════════════ -->
+  <section class="section" style="background:linear-gradient(140deg,#151520 0%,#1c1b2b 50%,#1e3542 100%);padding:5rem 0;position:relative;overflow:hidden">
+    <div class="container" style="position:relative;z-index:1">
+      <div class="crosssell-header animate-on-scroll">
+        <div>
+          <span class="svc-label" style="color:rgba(255,255,255,.75)">EasyEvents Group</span>
+          <h2 style="color:#fff">Découvrez nos <span style="color:#8db9ff">autres expertises</span></h2>
+        </div>
+      </div>
+
+      <div class="crosssell-grid animate-on-scroll">
+        <?php foreach ( $crosssell_services as $service ) :
+          $service_page = get_page_by_path( 'services/' . $service['slug'] );
+          $service_img  = $service_page && has_post_thumbnail( $service_page ) ? get_the_post_thumbnail_url( $service_page, 'medium_large' ) : '';
+          if ( empty( $service_img ) && isset( $crosssell_images[ $service['slug'] ] ) ) {
+            $service_img = $crosssell_images[ $service['slug'] ];
+          }
+        ?>
+          <a href="<?php echo esc_url( home_url( '/services/' . $service['slug'] . '/' ) ); ?>" class="crosssell-card">
+            <?php if ( $service_img ) : ?>
+              <img src="<?php echo esc_url( $service_img ); ?>" alt="<?php echo esc_attr( $service['label'] ); ?>" class="crosssell-card__img" loading="lazy">
+            <?php endif; ?>
+            <div class="crosssell-card__overlay"></div>
+            <div class="crosssell-card__content">
+              <div class="crosssell-card__icon"><?php echo easyevents_icon( $service['icon'], 15 ); ?></div>
+              <h3><?php echo esc_html( $service['label'] ); ?></h3>
+              <p><?php echo wp_kses_post( $service['tagline'] ); ?></p>
+            </div>
+            <div class="crosssell-card__arrow"><?php echo easyevents_icon( 'arrow-right', 12 ); ?></div>
+          </a>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
 
   <?php get_template_part( 'template-parts/sections/contact' ); ?>
 
