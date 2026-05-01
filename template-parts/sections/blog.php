@@ -5,80 +5,61 @@
  * @package EasyEvents
  */
 
-$posts_data = array(
-  array(
-    'category'      => 'Corporate',
-    'categorySlug'  => 'easyflash',
-    'date'          => '12 mars 2026',
-    'readTime'      => '4 min',
-    'title'         => '5 idées pour transformer votre soirée d\'entreprise en expérience inoubliable',
-    'excerpt'       => 'De la mixologie en live aux photobooths immersifs, découvrez comment surprendre vos collaborateurs et marquer les esprits lors de votre prochain événement corporate.',
-    'image'         => 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80',
-  ),
-  array(
-    'category'      => 'Mariage',
-    'categorySlug'  => 'easyflair',
-    'date'          => '28 fév. 2026',
-    'readTime'      => '3 min',
-    'title'         => 'Photobooth mariage : le must-have pour une réception moderne',
-    'excerpt'       => 'Le photobooth 360° s\'impose comme l\'animation phare des mariages contemporains. Conseils et inspirations pour l\'intégrer parfaitement à votre grand jour.',
-    'image'         => 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80',
-  ),
-  array(
-    'category'      => 'Team Building',
-    'categorySlug'  => 'easychallenge',
-    'date'          => '10 fév. 2026',
-    'readTime'      => '5 min',
-    'title'         => 'Team building : comment renforcer la cohésion d\'équipe en 2026',
-    'excerpt'       => 'Jeux collaboratifs, défis outdoor ou animations immersives — les nouvelles tendances du team building qui font la différence dans les entreprises romandes.',
-    'image'         => 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80',
-  ),
-  array(
-    'category'      => 'Festival',
-    'categorySlug'  => 'easyrelax',
-    'date'          => '3 jan. 2026',
-    'readTime'      => '4 min',
-    'title'         => 'Organiser un festival en Suisse romande : les clés du succès',
-    'excerpt'       => 'De la logistique sanitaire aux espaces lounge, retour sur les éléments indispensables pour un festival réussi et une expérience participant au top du top.',
-    'image'         => 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80',
-  ),
-  array(
-    'category'      => 'Tendances',
-    'categorySlug'  => 'secondary',
-    'date'          => '18 déc. 2025',
-    'readTime'      => '6 min',
-    'title'         => 'Les grandes tendances événementielles pour l\'année 2026',
-    'excerpt'       => 'Durabilité, immersion sensorielle, expériences hybrides… voici ce qui va façonner les événements professionnels et privés en Suisse cette année.',
-    'image'         => 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
-  ),
-);
+$posts_data = array();
 
-$cf_blog_posts = function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_posts' ) : null;
-if ( ! empty( $cf_blog_posts ) && is_array( $cf_blog_posts ) ) {
-  $posts_data = array();
-  foreach ( $cf_blog_posts as $post ) {
-    $image = $post['blog_image'] ?? '';
-    if ( ! empty( $image ) && is_numeric( $image ) ) {
-      $image = wp_get_attachment_url( $image );
-    }
+$home_blog_query = new WP_Query( array(
+  'post_type'           => 'post',
+  'post_status'         => 'publish',
+  'posts_per_page'      => 6,
+  'ignore_sticky_posts' => true,
+) );
+
+if ( $home_blog_query->have_posts() ) {
+  while ( $home_blog_query->have_posts() ) {
+    $home_blog_query->the_post();
+
+    $post_categories = get_the_category();
+    $primary_cat     = ! empty( $post_categories ) ? $post_categories[0] : null;
+    $category_name   = $primary_cat ? $primary_cat->name : 'Article';
+    $category_slug   = $primary_cat ? $primary_cat->slug : 'secondary';
+
+    $content    = get_post_field( 'post_content', get_the_ID() );
+    $word_count = str_word_count( wp_strip_all_tags( $content ) );
+    $read_time  = max( 1, (int) ceil( $word_count / 200 ) ) . ' min';
 
     $posts_data[] = array(
-      'category'      => $post['blog_category'] ?? '',
-      'categorySlug'  => $post['blog_category_slug'] ?? 'secondary',
-      'date'          => $post['blog_date'] ?? '',
-      'readTime'      => $post['blog_read_time'] ?? '',
-      'title'         => $post['blog_title'] ?? '',
-      'excerpt'       => $post['blog_excerpt'] ?? '',
-      'image'         => $image,
+      'category'      => $category_name,
+      'categorySlug'  => $category_slug,
+      'date'          => get_the_date(),
+      'readTime'      => $read_time,
+      'title'         => get_the_title(),
+      'excerpt'       => get_the_excerpt(),
+      'image'         => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
+      'link'          => get_permalink(),
     );
   }
+  wp_reset_postdata();
 }
 
-$blog_label = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_label' ) : '' ) ?: 'Blog & Inspirations';
-$blog_title = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_title' ) : '' ) ?: 'Idées, tendances & coulisses';
-$blog_subtitle = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_subtitle' ) : '' ) ?: 'Conseils événementiels, retours d\'expérience et inspirations pour créer des moments qui marquent.';
-$blog_cta_text = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_cta_text' ) : '' ) ?: 'Tous les articles';
-$blog_cta_link = ( function_exists( 'carbon_get_the_post_meta' ) ? carbon_get_the_post_meta( 'blog_cta_link' ) : '' ) ?: '/blog';
+$posts_page_id = (int) get_option( 'page_for_posts' );
+$published_posts = wp_count_posts( 'post' );
+$published_count = isset( $published_posts->publish ) ? (int) $published_posts->publish : 0;
+
+$blog_label = 'Actualités';
+if ( $published_count > 0 ) {
+  /* translators: %d: published posts count */
+  $blog_label = sprintf( _n( 'Actualités (%d article)', 'Actualités (%d articles)', $published_count, 'easyevents' ), $published_count );
+}
+$blog_title = 'Actualités';
+$blog_subtitle = 'Retrouvez nos dernières actualités, conseils et retours d\'expérience pour préparer des événements réussis.';
+
+$blog_cta_text = 'Tous les articles';
+if ( $published_count > 0 ) {
+  /* translators: %d: published posts count */
+  $blog_cta_text = sprintf( _n( 'Tous les articles (%d)', 'Tous les articles (%d)', $published_count, 'easyevents' ), $published_count );
+}
+
+$blog_cta_link = $posts_page_id ? get_permalink( $posts_page_id ) : home_url( '/blog/' );
 
 // Category color map
 $cat_colors = array(
@@ -110,7 +91,7 @@ $cat_colors = array(
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0">
         <a href="<?php echo esc_url( $blog_cta_link ); ?>" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:var(--secondary)" class="font-heading">
-          <?php echo esc_html( $blog_cta_text ); ?> <?php echo easyevents_icon( 'arrow-up-right', 15 ); ?>
+          <?php echo esc_html( $blog_cta_text ); ?> <?php echo easyevents_icon( 'arrow-right', 15 ); ?>
         </a>
         <button data-blog-prev aria-label="Article précédent" style="width:2.25rem;height:2.25rem;border-radius:50%;border:1px solid var(--border);background:var(--card);display:inline-flex;align-items:center;justify-content:center;color:var(--foreground);transition:all .2s">
           <?php echo easyevents_icon( 'chevron-left', 18 ); ?>
@@ -122,40 +103,44 @@ $cat_colors = array(
     </div>
 
     <!-- Scrollable track -->
-    <div class="blog-track">
-      <?php foreach ( $posts_data as $post ) :
-        $color_style = isset( $cat_colors[ $post['categorySlug'] ] ) ? $cat_colors[ $post['categorySlug'] ] : $cat_colors['secondary'];
-      ?>
-        <article class="blog-card">
-          <!-- Image -->
-          <?php if ( ! empty( $post['image'] ) ) : ?>
-          <div class="blog-card__img-wrap">
-            <img src="<?php echo esc_url( $post['image'] ); ?>" alt="<?php echo esc_attr( $post['title'] ); ?>" class="blog-card__img" loading="lazy">
-          </div>
-          <?php endif; ?>
-          <!-- Content -->
-          <div class="blog-card__body">
-            <div>
-              <span class="blog-card__cat font-heading" style="<?php echo esc_attr( $color_style ); ?>">
-                <?php echo easyevents_icon( 'tag', 10 ); ?>
-                <?php echo esc_html( $post['category'] ); ?>
-              </span>
-              <h3 class="blog-card__title"><?php echo esc_html( $post['title'] ); ?></h3>
-              <p class="blog-card__excerpt"><?php echo esc_html( $post['excerpt'] ); ?></p>
+    <?php if ( ! empty( $posts_data ) ) : ?>
+      <div class="blog-track">
+        <?php foreach ( $posts_data as $blog_post ) :
+          $color_style = isset( $cat_colors[ $blog_post['categorySlug'] ] ) ? $cat_colors[ $blog_post['categorySlug'] ] : $cat_colors['secondary'];
+        ?>
+          <article class="blog-card">
+            <!-- Image -->
+            <?php if ( ! empty( $blog_post['image'] ) ) : ?>
+            <a href="<?php echo esc_url( $blog_post['link'] ); ?>" class="blog-card__img-wrap" aria-label="<?php echo esc_attr( $blog_post['title'] ); ?>">
+              <img src="<?php echo esc_url( $blog_post['image'] ); ?>" alt="<?php echo esc_attr( $blog_post['title'] ); ?>" class="blog-card__img" loading="lazy">
+            </a>
+            <?php endif; ?>
+            <!-- Content -->
+            <div class="blog-card__body">
+              <div>
+                <span class="blog-card__cat font-heading" style="<?php echo esc_attr( $color_style ); ?>">
+                  <?php echo easyevents_icon( 'tag', 10 ); ?>
+                  <?php echo esc_html( $blog_post['category'] ); ?>
+                </span>
+                <h3 class="blog-card__title"><a href="<?php echo esc_url( $blog_post['link'] ); ?>" style="color:inherit"><?php echo esc_html( $blog_post['title'] ); ?></a></h3>
+                <p class="blog-card__excerpt"><?php echo esc_html( $blog_post['excerpt'] ); ?></p>
+              </div>
+              <div class="blog-card__meta">
+                <span style="display:flex;align-items:center;gap:.25rem">
+                  <?php echo easyevents_icon( 'calendar', 11 ); ?>
+                  <?php echo esc_html( $blog_post['date'] ); ?>
+                </span>
+                <span style="display:flex;align-items:center;gap:.25rem">
+                  <?php echo easyevents_icon( 'clock', 11 ); ?>
+                  <?php echo esc_html( $blog_post['readTime'] ); ?>
+                </span>
+              </div>
             </div>
-            <div class="blog-card__meta">
-              <span style="display:flex;align-items:center;gap:.25rem">
-                <?php echo easyevents_icon( 'calendar', 11 ); ?>
-                <?php echo esc_html( $post['date'] ); ?>
-              </span>
-              <span style="display:flex;align-items:center;gap:.25rem">
-                <?php echo easyevents_icon( 'clock', 11 ); ?>
-                <?php echo esc_html( $post['readTime'] ); ?>
-              </span>
-            </div>
-          </div>
-        </article>
-      <?php endforeach; ?>
-    </div>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    <?php else : ?>
+      <p style="color:var(--muted-foreground)">Aucun article publié pour le moment.</p>
+    <?php endif; ?>
   </div>
 </section>
