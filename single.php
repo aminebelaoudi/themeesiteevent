@@ -14,16 +14,9 @@ while ( have_posts() ) :
 	the_post();
 
 	$post_id       = get_the_ID();
-	$author_name   = get_the_author();
-	$author_initial= mb_strtoupper( mb_substr( $author_name, 0, 1 ) );
 	$post_cats     = get_the_category();
 	$primary_cat   = ! empty( $post_cats ) ? $post_cats[0] : null;
 	$post_tags     = get_the_tags();
-
-	/* ── Reading time ─────────────────────────── */
-	$content    = get_post_field( 'post_content', $post_id );
-	$word_count = str_word_count( wp_strip_all_tags( $content ) );
-	$read_time  = max( 1, ceil( $word_count / 200 ) );
 
 	/* ── Category color ───────────────────────── */
 	$cat_colors = array(
@@ -164,18 +157,8 @@ while ( have_posts() ) :
           <!-- Meta -->
           <div class="blog-detail-main__meta">
             <span class="blog-detail-main__meta-item">
-              <span class="blog-detail-main__avatar" style="background:<?php echo esc_attr( $cat_c['color'] ); ?>"><?php echo esc_html( $author_initial ); ?></span>
-              <?php echo esc_html( $author_name ); ?>
-            </span>
-            <span class="blog-detail-main__meta-dot">·</span>
-            <span class="blog-detail-main__meta-item">
               <?php echo easyevents_icon( 'calendar', 13 ); ?>
               <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
-            </span>
-            <span class="blog-detail-main__meta-dot">·</span>
-            <span class="blog-detail-main__meta-item">
-              <?php echo easyevents_icon( 'clock', 13 ); ?>
-              <?php echo esc_html( $read_time ); ?> min de lecture
             </span>
           </div>
 

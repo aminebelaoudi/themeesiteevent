@@ -44,17 +44,20 @@ if ( is_category() ) {
 <main id="main" class="site-main">
 
   <!-- Hero -->
-  <section class="blog-hero">
-    <div class="container" style="position:relative;z-index:1">
-      <div class="blog-hero__badge">
-        <span class="blog-hero__badge-dot"></span>
+  <section class="blog-hero-light">
+    <div class="blog-hero-light__orb blog-hero-light__orb--1"></div>
+    <div class="blog-hero-light__orb blog-hero-light__orb--2"></div>
+    <div class="blog-hero-light__orb blog-hero-light__orb--3"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="blog-hero-light__badge font-heading">
+        <span class="blog-hero-light__badge-dot"></span>
         Blog
       </div>
-      <h1 class="blog-hero__title font-heading"><?php echo esc_html( $archive_title ); ?></h1>
+      <h1 class="blog-hero-light__title font-heading"><?php echo esc_html( $archive_title ); ?></h1>
       <?php if ( category_description() ) : ?>
-        <p class="blog-hero__desc"><?php echo esc_html( wp_strip_all_tags( category_description() ) ); ?></p>
+        <p class="blog-hero-light__desc"><?php echo esc_html( wp_strip_all_tags( category_description() ) ); ?></p>
       <?php else : ?>
-        <p class="blog-hero__desc">Conseils événementiels, retours d'expérience et inspirations pour créer des moments qui marquent.</p>
+        <p class="blog-hero-light__desc">Conseils événementiels, retours d'expérience et inspirations pour créer des moments qui marquent.</p>
       <?php endif; ?>
     </div>
   </section>
