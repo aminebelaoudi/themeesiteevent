@@ -125,20 +125,6 @@ while ( have_posts() ) :
             </div>
           <?php endif; ?>
 
-          <!-- Newsletter -->
-          <div class="blog-sidebar__block blog-sidebar__newsletter">
-            <h3 class="blog-sidebar__title font-heading">Newsletter</h3>
-            <p style="font-size:.8125rem;color:var(--muted-foreground);line-height:1.6;margin-bottom:1rem">
-              Recevez nos conseils événementiels directement dans votre boîte mail.
-            </p>
-            <div style="display:flex;gap:.5rem">
-              <input type="email" placeholder="Votre email" class="blog-sidebar__input" />
-              <button class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.75rem;white-space:nowrap">
-                S'inscrire
-              </button>
-            </div>
-          </div>
-
           <!-- Categories -->
           <?php if ( ! empty( $all_cats ) ) : ?>
             <div class="blog-sidebar__block">
