@@ -2,28 +2,28 @@
    EasyEvents Group — Blog Stylesheet
    ═══════════════════════════════════════════════════ */
 
-/* ── LIGHT ANIMATED HERO ─────────────────────────── */
+/* ── DARK ANIMATED HERO ──────────────────────────── */
 .blog-hero-light{
   position:relative;padding:10rem 0 4rem;overflow:hidden;text-align:center;
-  background:linear-gradient(160deg,#f8f6ff 0%,#f0ebf8 30%,#e8f4fd 60%,#fdf3e8 100%);
+  background:linear-gradient(150deg,hsl(230,28%,7%) 0%,hsl(255,40%,14%) 40%,hsl(220,50%,12%) 70%,hsl(200,60%,10%) 100%);
 }
 .blog-hero-light__orb{
-  position:absolute;border-radius:50%;filter:blur(80px);
-  opacity:.5;pointer-events:none;
+  position:absolute;border-radius:50%;filter:blur(90px);
+  opacity:.45;pointer-events:none;
 }
 .blog-hero-light__orb--1{
   width:28rem;height:28rem;top:-8rem;left:-6rem;
-  background:radial-gradient(circle,hsla(245,80%,72%,.35),transparent 70%);
+  background:radial-gradient(circle,hsla(245,80%,60%,.4),transparent 70%);
   animation:orbFloat1 8s ease-in-out infinite;
 }
 .blog-hero-light__orb--2{
   width:22rem;height:22rem;top:2rem;right:-4rem;
-  background:radial-gradient(circle,hsla(33,95%,70%,.3),transparent 70%);
+  background:radial-gradient(circle,hsla(33,95%,55%,.3),transparent 70%);
   animation:orbFloat2 10s ease-in-out infinite;
 }
 .blog-hero-light__orb--3{
   width:18rem;height:18rem;bottom:-6rem;left:40%;
-  background:radial-gradient(circle,hsla(200,100%,70%,.25),transparent 70%);
+  background:radial-gradient(circle,hsla(200,100%,55%,.3),transparent 70%);
   animation:orbFloat3 12s ease-in-out infinite;
 }
 @keyframes orbFloat1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.08)}}
@@ -32,9 +32,10 @@
 
 .blog-hero-light__badge{
   display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(124,92,252,.08);border:1px solid rgba(124,92,252,.15);
-  border-radius:var(--radius-full);padding:.375rem 1rem;margin-bottom:1.25rem;
-  color:var(--secondary);font-size:.75rem;font-weight:600;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-full);
+  padding:.375rem 1rem;margin-bottom:1.25rem;
+  color:rgba(255,255,255,.85);font-size:.75rem;font-weight:600;
   text-transform:uppercase;letter-spacing:.1em;
 }
 .blog-hero-light__badge-dot{
@@ -44,10 +45,10 @@
 }
 .blog-hero-light__title{
   font-size:clamp(2rem,5vw,3.25rem);font-weight:800;
-  color:var(--foreground);line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em;
+  color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em;
 }
 .blog-hero-light__desc{
-  font-size:1rem;color:var(--muted-foreground);
+  font-size:1rem;color:rgba(255,255,255,.55);
   max-width:32rem;margin:0 auto;line-height:1.7;
 }
 
