@@ -104,6 +104,16 @@
     if (blogNext) blogNext.addEventListener('click', () => blogTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
   }
 
+  /* ── Cross-sell services slider (single post) ── */
+  const crosssellTrack = document.querySelector('[data-crosssell-track]');
+  const crosssellPrev = document.querySelector('[data-crosssell-prev]');
+  const crosssellNext = document.querySelector('[data-crosssell-next]');
+  if (crosssellTrack) {
+    const scrollAmount = 380;
+    if (crosssellPrev) crosssellPrev.addEventListener('click', () => crosssellTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+    if (crosssellNext) crosssellNext.addEventListener('click', () => crosssellTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+  }
+
   /* ── Showcase filter tabs ────────────────────────── */
   const filterBtns = document.querySelectorAll('[data-filter]');
   const showcaseItems = document.querySelectorAll('[data-category]');

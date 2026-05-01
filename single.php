@@ -345,9 +345,17 @@ while ( have_posts() ) :
           <span class="svc-label" style="color:rgba(255,255,255,.75)">EasyEvents Group</span>
           <h2 style="color:#fff">Découvrez nos <span style="color:#8db9ff">autres expertises</span></h2>
         </div>
+        <div class="crosssell-nav" aria-label="Navigation services">
+          <button type="button" data-crosssell-prev class="crosssell-nav__btn" aria-label="Service précédent">
+            <?php echo easyevents_icon( 'chevron-left', 16 ); ?>
+          </button>
+          <button type="button" data-crosssell-next class="crosssell-nav__btn" aria-label="Service suivant">
+            <?php echo easyevents_icon( 'chevron-right', 16 ); ?>
+          </button>
+        </div>
       </div>
 
-      <div class="crosssell-grid animate-on-scroll">
+      <div class="crosssell-grid crosssell-grid--slider animate-on-scroll" data-crosssell-track>
         <?php foreach ( $crosssell_services as $service ) :
           $service_page = get_page_by_path( 'services/' . $service['slug'] );
           $service_img  = $service_page && has_post_thumbnail( $service_page ) ? get_the_post_thumbnail_url( $service_page, 'medium_large' ) : '';

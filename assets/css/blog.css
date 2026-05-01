@@ -302,6 +302,24 @@
 /* Cross-sell section (same model as service pages) */
 .crosssell-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:2.25rem}
 .crosssell-header h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-top:.25rem}
+.crosssell-nav{display:flex;align-items:center;gap:.5rem}
+.crosssell-nav__btn{
+  width:2.5rem;height:2.5rem;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s ease;
+}
+.crosssell-nav__btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35)}
+.crosssell-grid--slider{
+  display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none;padding-bottom:.5rem;
+}
+.crosssell-grid--slider::-webkit-scrollbar{display:none}
+.crosssell-grid--slider .crosssell-card{
+  flex:0 0 20rem;max-width:85vw;scroll-snap-align:start;
+}
+@media(min-width:1024px){
+  .crosssell-grid--slider .crosssell-card{flex-basis:23rem}
+}
 .crosssell-card__content h3{font-size:1rem;font-weight:700;margin-bottom:.25rem;color:#fff}
 .crosssell-card__content p{font-size:.8125rem;color:rgba(255,255,255,.68)}
 .crosssell-card__arrow{position:absolute;top:1rem;right:1rem;opacity:0;transition:opacity .3s;width:2rem;height:2rem;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff}
