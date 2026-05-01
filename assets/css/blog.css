@@ -53,7 +53,7 @@
 
 /* Darker variant for archive page to keep top header items readable */
 .blog-hero-light--archive{
-  background:linear-gradient(150deg,hsl(230,28%,10%) 0%,hsl(245,55%,20%) 58%,hsl(200,80%,30%) 100%);
+  background:linear-gradient(140deg,#0b1220 0%,#16213a 52%,#1f4a57 100%);
 }
 .blog-hero-light--archive .blog-hero-light__badge{
   background:rgba(255,255,255,.1);
