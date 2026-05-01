@@ -2,6 +2,9 @@
 /**
  * Single post template — Blog article detail
  *
+ * Layout: compact hero + 2-column (sidebar left, content right)
+ * Image displayed inline at full quality — not as hero background.
+ *
  * @package EasyEvents
  */
 
@@ -16,7 +19,6 @@ while ( have_posts() ) :
 	$post_cats     = get_the_category();
 	$primary_cat   = ! empty( $post_cats ) ? $post_cats[0] : null;
 	$post_tags     = get_the_tags();
-	$has_thumb     = has_post_thumbnail();
 
 	/* ── Reading time ─────────────────────────── */
 	$content    = get_post_field( 'post_content', $post_id );
@@ -25,223 +27,236 @@ while ( have_posts() ) :
 
 	/* ── Category color ───────────────────────── */
 	$cat_colors = array(
-		'easyflair'     => array( 'bg' => 'rgba(184,150,62,.2)',  'color' => '#b8963e' ),
-		'easyflash'     => array( 'bg' => 'rgba(124,92,252,.2)',  'color' => '#7c5cfc' ),
-		'easychallenge' => array( 'bg' => 'rgba(232,124,26,.2)',  'color' => '#e87c1a' ),
-		'easyrelax'     => array( 'bg' => 'rgba(90,127,80,.2)',   'color' => '#5a7f50' ),
-		'easytoilets'   => array( 'bg' => 'rgba(240,65,88,.2)',   'color' => '#f04158' ),
+		'easyflair'     => array( 'bg' => 'rgba(184,150,62,.15)',  'color' => 'var(--easyflair)' ),
+		'easyflash'     => array( 'bg' => 'rgba(124,92,252,.15)',  'color' => 'var(--easyflash)' ),
+		'easychallenge' => array( 'bg' => 'rgba(232,124,26,.15)',  'color' => 'var(--easychallenge)' ),
+		'easyrelax'     => array( 'bg' => 'rgba(90,127,80,.15)',   'color' => 'var(--easyrelax)' ),
+		'easytoilets'   => array( 'bg' => 'rgba(240,65,88,.15)',   'color' => 'var(--easytoilets)' ),
 	);
 	$cat_slug  = $primary_cat ? $primary_cat->slug : '';
-	$cat_c     = isset( $cat_colors[ $cat_slug ] ) ? $cat_colors[ $cat_slug ] : array( 'bg' => 'rgba(124,92,252,.2)', 'color' => '#7c5cfc' );
+	$cat_c     = isset( $cat_colors[ $cat_slug ] ) ? $cat_colors[ $cat_slug ] : array( 'bg' => 'rgba(124,92,252,.15)', 'color' => 'var(--secondary)' );
 
 	/* ── Share URL ────────────────────────────── */
 	$share_url   = urlencode( get_permalink() );
 	$share_title = urlencode( get_the_title() );
+
+	/* ── Recent posts for sidebar ─────────────── */
+	$recent_posts = new WP_Query( array(
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
+		'posts_per_page' => 3,
+		'post__not_in'   => array( $post_id ),
+	) );
+
+	/* ── All categories for sidebar ───────────── */
+	$all_cats = get_categories( array(
+		'orderby'    => 'count',
+		'order'      => 'DESC',
+		'hide_empty' => true,
+	) );
 ?>
 
 <main id="main" class="site-main">
 
-  <!-- ═══ HERO ═══════════════════════════════════ -->
-  <?php if ( $has_thumb ) : ?>
-    <section class="blog-detail-hero">
-      <div class="blog-detail-hero__bg">
-        <?php the_post_thumbnail( 'full', array( 'class' => 'blog-detail-hero__img' ) ); ?>
-        <div class="blog-detail-hero__overlay"></div>
-      </div>
-      <div class="blog-detail-hero__content">
-        <div class="container">
-          <!-- Breadcrumb -->
-          <nav class="blog-detail-hero__breadcrumb" aria-label="Fil d'Ariane">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Accueil</a>
-            <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-            <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
-            <?php if ( $primary_cat ) : ?>
-              <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-              <a href="<?php echo esc_url( add_query_arg( 'cat', $primary_cat->term_id, home_url( '/blog/' ) ) ); ?>"><?php echo esc_html( $primary_cat->name ); ?></a>
-            <?php endif; ?>
-            <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-            <span class="current"><?php the_title(); ?></span>
-          </nav>
+  <!-- ═══ COMPACT HERO ═══════════════════════════ -->
+  <section class="blog-hero" style="padding:9rem 0 3rem">
+    <div class="container" style="position:relative;z-index:1">
+      <!-- Breadcrumb -->
+      <nav class="blog-detail-breadcrumb" aria-label="Fil d'Ariane">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Accueil</a>
+        <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
+        <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
+        <?php if ( $primary_cat ) : ?>
+          <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
+          <a href="<?php echo esc_url( add_query_arg( 'cat', $primary_cat->term_id, home_url( '/blog/' ) ) ); ?>"><?php echo esc_html( $primary_cat->name ); ?></a>
+        <?php endif; ?>
+        <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
+        <span class="current"><?php the_title(); ?></span>
+      </nav>
+      <h1 class="blog-hero__title font-heading" style="font-size:clamp(1.75rem,4vw,2.5rem)">Détail de l'article</h1>
+    </div>
+  </section>
 
-          <!-- Category badge -->
-          <?php if ( $primary_cat ) : ?>
-            <span class="blog-detail-hero__cat" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['color'] ); ?>">
-              <?php echo easyevents_icon( 'tag', 10 ); ?>
-              <?php echo esc_html( $primary_cat->name ); ?>
-            </span>
+
+  <!-- ═══ TWO-COLUMN LAYOUT ═════════════════════ -->
+  <section class="section" style="padding-top:2.5rem">
+    <div class="container">
+      <div class="blog-detail-2col">
+
+        <!-- ── SIDEBAR (left) ─────────────────── -->
+        <aside class="blog-sidebar">
+
+          <!-- Recent posts -->
+          <?php if ( $recent_posts->have_posts() ) : ?>
+            <div class="blog-sidebar__block">
+              <h3 class="blog-sidebar__title font-heading">Articles récents</h3>
+              <div class="blog-sidebar__posts">
+                <?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+                  <a href="<?php the_permalink(); ?>" class="blog-sidebar-post">
+                    <?php if ( has_post_thumbnail() ) : ?>
+                      <div class="blog-sidebar-post__img">
+                        <?php the_post_thumbnail( 'thumbnail', array( 'loading' => 'lazy' ) ); ?>
+                      </div>
+                    <?php endif; ?>
+                    <div>
+                      <span class="blog-sidebar-post__title"><?php the_title(); ?></span>
+                      <span class="blog-sidebar-post__date">
+                        <?php echo easyevents_icon( 'calendar', 10 ); ?>
+                        <?php echo esc_html( get_the_date() ); ?>
+                      </span>
+                    </div>
+                  </a>
+                <?php endwhile; wp_reset_postdata(); ?>
+              </div>
+            </div>
+          <?php endif; ?>
+
+          <!-- Newsletter -->
+          <div class="blog-sidebar__block blog-sidebar__newsletter">
+            <h3 class="blog-sidebar__title font-heading">Newsletter</h3>
+            <p style="font-size:.8125rem;color:var(--muted-foreground);line-height:1.6;margin-bottom:1rem">
+              Recevez nos conseils événementiels directement dans votre boîte mail.
+            </p>
+            <div style="display:flex;gap:.5rem">
+              <input type="email" placeholder="Votre email" class="blog-sidebar__input" />
+              <button class="btn btn-primary" style="padding:.625rem 1.25rem;font-size:.75rem;white-space:nowrap">
+                S'inscrire
+              </button>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <?php if ( ! empty( $all_cats ) ) : ?>
+            <div class="blog-sidebar__block">
+              <h3 class="blog-sidebar__title font-heading">Catégories</h3>
+              <ul class="blog-sidebar__cats">
+                <?php foreach ( $all_cats as $cat ) : ?>
+                  <li>
+                    <a href="<?php echo esc_url( add_query_arg( 'cat', $cat->term_id, home_url( '/blog/' ) ) ); ?>" class="blog-sidebar__cat-link">
+                      <span><?php echo esc_html( $cat->name ); ?></span>
+                      <span class="blog-sidebar__cat-count">(<?php echo esc_html( $cat->count ); ?>)</span>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
+
+        </aside>
+
+
+        <!-- ── MAIN CONTENT (right) ───────────── -->
+        <div class="blog-detail-main">
+
+          <!-- Featured image — full quality, inline -->
+          <?php if ( has_post_thumbnail() ) : ?>
+            <div class="blog-detail-main__img-wrap">
+              <?php the_post_thumbnail( 'full', array(
+                'class'   => 'blog-detail-main__img',
+                'loading' => 'eager',
+              ) ); ?>
+            </div>
           <?php endif; ?>
 
           <!-- Title -->
-          <h1 class="blog-detail-hero__title font-heading"><?php the_title(); ?></h1>
+          <h1 class="blog-detail-main__title font-heading"><?php the_title(); ?></h1>
 
           <!-- Meta -->
-          <div class="blog-detail-hero__meta">
-            <span class="blog-detail-hero__meta-item">
-              <span class="blog-detail-hero__author-avatar"><?php echo esc_html( $author_initial ); ?></span>
+          <div class="blog-detail-main__meta">
+            <span class="blog-detail-main__meta-item">
+              <span class="blog-detail-main__avatar" style="background:<?php echo esc_attr( $cat_c['color'] ); ?>"><?php echo esc_html( $author_initial ); ?></span>
               <?php echo esc_html( $author_name ); ?>
             </span>
-            <span class="blog-detail-hero__meta-dot"></span>
-            <span class="blog-detail-hero__meta-item">
+            <span class="blog-detail-main__meta-dot">·</span>
+            <span class="blog-detail-main__meta-item">
+              <?php echo easyevents_icon( 'calendar', 13 ); ?>
+              <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
+            </span>
+            <span class="blog-detail-main__meta-dot">·</span>
+            <span class="blog-detail-main__meta-item">
               <?php echo easyevents_icon( 'clock', 13 ); ?>
               <?php echo esc_html( $read_time ); ?> min de lecture
             </span>
-            <span class="blog-detail-hero__meta-dot"></span>
-            <span class="blog-detail-hero__meta-item">
-              <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                <?php echo esc_html( get_the_date() ); ?>
-              </time>
-            </span>
           </div>
-        </div>
-      </div>
-    </section>
 
-  <?php else : ?>
-    <!-- No featured image variant -->
-    <section class="blog-detail-hero blog-detail-hero--no-image">
-      <div class="blog-detail-hero__content" style="padding:10rem 0 3.5rem">
-        <div class="container">
-          <nav class="blog-detail-hero__breadcrumb" aria-label="Fil d'Ariane">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Accueil</a>
-            <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-            <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
-            <?php if ( $primary_cat ) : ?>
-              <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-              <a href="<?php echo esc_url( add_query_arg( 'cat', $primary_cat->term_id, home_url( '/blog/' ) ) ); ?>"><?php echo esc_html( $primary_cat->name ); ?></a>
-            <?php endif; ?>
-            <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
-            <span class="current"><?php the_title(); ?></span>
-          </nav>
+          <!-- Article content -->
+          <article>
+            <div class="entry-content blog-detail-entry">
+              <?php the_content(); ?>
+            </div>
+          </article>
 
-          <?php if ( $primary_cat ) : ?>
-            <span class="blog-detail-hero__cat" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['color'] ); ?>">
-              <?php echo easyevents_icon( 'tag', 10 ); ?>
-              <?php echo esc_html( $primary_cat->name ); ?>
-            </span>
+          <!-- Tags + Share row -->
+          <div class="blog-detail-footer">
+            <!-- Tags -->
+            <div class="blog-detail-footer__tags">
+              <?php if ( ! empty( $post_tags ) ) : ?>
+                <?php foreach ( $post_tags as $tag ) : ?>
+                  <a href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" class="blog-detail-tag">
+                    <?php echo esc_html( $tag->name ); ?>
+                  </a>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </div>
+
+            <!-- Share -->
+            <div class="blog-detail-footer__share">
+              <span class="blog-detail-footer__share-label">Partager</span>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Facebook">
+                <?php echo easyevents_icon( 'facebook', 15 ); ?>
+              </a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $share_url; ?>&title=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="LinkedIn">
+                <?php echo easyevents_icon( 'linkedin', 15 ); ?>
+              </a>
+              <a href="https://twitter.com/intent/tweet?url=<?php echo $share_url; ?>&text=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="X / Twitter">
+                <?php echo easyevents_icon( 'message', 15 ); ?>
+              </a>
+              <button class="blog-detail-share__btn" aria-label="Copier le lien" onclick="eeBlogCopyLink()">
+                <?php echo easyevents_icon( 'copy', 15 ); ?>
+              </button>
+            </div>
+          </div>
+
+          <!-- Post navigation -->
+          <?php
+          $prev_post = get_previous_post();
+          $next_post = get_next_post();
+          if ( $prev_post || $next_post ) :
+          ?>
+            <nav class="blog-post-nav" aria-label="Navigation articles">
+              <?php if ( $prev_post ) : ?>
+                <a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>" class="blog-post-nav__item">
+                  <span class="blog-post-nav__icon">
+                    <?php echo easyevents_icon( 'arrow-left', 16 ); ?>
+                  </span>
+                  <div>
+                    <span class="blog-post-nav__label">Article précédent</span>
+                    <span class="blog-post-nav__title"><?php echo esc_html( $prev_post->post_title ); ?></span>
+                  </div>
+                </a>
+              <?php else : ?>
+                <div></div>
+              <?php endif; ?>
+
+              <?php if ( $next_post ) : ?>
+                <a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>" class="blog-post-nav__item blog-post-nav__item--next">
+                  <span class="blog-post-nav__icon">
+                    <?php echo easyevents_icon( 'arrow-right', 16 ); ?>
+                  </span>
+                  <div>
+                    <span class="blog-post-nav__label">Article suivant</span>
+                    <span class="blog-post-nav__title"><?php echo esc_html( $next_post->post_title ); ?></span>
+                  </div>
+                </a>
+              <?php endif; ?>
+            </nav>
           <?php endif; ?>
 
-          <h1 class="blog-detail-hero__title font-heading"><?php the_title(); ?></h1>
+        </div><!-- /.blog-detail-main -->
 
-          <div class="blog-detail-hero__meta">
-            <span class="blog-detail-hero__meta-item">
-              <span class="blog-detail-hero__author-avatar"><?php echo esc_html( $author_initial ); ?></span>
-              <?php echo esc_html( $author_name ); ?>
-            </span>
-            <span class="blog-detail-hero__meta-dot"></span>
-            <span class="blog-detail-hero__meta-item">
-              <?php echo easyevents_icon( 'clock', 13 ); ?>
-              <?php echo esc_html( $read_time ); ?> min de lecture
-            </span>
-            <span class="blog-detail-hero__meta-dot"></span>
-            <span class="blog-detail-hero__meta-item">
-              <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                <?php echo esc_html( get_the_date() ); ?>
-              </time>
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  <?php endif; ?>
-
-
-  <!-- ═══ ARTICLE BODY ═══════════════════════════ -->
-  <div class="blog-detail-layout">
-
-    <!-- Empty left column on desktop (for grid centering) -->
-    <div></div>
-
-    <!-- Content -->
-    <div class="blog-detail-content">
-
-      <!-- Mobile share bar -->
-      <div class="blog-detail-share-mobile">
-        <span class="blog-detail-share-mobile__label">Partager</span>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur Facebook">
-          <?php echo easyevents_icon( 'facebook', 16 ); ?>
-        </a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $share_url; ?>&title=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur LinkedIn">
-          <?php echo easyevents_icon( 'linkedin', 16 ); ?>
-        </a>
-        <a href="https://twitter.com/intent/tweet?url=<?php echo $share_url; ?>&text=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur X">
-          <?php echo easyevents_icon( 'message', 16 ); ?>
-        </a>
-        <button class="blog-detail-share__btn" aria-label="Copier le lien" onclick="eeBlogCopyLink()">
-          <?php echo easyevents_icon( 'copy', 16 ); ?>
-        </button>
-      </div>
-
-      <!-- Article content -->
-      <article>
-        <div class="entry-content">
-          <?php the_content(); ?>
-        </div>
-
-        <!-- Tags -->
-        <?php if ( ! empty( $post_tags ) ) : ?>
-          <div class="blog-detail-tags">
-            <?php foreach ( $post_tags as $tag ) : ?>
-              <a href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" class="blog-detail-tag">
-                # <?php echo esc_html( $tag->name ); ?>
-              </a>
-            <?php endforeach; ?>
-          </div>
-        <?php endif; ?>
-
-        <!-- Post navigation -->
-        <?php
-        $prev_post = get_previous_post();
-        $next_post = get_next_post();
-        if ( $prev_post || $next_post ) :
-        ?>
-          <nav class="blog-post-nav" aria-label="Navigation articles">
-            <?php if ( $prev_post ) : ?>
-              <a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>" class="blog-post-nav__item">
-                <span class="blog-post-nav__icon">
-                  <?php echo easyevents_icon( 'arrow-left', 16 ); ?>
-                </span>
-                <div>
-                  <span class="blog-post-nav__label">Article précédent</span>
-                  <span class="blog-post-nav__title"><?php echo esc_html( $prev_post->post_title ); ?></span>
-                </div>
-              </a>
-            <?php else : ?>
-              <div></div>
-            <?php endif; ?>
-
-            <?php if ( $next_post ) : ?>
-              <a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>" class="blog-post-nav__item blog-post-nav__item--next">
-                <span class="blog-post-nav__icon">
-                  <?php echo easyevents_icon( 'arrow-right', 16 ); ?>
-                </span>
-                <div>
-                  <span class="blog-post-nav__label">Article suivant</span>
-                  <span class="blog-post-nav__title"><?php echo esc_html( $next_post->post_title ); ?></span>
-                </div>
-              </a>
-            <?php endif; ?>
-          </nav>
-        <?php endif; ?>
-      </article>
+      </div><!-- /.blog-detail-2col -->
     </div>
-
-    <!-- Floating share sidebar (desktop) -->
-    <aside class="blog-detail-share" aria-label="Partager">
-      <span class="blog-detail-share__label">Partager</span>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur Facebook">
-        <?php echo easyevents_icon( 'facebook', 16 ); ?>
-      </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $share_url; ?>&title=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur LinkedIn">
-        <?php echo easyevents_icon( 'linkedin', 16 ); ?>
-      </a>
-      <a href="https://twitter.com/intent/tweet?url=<?php echo $share_url; ?>&text=<?php echo $share_title; ?>" target="_blank" rel="noopener noreferrer" class="blog-detail-share__btn" aria-label="Partager sur X">
-        <?php echo easyevents_icon( 'message', 16 ); ?>
-      </a>
-      <button class="blog-detail-share__btn" aria-label="Copier le lien" onclick="eeBlogCopyLink()">
-        <?php echo easyevents_icon( 'copy', 16 ); ?>
-      </button>
-    </aside>
-  </div>
+  </section>
 
 
   <!-- ═══ RELATED ARTICLES ═══════════════════════ -->
@@ -272,7 +287,7 @@ while ( have_posts() ) :
             $r_cat     = ! empty( $r_cats ) ? $r_cats[0] : null;
             $r_slug    = $r_cat ? $r_cat->slug : '';
             $r_name    = $r_cat ? $r_cat->name : '';
-            $r_c       = isset( $cat_colors[ $r_slug ] ) ? $cat_colors[ $r_slug ] : array( 'bg' => 'rgba(124,92,252,.15)', 'color' => '#7c5cfc' );
+            $r_c       = isset( $cat_colors[ $r_slug ] ) ? $cat_colors[ $r_slug ] : array( 'bg' => 'rgba(124,92,252,.15)', 'color' => 'var(--secondary)' );
             $r_author  = get_the_author();
             $r_initial = mb_strtoupper( mb_substr( $r_author, 0, 1 ) );
             $r_content = get_post_field( 'post_content', get_the_ID() );
