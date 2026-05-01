@@ -52,8 +52,11 @@ while ( have_posts() ) :
 <main id="main" class="site-main">
 
   <!-- ═══ COMPACT HERO ═══════════════════════════ -->
-  <section class="blog-hero" style="padding:9rem 0 3rem">
-    <div class="container" style="position:relative;z-index:1">
+  <section class="blog-hero-light" style="padding:9rem 0 3rem">
+    <div class="blog-hero-light__orb blog-hero-light__orb--1"></div>
+    <div class="blog-hero-light__orb blog-hero-light__orb--2"></div>
+    <div class="blog-hero-light__orb blog-hero-light__orb--3"></div>
+    <div class="container" style="position:relative;z-index:2">
       <!-- Breadcrumb -->
       <nav class="blog-detail-breadcrumb" aria-label="Fil d'Ariane">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Accueil</a>
@@ -66,7 +69,7 @@ while ( have_posts() ) :
         <span><?php echo easyevents_icon( 'chevron-right', 12 ); ?></span>
         <span class="current"><?php the_title(); ?></span>
       </nav>
-      <h1 class="blog-hero__title font-heading" style="font-size:clamp(1.75rem,4vw,2.5rem)">Détail de l'article</h1>
+      <h1 class="blog-hero-light__title font-heading" style="font-size:clamp(1.75rem,4vw,2.5rem)">Détail de l'article</h1>
     </div>
   </section>
 
@@ -315,6 +318,10 @@ while ( have_posts() ) :
     </section>
     <?php wp_reset_postdata(); ?>
   <?php endif; ?>
+
+  <?php get_template_part( 'template-parts/sections/services' ); ?>
+
+  <?php get_template_part( 'template-parts/sections/contact' ); ?>
 
 </main>
 
