@@ -163,7 +163,7 @@ $faqItems = array(
   array( 'q' => "Peut-on combiner plusieurs prestations pour un même événement ?", 'a' => "Absolument. Il est possible de composer un package sur mesure en associant par exemple un bar mobile, un atelier cocktails et une animation. Nous conseillons la combinaison la plus adaptée à votre budget et à votre programme." ),
   array( 'q' => "Quel est le délai minimum pour une réservation ?", 'a' => "Nous recommandons de nous contacter au moins 2 à 3 semaines avant votre événement. Pour les dates très demandées (week-ends, fêtes), plus tôt est préférable." ),
   array( 'q' => 'Dans quelle zone intervenez-vous ?', 'a' => "Nous intervenons à Genève et en Suisse francophone." ),
-  array( 'q' => 'Comment obtenir un devis ?', 'a' => "Remplissez notre formulaire de demande en ligne ou appelez-nous directement. Nous revenons vers vous sous 24h avec une offre personnalisée." ),
+  array( 'q' => 'Comment obtenir un devis ?', 'a' => "Remplissez notre formulaire de demande en ligne : vous recevez instantanément votre devis. Vous pouvez aussi nous appeler directement si vous souhaitez un accompagnement personnalisé." ),
 );
 
 $faqItems     = ee_get_faq( $post_id, $faqItems );
@@ -504,7 +504,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <div class="partners-section animate-on-scroll" style="margin-top:3rem">
         <h4 style="color:<?php echo esc_attr( $C['dark'] ); ?>;text-align:center;margin-bottom:.5rem">Nos Partenaires</h4>
         <p style="color:<?php echo esc_attr( $C['dark'] ); ?>77;text-align:center;font-size:.875rem;margin-bottom:2rem">Découvrez nos partenaires privilégiés pour un évènement réussi !</p>
-        <div class="partners-grid partners-grid--3" <?php if ( count( $barPartners ) < 3 ) echo 'style="justify-content:center"'; ?>>
+        <div class="partners-grid partners-grid--3" <?php if ( count( $barPartners ) < 2 ) echo 'style="justify-content:center"'; ?>>
           <?php foreach ( $barPartners as $bp ) : ?>
             <div class="partner-card" style="background:#fff;border-radius:1rem;padding:1.5rem;text-align:center">
               <?php if ( ! empty( $bp['image'] ) ) : ?><div class="partner-card__img"><img src="<?php echo esc_url( $bp['image'] ); ?>" alt="<?php echo esc_attr( $bp['name'] ); ?>" loading="lazy"></div><?php endif; ?>
