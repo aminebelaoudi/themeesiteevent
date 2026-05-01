@@ -44,7 +44,7 @@ if ( is_category() ) {
 <main id="main" class="site-main">
 
   <!-- Hero -->
-  <section class="blog-hero-light">
+  <section class="blog-hero-light blog-hero-light--archive">
     <div class="blog-hero-light__orb blog-hero-light__orb--1"></div>
     <div class="blog-hero-light__orb blog-hero-light__orb--2"></div>
     <div class="blog-hero-light__orb blog-hero-light__orb--3"></div>
