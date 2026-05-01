@@ -281,7 +281,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
       <?php endif; ?>
       <p class="hero__desc"><?php echo esc_html( ee_get( $post_id, 'hero_subtitle', 'Team building innovant en Suisse : Émission TV immersive et activités outdoor pour renforcer la cohésion de vos équipes.' ) ); ?></p>
       <div class="hero__actions">
-        <a href="#devis" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
+        <a href="https://invoice.easychallenge.ch/devis-emission/?utm_source=EasyEvents" class="btn btn-hero" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( ee_get( $post_id, 'hero_cta_1', 'Demander un devis' ) ); ?></a>
         <a href="#formules" class="btn btn-hero-outline"><?php echo esc_html( ee_get( $post_id, 'hero_cta_2', 'Voir les formules' ) ); ?> <?php echo easyevents_icon( 'arrow-right', 16 ); ?></a>
       </div>
     </div>
@@ -490,7 +490,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           <p class="product-price__label">À partir de</p>
           <p class="product-price__amount"><?php echo esc_html( $p['price'] ); ?><span class="product-price__currency"><?php echo esc_html( $p['currency'] ); ?></span></p>
           <p class="product-price__suffix"><?php echo esc_html( $p['priceSuffix'] ); ?></p>
-          <a href="#devis" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://invoice.easychallenge.ch/devis-emission/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander mon devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
       </div>
     <?php endforeach; ?>
@@ -539,7 +539,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <span style="color:<?php echo esc_attr( $C['accentL'] ); ?>;border-color:<?php echo esc_attr( $C['accentL'] ); ?>25;background:<?php echo esc_attr( $C['accentL'] ); ?>08"><?php echo esc_html( $tag ); ?></span>
             <?php endforeach; ?>
           </div>
-          <a href="/#contact" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
+          <a href="https://invoice.easychallenge.ch/devis-emission/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Demander votre devis <?php echo easyevents_icon( 'arrow-right', 14 ); ?></a>
         </div>
         <div class="brand-block__images brand-block__images--mosaic">
           <div class="brand-block__img-wrap brand-block__img-wrap--float-a"><img src="<?php echo esc_url( $img['easychallenge'] ); ?>" alt="Team Building" loading="lazy"></div>
