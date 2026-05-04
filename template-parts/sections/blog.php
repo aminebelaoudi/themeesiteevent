@@ -23,15 +23,10 @@ if ( $home_blog_query->have_posts() ) {
     $category_name   = $primary_cat ? $primary_cat->name : 'Article';
     $category_slug   = $primary_cat ? $primary_cat->slug : 'secondary';
 
-    $content    = get_post_field( 'post_content', get_the_ID() );
-    $word_count = str_word_count( wp_strip_all_tags( $content ) );
-    $read_time  = max( 1, (int) ceil( $word_count / 200 ) ) . ' min';
-
     $posts_data[] = array(
       'category'      => $category_name,
       'categorySlug'  => $category_slug,
       'date'          => get_the_date(),
-      'readTime'      => $read_time,
       'title'         => get_the_title(),
       'excerpt'       => get_the_excerpt(),
       'image'         => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
@@ -129,10 +124,6 @@ $cat_colors = array(
                 <span style="display:flex;align-items:center;gap:.25rem">
                   <?php echo easyevents_icon( 'calendar', 11 ); ?>
                   <?php echo esc_html( $blog_post['date'] ); ?>
-                </span>
-                <span style="display:flex;align-items:center;gap:.25rem">
-                  <?php echo easyevents_icon( 'clock', 11 ); ?>
-                  <?php echo esc_html( $blog_post['readTime'] ); ?>
                 </span>
               </div>
             </div>
