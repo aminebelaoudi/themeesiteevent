@@ -207,6 +207,46 @@ function easyevents_service_meta_styles() {
 }
 
 /* ───────────────────────────────────────────────
+ * Defaults par service — pré-remplissage admin
+ * ─────────────────────────────────────────────── */
+
+function ee_get_service_defaults( $slug, $key ) {
+    static $map = null;
+    if ( null === $map ) {
+        $map = array(
+            'easyflash' => array(
+                'hero_title'    => 'Location de PhotoBooth en Suisse',
+                'hero_subtitle' => 'Depuis 2009, EasyFlash propose des bornes photo entièrement personnalisables dans toute la Suisse pour offrir un élément de distraction unique à vos invités.',
+                'hero_badge'    => 'EasyFlash · Location de PhotoBooth',
+                'hero_cta_1'    => 'Obtenir un devis',
+                'hero_cta_2'    => 'Voir nos modèles',
+                'phone'         => '+41 22 519 21 66',
+                'stats' => array(
+                    array( 'value' => '2009', 'label' => 'Fondé à Genève' ),
+                    array( 'value' => '500+', 'label' => 'Événements couverts' ),
+                    array( 'value' => '4',    'label' => 'Modèles de PhotoBooth' ),
+                    array( 'value' => '24h',  'label' => 'Réponse garantie' ),
+                ),
+                'testimonials' => array(
+                    array( 'text' => 'Le photobooth EasyFlash a fait sensation ! Les invités en parlent encore. Les tirages étaient magnifiques et l\'équipe très professionnelle.', 'author' => 'Mariage', 'company' => 'Julie & Thomas' ),
+                    array( 'text' => 'Le 360° a été l\'attraction numéro un de notre soirée corporate. Vidéos spectaculaires, partage instantané. On recommande à 100% !', 'author' => 'Gala d\'entreprise', 'company' => 'Laurent M.' ),
+                    array( 'text' => 'Service impeccable du début à la fin. Le Miroir a ajouté une touche glamour parfaite à notre événement. Merci EasyFlash !', 'author' => 'Anniversaire', 'company' => 'Sandra K.' ),
+                ),
+                'faq' => array(
+                    array( 'q' => 'Quelle est la différence entre l\'EasyBox, l\'EasyBox 360° et l\'EasyBox Miroir ?', 'a' => 'L\'EasyBox B&W est notre borne photo signature : épurée, élégante et au rendu noir & blanc intemporel. L\'EasyBox 360° capture une vidéo panoramique à 360° de vos invités pour un effet spectaculaire. L\'EasyBox Miroir est un grand écran miroir interactif qui propose des filtres et animations en temps réel. Chaque modèle est entièrement personnalisable aux couleurs de votre événement.' ),
+                    array( 'q' => 'Les impressions sont-elles incluses dans la location ?', 'a' => 'Les impressions sont facultatives et se configurent directement sur notre devis en ligne. Si vous optez pour un pack impression, vous avez le choix entre une formule limitée ou illimitée selon vos besoins. Les photos numériques restent disponibles en téléchargement via QR code ou par e-mail après l\'événement, quel que soit le pack choisi.' ),
+                    array( 'q' => 'Est-il possible de personnaliser le cadre photo et l\'interface ?', 'a' => 'Oui, vous avez 3 options : (1) Accès gratuit à notre bibliothèque de plus de 5 000 templates que vous personnalisez vous-même avec votre logo, slogan ou couleurs. (2) Vous nous transmettez votre thématique, couleurs et polices, et notre équipe crée un template entièrement sur mesure (option payante). (3) Mode Portrait IA : le système plonge chaque invité dans un univers visuel unique dont il devient l\'acteur principal.' ),
+                    array( 'q' => 'Combien de temps faut-il pour installer une borne ?', 'a' => 'Le montage prend entre 30 et 45 minutes. Notre équipe intervient bien en amont du début de votre événement afin que tout soit prêt en toute sérénité. Un technicien reste sur place toute la durée de la prestation.' ),
+                    array( 'q' => 'Dans quelle zone géographique intervenez-vous ?', 'a' => 'Nous intervenons à Genève et en Suisse francophone. Contactez-nous pour un devis incluant les frais de déplacement.' ),
+                    array( 'q' => 'Comment se déroule la réservation ?', 'a' => 'Tout se passe en ligne, en moins de 5 minutes : (1) Configurez votre devis en choisissant votre borne, la date et le lieu. (2) Confirmez votre réservation en ligne. (3) Personnalisez ensuite votre expérience depuis votre espace.' ),
+                ),
+            ),
+        );
+    }
+    return isset( $map[ $slug ][ $key ] ) ? $map[ $slug ][ $key ] : null;
+}
+
+/* ───────────────────────────────────────────────
  * 4. Meta box render functions
  * ─────────────────────────────────────────────── */
 
@@ -220,7 +260,15 @@ function easyevents_render_hero_meta( $post ) {
     $hero_cta_1    = get_post_meta( $post->ID, '_ee_hero_cta_1', true );
     $hero_cta_2    = get_post_meta( $post->ID, '_ee_hero_cta_2', true );
 
-    echo '<div class="ee-section-desc">Modifiez le contenu principal de la section Hero. Laissez vide pour utiliser les valeurs par défaut.</div>';
+    // Pré-remplir avec les valeurs natives de la page si aucune valeur personnalisée n'est enregistrée
+    $slug = $post->post_name;
+    if ( empty( $hero_title ) )    $hero_title    = (string) ( ee_get_service_defaults( $slug, 'hero_title' )    ?? '' );
+    if ( empty( $hero_subtitle ) ) $hero_subtitle = (string) ( ee_get_service_defaults( $slug, 'hero_subtitle' ) ?? '' );
+    if ( empty( $hero_badge ) )    $hero_badge    = (string) ( ee_get_service_defaults( $slug, 'hero_badge' )    ?? '' );
+    if ( empty( $hero_cta_1 ) )    $hero_cta_1    = (string) ( ee_get_service_defaults( $slug, 'hero_cta_1' )    ?? '' );
+    if ( empty( $hero_cta_2 ) )    $hero_cta_2    = (string) ( ee_get_service_defaults( $slug, 'hero_cta_2' )    ?? '' );
+
+    echo '<div class="ee-section-desc">✏️ Les valeurs actuelles de la page sont pré-remplies ci-dessous. Modifiez puis enregistrez pour les personnaliser.</div>';
 
     echo '<div class="ee-field"><label>Titre Hero</label>';
     echo '<input type="text" name="_ee_hero_title" value="' . esc_attr( $hero_title ) . '" placeholder="Titre principal du hero">';
@@ -300,7 +348,8 @@ function easyevents_render_hero_meta( $post ) {
 function easyevents_render_stats_meta( $post ) {
     $stats = get_post_meta( $post->ID, '_ee_stats', true );
     if ( ! is_array( $stats ) || empty( $stats ) ) {
-        $stats = array(
+        $defaults_stats = ee_get_service_defaults( $post->post_name, 'stats' );
+        $stats = $defaults_stats ?: array(
             array( 'value' => '', 'label' => '' ),
             array( 'value' => '', 'label' => '' ),
             array( 'value' => '', 'label' => '' ),
@@ -308,7 +357,7 @@ function easyevents_render_stats_meta( $post ) {
         );
     }
 
-    echo '<div class="ee-section-desc">Les 4 statistiques affichées dans le hero. Laissez vide pour garder les valeurs par défaut.</div>';
+    echo '<div class="ee-section-desc">✏️ Les valeurs actuelles de la page sont pré-remplies ci-dessous. Modifiez puis enregistrez pour les personnaliser.</div>';
     echo '<div class="ee-repeater">';
     foreach ( $stats as $i => $s ) {
         echo '<div class="ee-repeater-item">';
@@ -325,10 +374,11 @@ function easyevents_render_stats_meta( $post ) {
 function easyevents_render_faq_meta( $post ) {
     $faq = get_post_meta( $post->ID, '_ee_faq', true );
     if ( ! is_array( $faq ) || empty( $faq ) ) {
-        $faq = array();
+        $defaults_faq = ee_get_service_defaults( $post->post_name, 'faq' );
+        $faq = $defaults_faq ?: array();
     }
 
-    echo '<div class="ee-section-desc">Ajoutez ou modifiez les questions fréquentes. Laissez vide pour garder les FAQ par défaut.</div>';
+    echo '<div class="ee-section-desc">✏️ Les questions actuelles de la page sont pré-remplies ci-dessous. Modifiez puis enregistrez pour les personnaliser.</div>';
     echo '<div class="ee-repeater" id="ee-faq-repeater">';
     foreach ( $faq as $i => $item ) {
         echo '<div class="ee-repeater-item">';
@@ -358,10 +408,11 @@ function easyevents_render_faq_meta( $post ) {
 function easyevents_render_testimonials_meta( $post ) {
     $testimonials = get_post_meta( $post->ID, '_ee_testimonials', true );
     if ( ! is_array( $testimonials ) || empty( $testimonials ) ) {
-        $testimonials = array();
+        $defaults_t = ee_get_service_defaults( $post->post_name, 'testimonials' );
+        $testimonials = $defaults_t ?: array();
     }
 
-    echo '<div class="ee-section-desc">Ajoutez ou modifiez les témoignages. Laissez vide pour garder les avis par défaut.</div>';
+    echo '<div class="ee-section-desc">✏️ Les témoignages actuels de la page sont pré-remplies ci-dessous. Modifiez puis enregistrez pour les personnaliser.</div>';
     echo '<div class="ee-repeater" id="ee-testimonials-repeater">';
     foreach ( $testimonials as $i => $t ) {
         echo '<div class="ee-repeater-item">';
@@ -396,6 +447,8 @@ function easyevents_render_contact_meta( $post ) {
     $email = get_post_meta( $post->ID, '_ee_email', true );
     $cta   = get_post_meta( $post->ID, '_ee_devis_cta', true );
 
+    if ( empty( $phone ) ) $phone = (string) ( ee_get_service_defaults( $post->post_name, 'phone' ) ?? '' );
+
     echo '<div class="ee-field"><label>Téléphone</label>';
     echo '<input type="text" name="_ee_phone" value="' . esc_attr( $phone ) . '" placeholder="+41 22 519 21 66"></div>';
 
@@ -412,7 +465,11 @@ function easyevents_get_service_image_override_fields( $slug ) {
                         'easyflair' => 'Image principale EasyFlair',
                 ),
                 'easyflash' => array(
-                        'easyflash' => 'Image principale EasyFlash',
+                        'easyflash'          => 'Image principale EasyFlash',
+                        'panel-easybox-bw'   => 'Image onglet EasyBox (classique)',
+                        'panel-easybox-miroir' => 'Image onglet EasyBox Miroir',
+                        'panel-easybox-360'  => 'Image onglet EasyBox 360°',
+                        'panel-easybox-iris' => 'Image onglet EasyBox Iris',
                 ),
                 'easychallenge' => array(
                         'easychallenge' => 'Image principale EasyChallenge',

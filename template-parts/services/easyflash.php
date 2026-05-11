@@ -1,7 +1,6 @@
 <?php
 /**
- * EasyFlash - Full service page (100% React fidelity)
- *
+ * EasyFlash - Full service page 
  * @package EasyEvents
  */
 
@@ -36,13 +35,14 @@ $products = array(
     'locationTitle'=> 'Location Photobooth EasyBox',
     'isNew'        => false,
     'tag'          => 'Best-seller',
-    'tagline'      => 'Plus qu\'un simple appareil photo. Une animation Photobooth unique et personnalisée.',
-    'desc'         => 'Immortalisez vos souvenirs à jamais ! Disponible sur Genève et dans toute la Suisse.',
-    'longDesc'     => "Qui n’a jamais rêvé de ce moment inoubliable où convives et animation ne font qu’un ?\n\nAujourd’hui Easyflash vous propose de mettre en scène votre événement (mariage, anniversaire, cocktail, professionnel, inauguration…) et de vous accompagner dans le succès de celui-ci avec son Photobooth EasyBox dernière génération !\n\nAucune préparation n’est nécessaire, sélectionnez votre borne photo, personnalisez-la selon vos envies et vos besoins et nous nous chargeons du reste. Notre objectif : vous apporter un petit moment de bonheur, 1h, 1 jour, 1 week-end, c’est à vous de décider.\n\nDevant notre Photomaton, vos invités pourront laisser libre cours à leur imagination (au naturel, déguisés, décalés). Nous mettons à disposition des packs d’accessoires. Donnez-leur la possibilité d'immortaliser leur présence lors de votre événement, de repartir chacun avec leurs photos (effet garanti), en les imprimant instantanément sur papier, ou en les envoyant directement sur leur téléphone via une connexion Wi-Fi intégrée. Nos bornes photos sont très simples d'utilisation, aucun paramétrage n’est nécessaire.\n\nAlors n’hésitez plus un instant, votre Photobooth EasyBox vous attend, éblouissez vos invités !",
+    'tagline'      => 'Une expérience photo unique pour sublimer vos événements',
+    'desc'         => 'Créez des souvenirs inoubliables et partagez des moments d’exception avec vos invités. Disponible à Genève et dans toute la Suisse.',
+    'longDesc'     => "Qui n’a jamais rêvé de ce moment où convives et animation ne font qu’un ?\n\nAvec l’EasyBox, Easyflash vous accompagne dans la réussite de vos événements (mariage, anniversaire, soirée corporate, inauguration…) grâce à un photobooth moderne, intuitif et entièrement personnalisable.\n\nAucune préparation nécessaire : choisissez votre borne, personnalisez-la selon vos envies, et nous nous chargeons du reste. Notre objectif : vous offrir un moment de plaisir, que ce soit pour quelques heures, une journée ou tout un week-end.\n\nDevant le photobooth, vos invités peuvent laisser libre cours à leur imagination : naturel, fun ou décalé. Des accessoires sont disponibles pour encore plus de créativité.\n\nPhotos en couleur, noir et blanc élégant ou filtres personnalisés : chaque cliché est optimisé pour un rendu de haute qualité.\n\nVos invités repartent instantanément avec leurs souvenirs, imprimés sur place ou envoyés directement sur leur smartphone via Wi-Fi. Une galerie complète est également disponible après l’événement.\n\nSimple d’utilisation, sans paramétrage, l’EasyBox s’adapte à tous vos événements.\n\nFaites la différence et créez un effet “waouh” auprès de vos invités.",
     'precisions'   => array(
-      'Nos Photobooth peuvent avoir 2 finitions différentes : noire ou bois.',
-      'Nous avons également une version avec le pied plus court pour une prise de photo assise.',
-      'B&amp;W ne signifie pas rendu noir et blanc : il s’agit du support (finitions noire ou bois).',
+      'Disponible en finitions élégantes : noire ou bois',
+      'S’intègre facilement à tous les styles d’événements (chic, moderne, corporate…)',
+      'Version avec pied court disponible pour des prises de vue assises',
+      'Configuration flexible selon l’espace et vos besoins',
     ),
     'price'    => '349.-',
     'currency' => 'CHF',
@@ -237,7 +237,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
 <!-- ━━━━ HERO ━━━━ -->
 <section class="service-hero service-hero--parallax" style="background:<?php echo esc_attr( $C['dark'] ); ?>">
   <div class="service-hero__bg">
-    <img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ) ); ?>" alt="EasyFlash PhotoBooth" class="service-hero__img" loading="eager">
+    <img src="<?php echo esc_url( ee_get( $post_id, 'hero_image', get_theme_file_uri( 'assets/images/homepage-banner-box.jpg' ) ) ); ?>" alt="EasyFlash PhotoBooth" class="service-hero__img" loading="eager">
     <div class="service-hero__overlay-1" style="background:linear-gradient(150deg,<?php echo esc_attr( $C['dark'] ); ?>ee 0%,<?php echo esc_attr( $C['dark'] ); ?>c8 48%,<?php echo esc_attr( $C['accent'] ); ?>28 100%)"></div>
     <div class="service-hero__overlay-2" style="background:radial-gradient(ellipse at 75% 25%,<?php echo esc_attr( $C['accent'] ); ?>1a 0%,transparent 60%)"></div>
     <div class="service-hero__overlay-3" style="background:radial-gradient(ellipse at 20% 80%,<?php echo esc_attr( $C['accentL'] ); ?>0c 0%,transparent 50%)"></div>
@@ -307,10 +307,10 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
     <!-- Tab panels -->
     <?php
     $panel_imgs = array(
-      'easybox-iris'   => get_theme_file_uri( 'assets/images/easybox-iris-300x200.jpg' ),
-      'easybox-bw'     => get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ),
-      'easybox-miroir' => get_theme_file_uri( 'assets/images/easybox-mirroir-new-300x200.jpeg' ),
-      'easybox-360'    => get_theme_file_uri( 'assets/images/easybox-360-300x200.jpg' ),
+      'easybox-iris'   => ee_get_image( $post_id, 'panel-easybox-iris',   get_theme_file_uri( 'assets/images/easybox-iris-300x200.jpg' ) ),
+      'easybox-bw'     => ee_get_image( $post_id, 'panel-easybox-bw',     get_theme_file_uri( 'assets/images/cabines-easyflash-300x200.jpg' ) ),
+      'easybox-miroir' => ee_get_image( $post_id, 'panel-easybox-miroir', get_theme_file_uri( 'assets/images/easybox-mirroir-new-300x200.jpeg' ) ),
+      'easybox-360'    => ee_get_image( $post_id, 'panel-easybox-360',    get_theme_file_uri( 'assets/images/easybox-360-300x200.jpg' ) ),
     );
     ?>
     <?php foreach ( $products as $i => $p ) : ?>
