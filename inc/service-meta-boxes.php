@@ -26,153 +26,40 @@ function easyevents_service_meta_enqueue_media( $hook ) {
 /* ───────────────────────────────────────────────
  * 1. Register meta boxes for service pages
  * ─────────────────────────────────────────────── */
-add_action( 'add_meta_boxes', 'easyevents_service_meta_boxes' );
+add_action( 'add_meta_boxes_page', 'easyevents_service_meta_boxes' );
 
-function easyevents_service_meta_boxes() {
+function easyevents_service_meta_boxes( $post ) {
     $services = array( 'easyflair', 'easyflash', 'easychallenge', 'easyrelax', 'easytoilets' );
-    $pages    = get_pages( array( 'post_status' => 'publish,draft' ) );
 
-    foreach ( $pages as $page ) {
-        $slug = $page->post_name;
-        if ( in_array( $slug, $services, true ) ) {
-            add_meta_box(
-                'easyevents_service_hero',
-                '🎯 Hero Section',
-                'easyevents_render_hero_meta',
-                'page',
-                'normal',
-                'high'
-            );
-            add_meta_box(
-                'easyevents_service_stats',
-                '📊 Statistiques',
-                'easyevents_render_stats_meta',
-                'page',
-                'normal',
-                'high'
-            );
-            add_meta_box(
-                'easyevents_service_faq',
-                '❓ FAQ',
-                'easyevents_render_faq_meta',
-                'page',
-                'normal',
-                'default'
-            );
-            add_meta_box(
-                'easyevents_service_testimonials',
-                '⭐ Témoignages',
-                'easyevents_render_testimonials_meta',
-                'page',
-                'normal',
-                'default'
-            );
-            add_meta_box(
-                'easyevents_service_contact',
-                '📞 Contact & CTA',
-                'easyevents_render_contact_meta',
-                'page',
-                'side',
-                'default'
-            );
-            add_meta_box(
-                'easyevents_service_images',
-                '🖼️ Images des sections',
-                'easyevents_render_images_meta',
-                'page',
-                'normal',
-                'default'
-            );
-            break; // Only add once
-        }
+    // Check 1 : slug direct de la page
+    if ( in_array( $post->post_name, $services, true ) ) {
+        easyevents_add_all_service_meta_boxes();
+        return;
     }
 
-    // Show meta boxes on all pages that use page-service.php template or are service children
-    add_meta_box(
-        'easyevents_service_hero',
-        '🎯 Hero Section',
-        'easyevents_render_hero_meta',
-        'page',
-        'normal',
-        'high'
-    );
-    add_meta_box(
-        'easyevents_service_stats',
-        '📊 Statistiques',
-        'easyevents_render_stats_meta',
-        'page',
-        'normal',
-        'high'
-    );
-    add_meta_box(
-        'easyevents_service_faq',
-        '❓ FAQ',
-        'easyevents_render_faq_meta',
-        'page',
-        'normal',
-        'default'
-    );
-    add_meta_box(
-        'easyevents_service_testimonials',
-        '⭐ Témoignages',
-        'easyevents_render_testimonials_meta',
-        'page',
-        'normal',
-        'default'
-    );
-    add_meta_box(
-        'easyevents_service_contact',
-        '📞 Contact & CTA',
-        'easyevents_render_contact_meta',
-        'page',
-        'side',
-        'default'
-    );
-    add_meta_box(
-        'easyevents_service_images',
-        '🖼️ Images des sections',
-        'easyevents_render_images_meta',
-        'page',
-        'normal',
-        'default'
-    );
-    add_meta_box(
-        'easyevents_service_sections',
-        '👁️ Visibilité des sections',
-        'easyevents_render_sections_meta',
-        'page',
-        'side',
-        'high'
-    );
+    // Check 2 : URI complète (ex: services/easyflash)
+    $uri = get_page_uri( $post->ID );
+    foreach ( $services as $s ) {
+        if ( false !== strpos( $uri, $s ) ) {
+            easyevents_add_all_service_meta_boxes();
+            return;
+        }
+    }
+}
+
+function easyevents_add_all_service_meta_boxes() {
+    add_meta_box( 'easyevents_service_hero',         '🎯 Hero Section',            'easyevents_render_hero_meta',         'page', 'normal', 'high'    );
+    add_meta_box( 'easyevents_service_stats',        '📊 Statistiques',            'easyevents_render_stats_meta',        'page', 'normal', 'high'    );
+    add_meta_box( 'easyevents_service_images',       '🖼️ Images des sections',     'easyevents_render_images_meta',       'page', 'normal', 'default' );
+    add_meta_box( 'easyevents_service_testimonials', '⭐ Témoignages',             'easyevents_render_testimonials_meta', 'page', 'normal', 'default' );
+    add_meta_box( 'easyevents_service_faq',          '❓ FAQ',                     'easyevents_render_faq_meta',          'page', 'normal', 'default' );
+    add_meta_box( 'easyevents_service_contact',      '📞 Contact & CTA',           'easyevents_render_contact_meta',      'page', 'side',   'default' );
+    add_meta_box( 'easyevents_service_sections',     '👁️ Visibilité des sections', 'easyevents_render_sections_meta',     'page', 'side',   'high'    );
 }
 
 /* ───────────────────────────────────────────────
- * 2. Only show on service pages
+ * 2. (registration is now handled by add_meta_boxes_page — no CSS hiding needed)
  * ─────────────────────────────────────────────── */
-add_action( 'admin_head', 'easyevents_hide_service_meta_boxes_js' );
-
-function easyevents_hide_service_meta_boxes_js() {
-    global $post;
-    if ( ! $post || get_post_type( $post ) !== 'page' ) return;
-
-    $services = array( 'easyflair', 'easyflash', 'easychallenge', 'easyrelax', 'easytoilets' );
-    $slug     = $post->post_name;
-    $parent   = $post->post_parent ? get_post( $post->post_parent ) : null;
-    $is_service = in_array( $slug, $services, true ) ||
-                  ( $parent && $parent->post_name === 'services' && in_array( $slug, $services, true ) );
-
-    if ( ! $is_service ) {
-        echo '<style>
-            #easyevents_service_hero,
-            #easyevents_service_stats,
-            #easyevents_service_faq,
-            #easyevents_service_testimonials,
-            #easyevents_service_contact,
-            #easyevents_service_images,
-            #easyevents_service_sections { display:none !important; }
-        </style>';
-    }
-}
 
 /* ───────────────────────────────────────────────
  * 3. Admin styles for meta boxes
