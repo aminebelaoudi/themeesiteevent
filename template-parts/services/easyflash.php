@@ -200,27 +200,85 @@ $faqItems     = ee_get_faq( $post_id, $faqItems );
 
 $icons_map = array( 'easyflair' => 'wine', 'easyflash' => 'camera', 'easychallenge' => 'trophy', 'easyrelax' => 'coffee', 'easytoilets' => 'droplets' );
 
+$products_defaults_by_id = array();
+foreach ( $products as $_product_default ) {
+  $products_defaults_by_id[ $_product_default['id'] ] = $_product_default;
+}
+
+$bonus_sections = array();
+$bonus_get = function( $product_id, $section_key, $field, $default = '' ) use ( &$bonus_sections ) {
+  if ( ! isset( $bonus_sections[ $product_id ][ $section_key ] ) ) {
+    return $default;
+  }
+  $value = $bonus_sections[ $product_id ][ $section_key ][ $field ] ?? '';
+  if ( '' === $value || null === $value ) {
+    return $default;
+  }
+  return $value;
+};
+
+$bonus_lines = function( $text ) {
+  if ( empty( $text ) ) {
+    return array();
+  }
+  return array_values( array_filter( array_map( 'trim', explode( "\n", (string) $text ) ) ) );
+};
+
+$bonus_pairs = function( $text ) use ( $bonus_lines ) {
+  $items = array();
+  foreach ( $bonus_lines( $text ) as $line ) {
+    $parts = explode( '|', $line, 2 );
+    $items[] = array(
+      'label' => trim( $parts[0] ?? '' ),
+      'desc'  => trim( $parts[1] ?? '' ),
+    );
+  }
+  return $items;
+};
+
 /* ── Carbon Fields overrides ──────────────────── */
 if ( function_exists( 'carbon_get_post_meta' ) ) {
+  $_bonus_cf = carbon_get_post_meta( $post_id, 'ef_bonus_sections' );
+  if ( ! empty( $_bonus_cf ) && is_array( $_bonus_cf ) ) {
+    foreach ( $_bonus_cf as $_b ) {
+      $_pid = isset( $_b['bonus_product_id'] ) ? (string) $_b['bonus_product_id'] : '';
+      $_key = isset( $_b['bonus_section_key'] ) ? (string) $_b['bonus_section_key'] : '';
+      if ( '' === $_pid || '' === $_key ) {
+        continue;
+      }
+      if ( ! isset( $bonus_sections[ $_pid ] ) ) {
+        $bonus_sections[ $_pid ] = array();
+      }
+      $bonus_sections[ $_pid ][ $_key ] = $_b;
+    }
+  }
+
 	$_cf = carbon_get_post_meta( $post_id, 'ef_products' );
 	if ( ! empty( $_cf ) ) {
 		$products = array();
 		foreach ( $_cf as $_r ) {
+      $_id = isset( $_r['product_id'] ) ? (string) $_r['product_id'] : '';
+      $_d  = isset( $products_defaults_by_id[ $_id ] ) ? $products_defaults_by_id[ $_id ] : array();
+      $_raw_precisions = isset( $_r['product_precisions'] ) ? trim( (string) $_r['product_precisions'] ) : '';
+      $_raw_features   = isset( $_r['product_features'] ) ? trim( (string) $_r['product_features'] ) : '';
+      $_raw_specs      = isset( $_r['product_specs'] ) ? trim( (string) $_r['product_specs'] ) : '';
+      $_fallback_image = ! empty( $_r['product_image_url'] ) ? (string) $_r['product_image_url'] : ( $_d['image'] ?? '' );
+
 			$products[] = array(
-				'id'            => $_r['product_id'] ?? '',
-				'name'          => $_r['product_name'] ?? '',
-				'locationTitle' => $_r['product_location_title'] ?? '',
+        'id'            => ! empty( $_id ) ? $_id : ( $_d['id'] ?? '' ),
+        'name'          => ! empty( $_r['product_name'] ) ? $_r['product_name'] : ( $_d['name'] ?? '' ),
+        'locationTitle' => ! empty( $_r['product_location_title'] ) ? $_r['product_location_title'] : ( $_d['locationTitle'] ?? '' ),
 				'isNew'         => ! empty( $_r['product_is_new'] ),
-				'tag'           => $_r['product_tag'] ?: null,
-				'tagline'       => $_r['product_tagline'] ?? '',
-				'desc'          => $_r['product_desc'] ?? '',
-				'longDesc'      => $_r['product_long_desc'] ?? '',
-				'precisions'    => ee_lines_to_array( $_r['product_precisions'] ?? '' ),
-				'price'         => $_r['product_price'] ?? '',
-				'currency'      => $_r['product_currency'] ?: 'CHF',
-				'image'         => ee_cf_image( $_r['product_image'] ?? 0 ),
-				'features'      => ee_lines_to_array( $_r['product_features'] ?? '' ),
-				'specs'         => ee_parse_specs( $_r['product_specs'] ?? '' ),
+        'tag'           => ! empty( $_r['product_tag'] ) ? $_r['product_tag'] : ( $_d['tag'] ?? null ),
+        'tagline'       => ! empty( $_r['product_tagline'] ) ? $_r['product_tagline'] : ( $_d['tagline'] ?? '' ),
+        'desc'          => ! empty( $_r['product_desc'] ) ? $_r['product_desc'] : ( $_d['desc'] ?? '' ),
+        'longDesc'      => ! empty( $_r['product_long_desc'] ) ? $_r['product_long_desc'] : ( $_d['longDesc'] ?? '' ),
+        'precisions'    => ! empty( $_raw_precisions ) ? ee_lines_to_array( $_raw_precisions ) : ( $_d['precisions'] ?? array() ),
+        'price'         => ! empty( $_r['product_price'] ) ? $_r['product_price'] : ( $_d['price'] ?? '' ),
+        'currency'      => ! empty( $_r['product_currency'] ) ? $_r['product_currency'] : ( $_d['currency'] ?? 'CHF' ),
+        'image'         => ee_cf_image( $_r['product_image'] ?? 0, $_fallback_image ),
+        'features'      => ! empty( $_raw_features ) ? ee_lines_to_array( $_raw_features ) : ( $_d['features'] ?? array() ),
+        'specs'         => ! empty( $_raw_specs ) ? ee_parse_specs( $_raw_specs ) : ( $_d['specs'] ?? array() ),
 			);
 		}
 	}
@@ -396,37 +454,35 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <!-- IRIS BONUS -->
         <div class="product-bonus">
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">1. Découvrez le PhotoBooth IRIS</h4>
-            <p class="product-bonus__desc">Le PhotoBooth Iris est proposé dans une version unique, conçue spécialement pour les événements professionnels.</p>
-            <p class="product-bonus__desc">Son design sobre et élégant s'intègre parfaitement aux soirées d'entreprise, événements corporate et animations haut de gamme.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 1790.- CHF</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-1', 'bonus_title', '1. Découvrez le PhotoBooth IRIS' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-iris', 'iris-1', 'bonus_paragraphs', "Le PhotoBooth Iris est proposé dans une version unique, conçue spécialement pour les événements professionnels.\nSon design sobre et élégant s'intègre parfaitement aux soirées d'entreprise, événements corporate et animations haut de gamme." ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-1', 'bonus_price', 'À partir de 1790.- CHF' ) ); ?></p>
             <div class="product-bonus__single-img" style="max-width:24rem;margin:0 auto">
-              <img src="https://www.easyflash.ch/wp-content/uploads/2018/03/PhotoBooth-IRIS-Black.png" alt="Version exclusive PhotoBooth IRIS" loading="lazy">
-              <p class="product-bonus__img-label">Version exclusive PhotoBooth IRIS</p>
+              <?php $_iris_1_images = $bonus_lines( $bonus_get( 'easybox-iris', 'iris-1', 'bonus_images', 'https://www.easyflash.ch/wp-content/uploads/2018/03/PhotoBooth-IRIS-Black.png' ) ); ?>
+              <?php $_iris_1_labels = $bonus_lines( $bonus_get( 'easybox-iris', 'iris-1', 'bonus_image_labels', 'Version exclusive PhotoBooth IRIS' ) ); ?>
+              <img src="<?php echo esc_url( $_iris_1_images[0] ?? 'https://www.easyflash.ch/wp-content/uploads/2018/03/PhotoBooth-IRIS-Black.png' ); ?>" alt="Version exclusive PhotoBooth IRIS" loading="lazy">
+              <p class="product-bonus__img-label"><?php echo esc_html( $_iris_1_labels[0] ?? 'Version exclusive PhotoBooth IRIS' ); ?></p>
             </div>
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">2. Personnalisez votre visuel (le petit plus)</h4>
-            <p class="product-bonus__desc">Avec EasyFlash, la personnalisation du visuel de votre création Iris est prise en charge par notre équipe.</p>
-            <p class="product-bonus__desc">Vous nous transmettez votre logo, un slogan ou un message, et nous intégrons ces éléments directement sur le cadre autour de l'iris, dans le respect de votre identité visuelle.</p>
-            <p class="product-bonus__desc">Conçu pour les événements d'entreprise (soirée corporate, lancement de produit, séminaire, cocktail, inauguration…) avec une personnalisation élégante et discrète.</p>
-            <p class="product-bonus__desc">Découvrez les possibilités de personnalisation de vos visuels en cliquant ici : <a href="https://www.easyflash.ch/templates-paysage/" target="_blank" rel="noopener">https://www.easyflash.ch/templates-paysage/</a></p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">Prix offert</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-2', 'bonus_title', '2. Personnalisez votre visuel (le petit plus)' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-iris', 'iris-2', 'bonus_paragraphs', "Avec EasyFlash, la personnalisation du visuel de votre création Iris est prise en charge par notre équipe.\nVous nous transmettez votre logo, un slogan ou un message, et nous intégrons ces éléments directement sur le cadre autour de l'iris, dans le respect de votre identité visuelle.\nConçu pour les événements d'entreprise (soirée corporate, lancement de produit, séminaire, cocktail, inauguration…) avec une personnalisation élégante et discrète.\nDécouvrez les possibilités de personnalisation de vos visuels en cliquant ici : https://www.easyflash.ch/templates-paysage/" ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-2', 'bonus_price', 'Prix offert' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--2">
-              <?php foreach ( array(
-                'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-1.jpeg',
-                'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-2.jpeg',
-                'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-3.jpeg',
-                'https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-4.jpeg',
-              ) as $idx => $img_url ) : ?>
+              <?php $_iris_2_images = $bonus_lines( $bonus_get( 'easybox-iris', 'iris-2', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-1.jpeg\nhttps://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-2.jpeg\nhttps://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-3.jpeg\nhttps://www.easyflash.ch/wp-content/uploads/2018/03/template-PhotoBooth-IRIS-4.jpeg" ) ); ?>
+              <?php foreach ( $_iris_2_images as $idx => $img_url ) : ?>
                 <div class="product-bonus__img-card"><img src="<?php echo esc_url( $img_url ); ?>" alt="Template Iris <?php echo $idx + 1; ?>" loading="lazy"></div>
               <?php endforeach; ?>
             </div>
           </div>
 
           <div class="product-bonus__steps-box">
-            <h4 class="product-bonus__title">Comment ça marche ? Une expérience unique, en toute simplicité…</h4>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-steps', 'bonus_title', 'Comment ça marche ? Une expérience unique, en toute simplicité…' ) ); ?></h4>
             <div class="product-bonus__steps product-bonus__steps--5">
               <?php
               $iris_steps = array(
@@ -436,6 +492,15 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 array( 'icon' => 'sparkles','label' => 'Personnalisation', 'desc' => 'Nous intégrons votre logo ou message autour de l\'iris pour un rendu à votre image.' ),
                 array( 'icon' => 'award',   'label' => 'Réception &amp; partage', 'desc' => 'Imprimé, envoyé sur smartphone ou partagé sur les réseaux sociaux.' ),
               );
+              $_iris_steps_pairs = $bonus_pairs( $bonus_get( 'easybox-iris', 'iris-steps', 'bonus_list_items', '' ) );
+              if ( ! empty( $_iris_steps_pairs ) ) {
+                foreach ( $_iris_steps_pairs as $_k => $_pair ) {
+                  if ( isset( $iris_steps[ $_k ] ) ) {
+                    if ( ! empty( $_pair['label'] ) ) { $iris_steps[ $_k ]['label'] = $_pair['label']; }
+                    if ( '' !== $_pair['desc'] ) { $iris_steps[ $_k ]['desc'] = $_pair['desc']; }
+                  }
+                }
+              }
               foreach ( $iris_steps as $step ) : ?>
                 <div class="product-bonus__step">
                   <div class="product-bonus__step-icon" style="background:<?php echo esc_attr( $C['accent'] ); ?>10"><?php echo easyevents_icon( $step['icon'], 18 ); ?></div>
@@ -445,13 +510,13 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="<?php echo esc_url( $bonus_get( 'easybox-iris', 'iris-steps', 'bonus_cta_url', 'https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents' ) ); ?>" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-steps', 'bonus_cta_text', 'Obtenir une estimation gratuite' ) ); ?></a>
             </div>
           </div>
 
           <!-- Iris FAQ -->
           <div class="product-bonus__faq">
-            <h4 class="product-bonus__title text-center">FAQ</h4>
+            <h4 class="product-bonus__title text-center"><?php echo esc_html( $bonus_get( 'easybox-iris', 'iris-faq', 'bonus_title', 'FAQ' ) ); ?></h4>
             <div class="faq-items">
               <?php
               $iris_faq = array(
@@ -461,6 +526,15 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 array( 'q' => 'Combien de personnes peuvent participer au PhotoBooth Iris ?', 'a' => 'La durée est flexible et les créations sont illimitées. Tous vos invités peuvent participer, la prestation est dimensionnée selon la taille de votre événement.' ),
                 array( 'q' => 'Sur quels types d\'événements installer un PhotoBooth Iris ?', 'a' => 'Soirée d\'entreprise, lancement de produit, séminaire, cocktail corporate, inauguration, gala, événement de prestige : toute occasion où vous souhaitez offrir une animation mémorable et différenciante.' ),
               );
+              $_iris_faq_pairs = $bonus_pairs( $bonus_get( 'easybox-iris', 'iris-faq', 'bonus_list_items', '' ) );
+              if ( ! empty( $_iris_faq_pairs ) ) {
+                $iris_faq = array();
+                foreach ( $_iris_faq_pairs as $_pair ) {
+                  if ( ! empty( $_pair['label'] ) ) {
+                    $iris_faq[] = array( 'q' => $_pair['label'], 'a' => $_pair['desc'] );
+                  }
+                }
+              }
               foreach ( $iris_faq as $fi => $fitem ) : ?>
                 <div class="faq-item product-bonus__faq-item" style="border-color:<?php echo esc_attr( $C['accent'] ); ?>20">
                   <button class="faq-trigger" style="color:<?php echo esc_attr( $C['dark'] ); ?>" aria-expanded="false">
@@ -481,15 +555,18 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <!-- B&W BONUS -->
         <div class="product-bonus">
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">1. Choisissez votre PhotoBooth EasyBox</h4>
-            <p class="product-bonus__desc">Nos Photobooth peuvent avoir 2 finitions différentes (noire ou bois).</p>
-            <p class="product-bonus__desc">Nous avons également une version avec le pied plus court pour une prise de photo assise.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">A partir de 349.-CHF</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-1', 'bonus_title', '1. Choisissez votre PhotoBooth EasyBox' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-bw', 'bw-1', 'bonus_paragraphs', "Nos Photobooth peuvent avoir 2 finitions différentes (noire ou bois).\nNous avons également une version avec le pied plus court pour une prise de photo assise." ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-1', 'bonus_price', 'A partir de 349.-CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--2" style="max-width:42rem;margin:0 auto">
-              <?php foreach ( array(
-                array( 'name' => 'Black Box', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/04/location-photobooth.jpg' ),
-                array( 'name' => 'Wood Box', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/04/photobooth-mariage-1.jpg' ),
-              ) as $box ) : ?>
+              <?php
+              $_bw_1_images = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-1', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/04/location-photobooth.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/04/photobooth-mariage-1.jpg" ) );
+              $_bw_1_labels = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-1', 'bonus_image_labels', "Black Box\nWood Box" ) );
+              foreach ( $_bw_1_images as $idx => $_img ) :
+                $box = array( 'name' => $_bw_1_labels[ $idx ] ?? ( 'Option ' . ( $idx + 1 ) ), 'image' => $_img );
+              ?>
                 <div class="product-bonus__img-card product-bonus__img-card--labeled">
                   <img src="<?php echo esc_url( $box['image'] ); ?>" alt="<?php echo esc_attr( $box['name'] ); ?>" loading="lazy">
                   <p class="product-bonus__img-label"><?php echo esc_html( $box['name'] ); ?></p>
@@ -499,16 +576,18 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">2. Choisissez votre pack d'accessoires indispensables</h4>
-            <p class="product-bonus__desc">Pour agrémenter vos photos, nous vous proposons un choix de 3 packs d'accessoires.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 29.- CHF</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-2', 'bonus_title', '2. Choisissez votre pack d\'accessoires indispensables' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-bw', 'bw-2', 'bonus_paragraphs', 'Pour agrémenter vos photos, nous vous proposons un choix de 3 packs d\'accessoires.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-2', 'bonus_price', 'À partir de 29.- CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--4">
-              <?php foreach ( array(
-                array( 'label' => 'Accessoires Cadres', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg' ),
-                array( 'label' => 'Accessoires Props', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg' ),
-                array( 'label' => 'Accessoires Pancartes', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg' ),
-                array( 'label' => 'Accessoires Premium', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg' ),
-              ) as $acc ) : ?>
+              <?php
+              $_bw_2_images = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-2', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg" ) );
+              $_bw_2_labels = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-2', 'bonus_image_labels', "Accessoires Cadres\nAccessoires Props\nAccessoires Pancartes\nAccessoires Premium" ) );
+              foreach ( $_bw_2_images as $idx => $_img ) :
+                $acc = array( 'label' => $_bw_2_labels[ $idx ] ?? ( 'Accessoire ' . ( $idx + 1 ) ), 'image' => $_img );
+              ?>
                 <div class="product-bonus__acc-card">
                   <img src="<?php echo esc_url( $acc['image'] ); ?>" alt="<?php echo esc_attr( $acc['label'] ); ?>" loading="lazy">
                   <p><?php echo esc_html( $acc['label'] ); ?></p>
@@ -518,47 +597,35 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">3. Choisissez votre template (le petit plus)</h4>
-            <p class="product-bonus__desc">Ajoutez un cadre graphique personnalisé pour renforcer votre identité visuelle.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">Prix offert</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-3', 'bonus_title', '3. Choisissez votre template (le petit plus)' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-bw', 'bw-3', 'bonus_paragraphs', 'Ajoutez un cadre graphique personnalisé pour renforcer votre identité visuelle.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-3', 'bonus_price', 'Prix offert' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--3">
-              <?php foreach ( array(
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template4.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template5.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template13.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template15.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template17.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2019/11/template18.jpg',
-              ) as $idx => $tpl ) : ?>
+              <?php $_bw_3_images = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-3', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2019/11/template4.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2019/11/template5.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2019/11/template13.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2019/11/template15.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2019/11/template17.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2019/11/template18.jpg" ) ); ?>
+              <?php foreach ( $_bw_3_images as $idx => $tpl ) : ?>
                 <div class="product-bonus__img-card product-bonus__img-card--square"><img src="<?php echo esc_url( $tpl ); ?>" alt="Template <?php echo $idx + 1; ?>" loading="lazy"></div>
               <?php endforeach; ?>
             </div>
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">4. Choisissez votre toile de fond (la touche finale)</h4>
-            <p class="product-bonus__desc">Sélectionnez un fond adapté à l'ambiance de votre événement.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 149.- CHF</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-4', 'bonus_title', '4. Choisissez votre toile de fond (la touche finale)' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-bw', 'bw-4', 'bonus_paragraphs', 'Sélectionnez un fond adapté à l\'ambiance de votre événement.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-4', 'bonus_price', 'À partir de 149.- CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--5">
-              <?php foreach ( array(
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5472.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5437.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5615.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5555.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5653.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/C-50.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5627.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5655.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5449.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5681.jpg',
-              ) as $idx => $fond ) : ?>
+              <?php $_bw_4_images = $bonus_lines( $bonus_get( 'easybox-bw', 'bw-4', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5472.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5437.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5615.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5555.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5653.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/C-50.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5627.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5655.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5449.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5681.jpg" ) ); ?>
+              <?php foreach ( $_bw_4_images as $idx => $fond ) : ?>
                 <div class="product-bonus__img-card product-bonus__img-card--fond"><img src="<?php echo esc_url( $fond ); ?>" alt="Fond <?php echo $idx + 1; ?>" loading="lazy"></div>
               <?php endforeach; ?>
             </div>
           </div>
 
           <div class="product-bonus__steps-box">
-            <h4 class="product-bonus__title">Comment ça marche ? Un vrai jeu d'enfant...</h4>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-steps', 'bonus_title', 'Comment ça marche ? Un vrai jeu d\'enfant...' ) ); ?></h4>
             <div class="product-bonus__steps product-bonus__steps--5">
               <?php
               $bw_steps = array(
@@ -568,6 +635,14 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 array( 'icon' => 'tag',          'label' => 'Impression' ),
                 array( 'icon' => 'award',        'label' => 'Partage' ),
               );
+              $_bw_steps_pairs = $bonus_pairs( $bonus_get( 'easybox-bw', 'bw-steps', 'bonus_list_items', '' ) );
+              if ( ! empty( $_bw_steps_pairs ) ) {
+                foreach ( $_bw_steps_pairs as $_k => $_pair ) {
+                  if ( isset( $bw_steps[ $_k ] ) && ! empty( $_pair['label'] ) ) {
+                    $bw_steps[ $_k ]['label'] = $_pair['label'];
+                  }
+                }
+              }
               foreach ( $bw_steps as $step ) : ?>
                 <div class="product-bonus__step">
                   <div class="product-bonus__step-icon" style="background:<?php echo esc_attr( $C['accent'] ); ?>10"><?php echo easyevents_icon( $step['icon'], 18 ); ?></div>
@@ -576,7 +651,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="<?php echo esc_url( $bonus_get( 'easybox-bw', 'bw-steps', 'bonus_cta_url', 'https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents' ) ); ?>" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-bw', 'bw-steps', 'bonus_cta_text', 'Obtenir une estimation gratuite' ) ); ?></a>
             </div>
           </div>
         </div>
@@ -586,21 +661,23 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <!-- MIROIR BONUS -->
         <div class="product-bonus">
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">1. Choisissez votre pack d'accessoires indispensables</h4>
-            <p class="product-bonus__desc">Pour agrémenter vos photos, nous vous proposons un choix de 3 packs d'accessoires.</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_title', '1. Choisissez votre pack d\'accessoires indispensables' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_paragraphs', 'Pour agrémenter vos photos, nous vous proposons un choix de 3 packs d\'accessoires.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
             <ul class="product-bonus__list">
-              <li>Pack Standard (cadres, panneaux ou props)</li>
-              <li>Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
-              <li>Pack sur mesure (accessoires spécialement achetés pour votre évènement en fonction de votre thème)</li>
+              <?php foreach ( $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_list_items', "Pack Standard (cadres, panneaux ou props)\nPack Premium (divers tailles et couleurs de chapeaux & lunettes...)\nPack sur mesure (accessoires spécialement achetés pour votre évènement en fonction de votre thème)" ) ) as $_item ) : ?>
+                <li><?php echo esc_html( $_item ); ?></li>
+              <?php endforeach; ?>
             </ul>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 29.- CHF</p>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_price', 'À partir de 29.- CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--4">
-              <?php foreach ( array(
-                array( 'label' => 'Accessoires Cadres', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg' ),
-                array( 'label' => 'Accessoires Props', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg' ),
-                array( 'label' => 'Accessoires Pancartes', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg' ),
-                array( 'label' => 'Accessoires Premium', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg' ),
-              ) as $acc ) : ?>
+              <?php
+              $_m_1_images = $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg" ) );
+              $_m_1_labels = $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-1', 'bonus_image_labels', "Accessoires Cadres\nAccessoires Props\nAccessoires Pancartes\nAccessoires Premium" ) );
+              foreach ( $_m_1_images as $idx => $_img ) :
+                $acc = array( 'label' => $_m_1_labels[ $idx ] ?? ( 'Accessoire ' . ( $idx + 1 ) ), 'image' => $_img );
+              ?>
                 <div class="product-bonus__acc-card">
                   <img src="<?php echo esc_url( $acc['image'] ); ?>" alt="<?php echo esc_attr( $acc['label'] ); ?>" loading="lazy">
                   <p><?php echo esc_html( $acc['label'] ); ?></p>
@@ -610,48 +687,35 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">2. Choisissez votre template (le petit plus)</h4>
-            <p class="product-bonus__desc">Avec EasyFlash, rien de plus simple que de personnaliser le contour de vos photos en quelques clics !</p>
-            <p class="product-bonus__desc">Un choix de plusieurs centaines de templates pour tous les types d'évènements (mariage, entreprise, anniversaire, baby shower...).</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">Prix offert</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-2', 'bonus_title', '2. Choisissez votre template (le petit plus)' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-2', 'bonus_paragraphs', "Avec EasyFlash, rien de plus simple que de personnaliser le contour de vos photos en quelques clics !\nUn choix de plusieurs centaines de templates pour tous les types d'évènements (mariage, entreprise, anniversaire, baby shower...)." ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-2', 'bonus_price', 'Prix offert' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--3">
-              <?php foreach ( array(
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-6.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-3.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-1-1.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-4.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-8.png',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/template-5.jpg',
-              ) as $idx => $tpl ) : ?>
+              <?php $_m_2_images = $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-2', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/template-6.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/template-3.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/template-1-1.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/template-4.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/template-8.png\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/template-5.jpg" ) ); ?>
+              <?php foreach ( $_m_2_images as $idx => $tpl ) : ?>
                 <div class="product-bonus__img-card product-bonus__img-card--square"><img src="<?php echo esc_url( $tpl ); ?>" alt="Template <?php echo $idx + 1; ?>" loading="lazy"></div>
               <?php endforeach; ?>
             </div>
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">3. Choisissez votre toile de fond (la touche finale)</h4>
-            <p class="product-bonus__desc">Nous mettons à votre disposition un large choix de toiles de fond pour tous types d'événements.</p>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 79.- CHF</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-3', 'bonus_title', '3. Choisissez votre toile de fond (la touche finale)' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-3', 'bonus_paragraphs', 'Nous mettons à votre disposition un large choix de toiles de fond pour tous types d\'événements.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-3', 'bonus_price', 'À partir de 79.- CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--5">
-              <?php foreach ( array(
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5472.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5437.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5615.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5555.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5653.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/C-50.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5627.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5655.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5449.jpg',
-                'https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5681.jpg',
-              ) as $idx => $fond ) : ?>
+              <?php $_m_3_images = $bonus_lines( $bonus_get( 'easybox-miroir', 'miroir-3', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5472.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5437.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5615.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5555.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5653.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/C-50.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5627.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5655.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5449.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/IMG_5681.jpg" ) ); ?>
+              <?php foreach ( $_m_3_images as $idx => $fond ) : ?>
                 <div class="product-bonus__img-card product-bonus__img-card--fond"><img src="<?php echo esc_url( $fond ); ?>" alt="Fond <?php echo $idx + 1; ?>" loading="lazy"></div>
               <?php endforeach; ?>
             </div>
           </div>
 
           <div class="product-bonus__steps-box">
-            <h4 class="product-bonus__title">Comment ça marche ? Facile...</h4>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-steps', 'bonus_title', 'Comment ça marche ? Facile...' ) ); ?></h4>
             <div class="product-bonus__steps product-bonus__steps--5">
               <?php
               $miroir_steps = array(
@@ -661,6 +725,14 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
                 array( 'icon' => 'tag',     'label' => 'Impression' ),
                 array( 'icon' => 'award',   'label' => 'Partage' ),
               );
+              $_miroir_steps_pairs = $bonus_pairs( $bonus_get( 'easybox-miroir', 'miroir-steps', 'bonus_list_items', '' ) );
+              if ( ! empty( $_miroir_steps_pairs ) ) {
+                foreach ( $_miroir_steps_pairs as $_k => $_pair ) {
+                  if ( isset( $miroir_steps[ $_k ] ) && ! empty( $_pair['label'] ) ) {
+                    $miroir_steps[ $_k ]['label'] = $_pair['label'];
+                  }
+                }
+              }
               foreach ( $miroir_steps as $step ) : ?>
                 <div class="product-bonus__step">
                   <div class="product-bonus__step-icon" style="background:<?php echo esc_attr( $C['accent'] ); ?>10"><?php echo easyevents_icon( $step['icon'], 18 ); ?></div>
@@ -669,7 +741,7 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
               <?php endforeach; ?>
             </div>
             <div class="text-center" style="margin-top:1.5rem">
-              <a href="https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>">Obtenir une estimation gratuite</a>
+              <a href="<?php echo esc_url( $bonus_get( 'easybox-miroir', 'miroir-steps', 'bonus_cta_url', 'https://www.easyflash.ch/devis-easyflash/?utm_source=EasyEvents' ) ); ?>" class="btn btn-service" style="background:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-miroir', 'miroir-steps', 'bonus_cta_text', 'Obtenir une estimation gratuite' ) ); ?></a>
             </div>
           </div>
         </div>
@@ -680,26 +752,28 @@ if ( function_exists( 'carbon_get_post_meta' ) ) {
         <div class="product-bonus">
           <div class="product-bonus__section">
             <div class="product-bonus__video">
-              <video src="https://www.easyflash.ch/wp-content/uploads/2020/11/video-photoboth-360-degree.mp4" autoplay muted loop playsinline></video>
+              <video src="<?php echo esc_url( $bonus_get( 'easybox-360', '360-video', 'bonus_video_url', 'https://www.easyflash.ch/wp-content/uploads/2020/11/video-photoboth-360-degree.mp4' ) ); ?>" autoplay muted loop playsinline></video>
             </div>
           </div>
 
           <div class="product-bonus__section text-center">
-            <h4 class="product-bonus__title">1. Choisissez votre pack d'accessoires indispensables</h4>
-            <p class="product-bonus__desc">Pour agrémenter vos vidéos, nous vous proposons un choix de 3 packs d'accessoires.</p>
+            <h4 class="product-bonus__title"><?php echo esc_html( $bonus_get( 'easybox-360', '360-1', 'bonus_title', '1. Choisissez votre pack d\'accessoires indispensables' ) ); ?></h4>
+            <?php foreach ( $bonus_lines( $bonus_get( 'easybox-360', '360-1', 'bonus_paragraphs', 'Pour agrémenter vos vidéos, nous vous proposons un choix de 3 packs d\'accessoires.' ) ) as $_line ) : ?>
+              <p class="product-bonus__desc"><?php echo esc_html( $_line ); ?></p>
+            <?php endforeach; ?>
             <ul class="product-bonus__list">
-              <li>Pack Standard (cadres, panneaux ou props)</li>
-              <li>Pack Premium (divers tailles et couleurs de chapeaux &amp; lunettes...)</li>
-              <li>Pack sur mesure (accessoires spécialement achetés pour votre événement en fonction de votre thème)</li>
+              <?php foreach ( $bonus_lines( $bonus_get( 'easybox-360', '360-1', 'bonus_list_items', "Pack Standard (cadres, panneaux ou props)\nPack Premium (divers tailles et couleurs de chapeaux & lunettes...)\nPack sur mesure (accessoires spécialement achetés pour votre événement en fonction de votre thème)" ) ) as $_item ) : ?>
+                <li><?php echo esc_html( $_item ); ?></li>
+              <?php endforeach; ?>
             </ul>
-            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>">À partir de 29.- CHF</p>
+            <p class="product-bonus__price" style="color:<?php echo esc_attr( $C['accent'] ); ?>"><?php echo esc_html( $bonus_get( 'easybox-360', '360-1', 'bonus_price', 'À partir de 29.- CHF' ) ); ?></p>
             <div class="product-bonus__grid product-bonus__grid--4">
-              <?php foreach ( array(
-                array( 'label' => 'Accessoires Cadres', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg' ),
-                array( 'label' => 'Accessoires Props', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg' ),
-                array( 'label' => 'Accessoires Pancartes', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg' ),
-                array( 'label' => 'Accessoires Premium', 'image' => 'https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg' ),
-              ) as $acc ) : ?>
+              <?php
+              $_360_1_images = $bonus_lines( $bonus_get( 'easybox-360', '360-1', 'bonus_images', "https://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-cadre-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-props-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-pancarte-contour.jpg\nhttps://www.easyflash.ch/wp-content/uploads/2020/03/accessoires-premium-contour.jpg" ) );
+              $_360_1_labels = $bonus_lines( $bonus_get( 'easybox-360', '360-1', 'bonus_image_labels', "Accessoires Cadres\nAccessoires Props\nAccessoires Pancartes\nAccessoires Premium" ) );
+              foreach ( $_360_1_images as $idx => $_img ) :
+                $acc = array( 'label' => $_360_1_labels[ $idx ] ?? ( 'Accessoire ' . ( $idx + 1 ) ), 'image' => $_img );
+              ?>
                 <div class="product-bonus__acc-card">
                   <img src="<?php echo esc_url( $acc['image'] ); ?>" alt="<?php echo esc_attr( $acc['label'] ); ?>" loading="lazy">
                   <p><?php echo esc_html( $acc['label'] ); ?></p>
